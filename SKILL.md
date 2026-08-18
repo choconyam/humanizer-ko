@@ -1,10 +1,11 @@
 ---
 name: humanizer
 description: |
-  Rewrite text that sounds AI-generated while keeping the writer's facts,
-  meaning, and voice. Use when editing or reviewing prose for inflated claims,
-  sales language, vague sources, repetitive structure, stock AI words, passive
-  voice, filler, or chatbot artifacts. Based on Wikipedia's "Signs of AI writing."
+  Rewrite Korean or English text that sounds AI-generated while keeping the
+  writer's facts, meaning, and voice. Use when humanizing prose, polishing Korean
+  presentation scripts, or reviewing text for inflated claims, translation-like
+  phrasing, stock AI words, filler, and chatbot artifacts. Based on Wikipedia's
+  "Signs of AI writing."
 license: MIT
 metadata:
   version: "2.11.1"
@@ -13,6 +14,8 @@ metadata:
 # Humanizer: remove AI writing patterns
 
 Rewrite text that sounds AI-generated so it reads like the writer, not a chatbot. Keep the writer's facts, meaning, and voice.
+
+Use this as an editing aid, not as a promise to bypass AI detectors.
 
 The patterns below come from Wikipedia's ["Signs of AI writing"](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), maintained by WikiProject AI Cleanup.
 
@@ -36,6 +39,10 @@ If the user provides a writing sample (their own previous writing), analyze it b
 3. If there is no sample, use the guidance below.
 
 A writing sample takes priority over these style rules. If the sample uses em dashes, keep them at about the same rate. Do not apply §14 as a ban.
+
+## Korean text
+
+When the source is Korean or the user asks for Korean output, read [the Korean editing guide](references/korean-editing.md) before rewriting. Apply it together with the shared patterns below. Do not apply Korean-specific rules to non-Korean text.
 
 ## Add personality only when it fits
 
@@ -431,7 +438,9 @@ These details often carry the writer's voice. Keep them unless they hurt the mea
 
 ## How to return the result
 
-**Pasted text (default).** Return the draft, a short list of remaining AI patterns, and the final rewrite.
+**Pasted text (default).** Return the final rewrite first. Add only a short note about the main edits when useful.
+
+**Audit or comparison.** When the user asks for an audit, comparison, or explanation, return the draft, a short list of remaining AI patterns, and the final rewrite.
 
 **File mode.** When the user names a file, run the full rewrite process but write only the final text to the file. Change prose only. Keep code blocks, YAML metadata, data, and link targets unchanged. Then give the user a short summary.
 

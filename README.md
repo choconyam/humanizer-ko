@@ -1,8 +1,20 @@
-# Humanizer
+# Humanizer Korean for Codex
 
-[![skills.sh installs](https://skills.sh/b/blader/humanizer)](https://skills.sh/blader/humanizer)
+Humanizer rewrites Korean or English text that sounds AI-generated while keeping the writer's facts, meaning, and voice. This unofficial fork adds Korean editing guidance and Codex-facing behavior to [blader/humanizer](https://github.com/blader/humanizer).
 
-Humanizer rewrites text that sounds AI-generated while keeping the writer's facts, meaning, and voice. The skill is plain Markdown and works in any agent that supports skills.
+The exact upstream base is recorded in [`.upstream-version`](.upstream-version). See [`NOTICE.md`](NOTICE.md) for attribution and a summary of the local changes.
+
+## Korean and Codex localization
+
+This fork keeps upstream's 35 shared writing patterns and adds a conditional Korean editing guide. The guide covers:
+
+- consistent Korean register and honorifics
+- translation-like sentence structure and unnecessary dummy subjects
+- abstract noun stacks and stock Korean AI phrases
+- field-native English terminology and protected technical tokens
+- spoken presentation scripts and high-stakes medical or scientific wording
+
+Ordinary chat rewrites return the final text first. Audit and comparison requests still include the draft, remaining-pattern check, and final rewrite.
 
 ## Installation
 
@@ -11,7 +23,7 @@ Humanizer rewrites text that sounds AI-generated while keeping the writer's fact
 Install Humanizer for all projects:
 
 ```bash
-npx skills add blader/humanizer --global
+npx skills add choconyam/humanizer --global
 ```
 
 Update an existing install:
@@ -23,13 +35,13 @@ npx skills update humanizer --global
 Install it for every supported agent:
 
 ```bash
-npx skills add blader/humanizer --global --agent '*'
+npx skills add choconyam/humanizer --global --agent '*'
 ```
 
 Install it for one agent:
 
 ```bash
-npx skills add blader/humanizer --global --agent <agent-name>
+npx skills add choconyam/humanizer --global --agent <agent-name>
 ```
 
 Omit `--global` to install it in the current project. Start a new agent session or reload skills after installation.
@@ -39,7 +51,7 @@ Omit `--global` to install it in the current project. Start a new agent session 
 Claude Code users can also install Humanizer as a plugin:
 
 ```
-/plugin marketplace add blader/humanizer
+/plugin marketplace add choconyam/humanizer
 /plugin install humanizer@humanizer
 ```
 
@@ -49,9 +61,9 @@ The plugin links `skills/humanizer/SKILL.md` to the root `SKILL.md`. This lets C
 
 ### Claude Desktop upload
 
-Download [`humanizer-skill.zip`](https://github.com/blader/humanizer/releases/latest/download/humanizer-skill.zip) from the latest release when you install or replace Humanizer through the Claude Desktop GUI.
+Download [`humanizer-skill.zip`](https://github.com/choconyam/humanizer/releases/latest/download/humanizer-skill.zip) from the latest release when you install or replace Humanizer through the Claude Desktop GUI.
 
-Do not use GitHub's **Code > Download ZIP** archive for this. The source archive contains the plugin's internal symbolic link, which Claude Desktop rejects. The release package contains one regular file at `humanizer/SKILL.md`.
+Do not use GitHub's **Code > Download ZIP** archive for this. The source archive contains the plugin's internal symbolic link, which Claude Desktop rejects. The release package contains regular files for the skill and its Korean editing guide.
 
 ### Manual
 
@@ -60,14 +72,16 @@ You can also place `SKILL.md` in any agent's skill folder.
 For example:
 
 ```bash
-git clone https://github.com/blader/humanizer.git /path/to/your/skills/humanizer
+git clone https://github.com/choconyam/humanizer.git /path/to/your/skills/humanizer
 ```
 
-Or, if you already have this repo cloned:
+Or, if you already have this repo cloned, copy both the skill and its Korean guide:
 
 ```bash
 mkdir -p /path/to/your/skills/humanizer
+mkdir -p /path/to/your/skills/humanizer/references
 cp SKILL.md /path/to/your/skills/humanizer/
+cp references/korean-editing.md /path/to/your/skills/humanizer/references/
 ```
 
 ## Usage
@@ -82,6 +96,14 @@ Use a slash command or ask the agent directly:
 
 ```
 Please humanize this text: [your text]
+```
+
+Korean requests work in natural language:
+
+```text
+이 발표 대본을 자연스럽게 다듬되 수치와 의학적 제한은 그대로 유지해줘.
+이 문장을 번역투 없이 다듬고, -합니다 말투를 유지해줘.
+이 보고서를 덜 AI스럽게 고치되 기술용어와 인용은 바꾸지 마.
 ```
 
 You can also ask Humanizer to rewrite a file:
@@ -113,6 +135,8 @@ Humanizer uses patterns from Wikipedia's ["Signs of AI writing"](https://en.wiki
 It drafts a rewrite, checks the draft for remaining AI patterns and changed claims, then writes the final version.
 
 It does not invent facts, names, dates, quotes, or citations. Any added detail must come from the source or the writer.
+
+For Korean text, it also loads [`references/korean-editing.md`](references/korean-editing.md) to handle register, terminology, Korean sentence structure, spoken delivery, and high-stakes wording.
 
 ### Wikipedia's main point
 
@@ -215,7 +239,21 @@ It does not invent facts, names, dates, quotes, or citations. Any added detail m
 - [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) - Main source
 - [WikiProject AI Cleanup](https://en.wikipedia.org/wiki/Wikipedia:WikiProject_AI_Cleanup) - Maintains the source page
 
+## Upstream maintenance
+
+The scheduled GitHub Actions workflow checks the latest stable `blader/humanizer` tag once a week. When a newer release exists, it merges that tag into a bot branch, runs the package and localization checks, and opens a draft pull request. It never merges the pull request into `main` automatically.
+
+If Git reports conflicts, the workflow stops and opens an issue instead. Resolve the conflicts manually, preserve the Korean guide and provenance files, rerun the validators, and review a few Korean rewrites before merging.
+
+After the repository is forked, enable GitHub Actions and allow workflows to create pull requests for this automation to work.
+
 ## Version history
+
+### Fork releases
+
+- **v2.11.1-ko.1** - Ported the existing Korean and Codex adaptation to upstream v2.11.1. Added conditional Korean guidance, localized packaging checks, provenance, and scheduled upstream sync PRs.
+
+### Upstream releases
 
 - **2.11.1** - Added a Claude Desktop-ready release package with one regular `humanizer/SKILL.md` file. GitHub's source archive still keeps the plugin symlink (fixes #224). No change to the 35 patterns.
 - **2.11.0** - Rewrote all repo guidance, descriptions, checks, and skill instructions in Plain Language. Kept all 35 patterns and their behavior.
@@ -243,4 +281,4 @@ It does not invent facts, names, dates, quotes, or citations. Any added detail m
 
 ## License
 
-MIT
+MIT. The upstream copyright and permission notice remain in [`LICENSE`](LICENSE). See [`NOTICE.md`](NOTICE.md) for upstream attribution, the tracked base release, and local changes.

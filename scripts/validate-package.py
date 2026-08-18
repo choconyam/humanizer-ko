@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
 from pathlib import Path
 
 
@@ -46,10 +47,24 @@ if len(package_versions) != 1:
         f"Use one package version in all files: {sorted(package_versions)}"
     )
 
-if not PLUGIN_SKILL.is_symlink():
+if PLUGIN_SKILL.is_symlink():
+    plugin_skill_is_linked = PLUGIN_SKILL.resolve() == (ROOT / "SKILL.md").resolve()
+else:
+    index_entry = subprocess.run(
+        ["git", "ls-files", "-s", "--", "skills/humanizer/SKILL.md"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    plugin_skill_is_linked = (
+        index_entry.returncode == 0
+        and index_entry.stdout.startswith("120000 ")
+        and PLUGIN_SKILL.read_text(encoding="utf-8").strip() == "../../SKILL.md"
+    )
+
+if not plugin_skill_is_linked:
     raise SystemExit("Link skills/humanizer/SKILL.md to the root SKILL.md")
-if PLUGIN_SKILL.resolve() != (ROOT / "SKILL.md").resolve():
-    raise SystemExit("Make skills/humanizer/SKILL.md point to the root SKILL.md")
 
 plain_language_rules = (
     "## Writing style",

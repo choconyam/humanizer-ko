@@ -12,11 +12,15 @@ Keep the skill portable. Do not write instructions that limit it to one or two a
 
 - `SKILL.md` is the source of truth. It contains portable YAML metadata, 35 numbered patterns, and their examples.
 - `skills/humanizer/SKILL.md` links to the root skill for Claude Desktop and older plugin loaders. Do not replace the link with a copy or edit it as a separate file.
+- `references/korean-editing.md` contains the conditional Korean guidance. `skills/humanizer/references/korean-editing.md` is its package mirror and must match it exactly.
 - `README.md` explains installation, use, patterns, and version history.
+- `.upstream-version` records the upstream release already merged into this fork.
+- `NOTICE.md` records upstream attribution and the scope of the localization.
 - `.claude-plugin/plugin.json` describes the Claude plugin.
 - `.claude-plugin/marketplace.json` lets users add this repo as a Claude marketplace.
 - `scripts/build-skill-zip.py` builds the symlink-free archive for Claude Desktop uploads.
 - `scripts/validate-package.py` checks package files and shared values.
+- `scripts/validate-localization.py` checks the Korean guide, attribution, tracked upstream release, and package mirror.
 
 ## Rules for changes
 
@@ -26,7 +30,9 @@ Keep `SKILL.md` and `README.md` in sync.
 - **Version:** Keep the same version in `SKILL.md` under `metadata.version`, the first README version entry, and `.claude-plugin/plugin.json`. Do not add a top-level `version` field to the skill.
 - **Compatibility:** Keep install and use instructions neutral across agents. Names such as Claude Code, OpenCode, and Codex are examples, not limits.
 - **History:** Add a short README version note for any behavior change or non-obvious fix.
-- **Checks:** Before publishing, run `python3 scripts/validate-package.py`, `python3 scripts/build-skill-zip.py /tmp/humanizer-skill.zip`, `npx skills add . --list`, and `claude plugin validate .`.
+- **Korean guide:** Keep the root guide and its plugin package mirror byte-for-byte identical.
+- **Upstream sync:** Update `.upstream-version` only after the corresponding upstream tag is merged. Keep the upstream `LICENSE` unchanged.
+- **Checks:** Before publishing, run `python3 scripts/validate-package.py`, `python3 scripts/validate-localization.py`, `python3 scripts/build-skill-zip.py /tmp/humanizer-skill.zip`, `npx skills add . --list`, and `claude plugin validate .`.
 
 ## Writing style
 

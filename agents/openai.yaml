@@ -1,4 +1,4 @@
 interface:
-  display_name: "Humanizer"
-  short_description: "Make AI-written text sound like the writer"
-  default_prompt: "Use $humanizer to rewrite this text in my voice without changing its facts."
+  display_name: "Humanizer Korean"
+  short_description: "Naturalize Korean and English prose"
+  default_prompt: "Use $humanizer to rewrite this Korean or English text naturally without changing its facts."

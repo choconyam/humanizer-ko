@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -21,6 +23,8 @@ jobs:
           python-version: "3.12"
       - name: Check package files
         run: python3 scripts/validate-package.py
+      - name: Check Korean localization
+        run: python3 scripts/validate-localization.py
       - name: Check Claude Desktop archive
         run: python3 scripts/build-skill-zip.py "${RUNNER_TEMP}/humanizer-skill.zip"
       - name: Check skill discovery
