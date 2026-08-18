@@ -1,4 +1,4 @@
-# Humanizer Korean for Codex
+# Humanizer
 
 [한국어](README.ko.md) | English
 
@@ -31,32 +31,34 @@ Ordinary chat rewrites return the final text first. Audit and comparison request
 
 ## Installation
 
-The commands below assume the planned fork will be published at `choconyam/humanizer`. Until that repository exists, keep using the validated local Codex installation; the GitHub install and release links will not work yet.
+The commands below assume the planned fork will be published at `choconyam/humanizer-ko`. Until that repository exists, keep using the validated local Codex installation; the GitHub install and release links will not work yet.
+
+The original skill and this fork can coexist. Upstream installs as `humanizer` and runs as `$humanizer`; this Korean and Codex edition installs as `humanizer-ko` and runs as `$humanizer-ko`. Its display name remains **Humanizer**.
 
 ### Skills CLI
 
 Install Humanizer for all projects:
 
 ```bash
-npx skills add choconyam/humanizer --global
+npx skills add choconyam/humanizer-ko --global
 ```
 
 Update an existing install:
 
 ```bash
-npx skills update humanizer --global
+npx skills update humanizer-ko --global
 ```
 
 Install it for every supported agent:
 
 ```bash
-npx skills add choconyam/humanizer --global --agent '*'
+npx skills add choconyam/humanizer-ko --global --agent '*'
 ```
 
 Install it for one agent:
 
 ```bash
-npx skills add choconyam/humanizer --global --agent <agent-name>
+npx skills add choconyam/humanizer-ko --global --agent <agent-name>
 ```
 
 Omit `--global` to install it in the current project. Start a new agent session or reload skills after installation.
@@ -66,17 +68,17 @@ Omit `--global` to install it in the current project. Start a new agent session 
 Claude Code users can also install Humanizer as a plugin:
 
 ```
-/plugin marketplace add choconyam/humanizer
-/plugin install humanizer@humanizer
+/plugin marketplace add choconyam/humanizer-ko
+/plugin install humanizer-ko@humanizer-ko
 ```
 
-Run the installed skill with `/humanizer:humanizer`.
+Run the installed skill with `/humanizer-ko:humanizer-ko`.
 
-The plugin links `skills/humanizer/SKILL.md` to the root `SKILL.md`. This lets Claude Desktop and older plugin loaders find the skill without creating a second prompt.
+The plugin links `skills/humanizer-ko/SKILL.md` to the root `SKILL.md`. This lets Claude Desktop and older plugin loaders find the skill without creating a second prompt.
 
 ### Claude Desktop upload
 
-Download [`humanizer-skill.zip`](https://github.com/choconyam/humanizer/releases/latest/download/humanizer-skill.zip) from the latest release when you install or replace Humanizer through the Claude Desktop GUI.
+Download [`humanizer-ko-skill.zip`](https://github.com/choconyam/humanizer-ko/releases/latest/download/humanizer-ko-skill.zip) from the latest release when you install or replace this edition through the Claude Desktop GUI.
 
 Do not use GitHub's **Code > Download ZIP** archive for this. The source archive contains the plugin's internal symbolic link, which Claude Desktop rejects. The release package contains regular files for the skill and its Korean editing guide.
 
@@ -87,16 +89,16 @@ You can also place `SKILL.md` in any agent's skill folder.
 For example:
 
 ```bash
-git clone https://github.com/choconyam/humanizer.git /path/to/your/skills/humanizer
+git clone https://github.com/choconyam/humanizer-ko.git /path/to/your/skills/humanizer-ko
 ```
 
 Or, if you already have this repo cloned, copy the skill and its Korean references:
 
 ```bash
-mkdir -p /path/to/your/skills/humanizer
-mkdir -p /path/to/your/skills/humanizer/references
-cp SKILL.md /path/to/your/skills/humanizer/
-cp references/*.md /path/to/your/skills/humanizer/references/
+mkdir -p /path/to/your/skills/humanizer-ko
+mkdir -p /path/to/your/skills/humanizer-ko/references
+cp SKILL.md /path/to/your/skills/humanizer-ko/
+cp references/*.md /path/to/your/skills/humanizer-ko/references/
 ```
 
 ## Usage
@@ -104,7 +106,7 @@ cp references/*.md /path/to/your/skills/humanizer/references/
 Use a slash command or ask the agent directly:
 
 ```
-/humanizer
+/humanizer-ko
 
 [paste your text here]
 ```
@@ -132,7 +134,7 @@ Humanize the prose in docs/launch-post.md
 Provide a writing sample when you want Humanizer to match your style:
 
 ```
-/humanizer
+/humanizer-ko
 
 Here's a sample of my writing for voice matching:
 [paste 2-3 paragraphs of your own writing]

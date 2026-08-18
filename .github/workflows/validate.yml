@@ -26,7 +26,7 @@ jobs:
       - name: Check Korean localization
         run: python3 scripts/validate-localization.py
       - name: Check Claude Desktop archive
-        run: python3 scripts/build-skill-zip.py "${RUNNER_TEMP}/humanizer-skill.zip"
+        run: python3 scripts/build-skill-zip.py "${RUNNER_TEMP}/humanizer-ko-skill.zip"
       - name: Check skill discovery
         run: npx --yes skills@1.5.20 add . --list
       - name: Check Claude marketplace

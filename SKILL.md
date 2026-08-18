@@ -1,5 +1,5 @@
 ---
-name: humanizer
+name: humanizer-ko
 description: |
   Rewrite Korean or English text that sounds AI-generated while keeping the
   writer's facts, meaning, and voice. Use when humanizing prose, polishing Korean
@@ -8,7 +8,7 @@ description: |
   "Signs of AI writing."
 license: MIT
 metadata:
-  version: "2.11.1"
+  version: "2.11.1-ko.1"
 ---
 
 # Humanizer: remove AI writing patterns

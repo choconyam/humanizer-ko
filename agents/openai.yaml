@@ -1,4 +1,4 @@
 interface:
-  display_name: "Humanizer Korean"
+  display_name: "Humanizer"
   short_description: "Naturalize Korean and English prose"
-  default_prompt: "Use $humanizer to rewrite this Korean or English text naturally without changing its facts."
+  default_prompt: "Use $humanizer-ko to rewrite this Korean or English text naturally without changing its facts."

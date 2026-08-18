@@ -1,14 +1,14 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
-  "name": "humanizer",
+  "name": "humanizer-ko",
   "description": "Rewrite Korean or English text naturally while keeping the writer's facts, meaning, and voice.",
-  "version": "2.11.1",
+  "version": "2.11.1-ko.1",
   "author": {
     "name": "choconyam",
     "url": "https://github.com/choconyam"
   },
-  "homepage": "https://github.com/choconyam/humanizer",
-  "repository": "https://github.com/choconyam/humanizer",
+  "homepage": "https://github.com/choconyam/humanizer-ko",
+  "repository": "https://github.com/choconyam/humanizer-ko",
   "license": "MIT",
   "keywords": ["writing", "editing", "korean", "codex", "humanize", "prose", "style"]
 }

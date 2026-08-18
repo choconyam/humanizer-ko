@@ -1,4 +1,4 @@
-# Codex용 Humanizer 한국어판
+# Humanizer
 
 한국어 | [English](README.md)
 
@@ -31,32 +31,34 @@ Humanizer는 AI가 쓴 듯한 한국어나 영어 문장을 자연스럽게 다�
 
 ## 설치
 
-아래 명령은 앞으로 포크를 `choconyam/humanizer`에 공개한다는 전제로 작성했습니다. 아직 해당 저장소가 없으므로 현재는 검증된 로컬 Codex 설치본을 사용해야 하며, GitHub 설치 링크와 릴리스 링크는 작동하지 않습니다.
+아래 명령은 앞으로 포크를 `choconyam/humanizer-ko`에 공개한다는 전제로 작성했습니다. 아직 해당 저장소가 없으므로 현재는 검증된 로컬 Codex 설치본을 사용해야 하며, GitHub 설치 링크와 릴리스 링크는 작동하지 않습니다.
+
+원본 스킬과 이 한국어·Codex판은 함께 설치할 수 있습니다. upstream 원본은 `humanizer`로 설치해 `$humanizer`로 호출하고, 이 버전은 `humanizer-ko`로 설치해 `$humanizer-ko`로 호출합니다. 화면에 표시되는 이름은 원본처럼 **Humanizer**를 사용합니다.
 
 ### Skills CLI
 
 모든 프로젝트에서 사용하도록 설치합니다.
 
 ```bash
-npx skills add choconyam/humanizer --global
+npx skills add choconyam/humanizer-ko --global
 ```
 
 기존 설치본을 업데이트합니다.
 
 ```bash
-npx skills update humanizer --global
+npx skills update humanizer-ko --global
 ```
 
 지원되는 모든 에이전트에 설치합니다.
 
 ```bash
-npx skills add choconyam/humanizer --global --agent '*'
+npx skills add choconyam/humanizer-ko --global --agent '*'
 ```
 
 특정 에이전트에만 설치합니다.
 
 ```bash
-npx skills add choconyam/humanizer --global --agent <agent-name>
+npx skills add choconyam/humanizer-ko --global --agent <agent-name>
 ```
 
 현재 프로젝트에만 설치하려면 `--global`을 빼면 됩니다. 설치한 뒤에는 새 에이전트 세션을 시작하거나 스킬을 다시 불러오세요.
@@ -66,17 +68,17 @@ npx skills add choconyam/humanizer --global --agent <agent-name>
 Claude Code에서는 플러그인으로도 설치할 수 있습니다.
 
 ```text
-/plugin marketplace add choconyam/humanizer
-/plugin install humanizer@humanizer
+/plugin marketplace add choconyam/humanizer-ko
+/plugin install humanizer-ko@humanizer-ko
 ```
 
-설치한 스킬은 `/humanizer:humanizer`로 실행합니다.
+설치한 스킬은 `/humanizer-ko:humanizer-ko`로 실행합니다.
 
-플러그인은 `skills/humanizer/SKILL.md`를 루트의 `SKILL.md`에 연결합니다. 따라서 Claude Desktop과 이전 플러그인 로더에서도 프롬프트를 중복으로 만들지 않고 같은 스킬을 찾을 수 있습니다.
+플러그인은 `skills/humanizer-ko/SKILL.md`를 루트의 `SKILL.md`에 연결합니다. 따라서 Claude Desktop과 이전 플러그인 로더에서도 프롬프트를 중복으로 만들지 않고 같은 스킬을 찾을 수 있습니다.
 
 ### Claude Desktop 업로드
 
-Claude Desktop GUI에서 Humanizer를 설치하거나 교체할 때는 최신 릴리스의 [`humanizer-skill.zip`](https://github.com/choconyam/humanizer/releases/latest/download/humanizer-skill.zip)을 받으세요.
+Claude Desktop GUI에서 이 버전을 설치하거나 교체할 때는 최신 릴리스의 [`humanizer-ko-skill.zip`](https://github.com/choconyam/humanizer-ko/releases/latest/download/humanizer-ko-skill.zip)을 받으세요.
 
 GitHub의 **Code > Download ZIP**은 사용하지 마세요. 소스 압축 파일에는 Claude Desktop에서 거부하는 플러그인 내부 심볼릭 링크가 들어 있습니다. 릴리스 패키지는 스킬과 한국어 참조 문서를 일반 파일로 담습니다.
 
@@ -87,16 +89,16 @@ GitHub의 **Code > Download ZIP**은 사용하지 마세요. 소스 압축 파�
 예시:
 
 ```bash
-git clone https://github.com/choconyam/humanizer.git /path/to/your/skills/humanizer
+git clone https://github.com/choconyam/humanizer-ko.git /path/to/your/skills/humanizer-ko
 ```
 
 이미 저장소를 복제했다면 스킬과 한국어 참조 문서를 함께 복사합니다.
 
 ```bash
-mkdir -p /path/to/your/skills/humanizer
-mkdir -p /path/to/your/skills/humanizer/references
-cp SKILL.md /path/to/your/skills/humanizer/
-cp references/*.md /path/to/your/skills/humanizer/references/
+mkdir -p /path/to/your/skills/humanizer-ko
+mkdir -p /path/to/your/skills/humanizer-ko/references
+cp SKILL.md /path/to/your/skills/humanizer-ko/
+cp references/*.md /path/to/your/skills/humanizer-ko/references/
 ```
 
 ## 사용법
@@ -104,7 +106,7 @@ cp references/*.md /path/to/your/skills/humanizer/references/
 슬래시 명령을 사용하거나 에이전트에게 직접 요청합니다.
 
 ```text
-/humanizer
+/humanizer-ko
 
 [다듬을 글을 여기에 붙여 넣기]
 ```
@@ -132,7 +134,7 @@ docs/launch-post.md의 문장을 자연스럽게 다듬어줘.
 자신의 문체를 유지하고 싶다면 작성한 글의 예시를 함께 제공합니다.
 
 ```text
-/humanizer
+/humanizer-ko
 
 아래는 내 문체를 보여주는 예시야.
 [직접 쓴 문단 2~3개]

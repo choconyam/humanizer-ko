@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace-manifest.json",
-  "name": "humanizer",
+  "name": "humanizer-ko",
   "owner": {
     "name": "choconyam",
     "url": "https://github.com/choconyam"
@@ -8,7 +8,7 @@
   "description": "Install the Korean and Codex localization of Humanizer.",
   "plugins": [
     {
-      "name": "humanizer",
+      "name": "humanizer-ko",
       "source": "./",
       "description": "Rewrite Korean or English text naturally while keeping the writer's facts, meaning, and voice.",
       "license": "MIT",

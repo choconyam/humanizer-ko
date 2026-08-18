@@ -88,7 +88,7 @@ jobs:
           printf '%s\n' "$latest" > .upstream-version
           python3 scripts/validate-package.py
           python3 scripts/validate-localization.py
-          python3 scripts/build-skill-zip.py "$RUNNER_TEMP/humanizer-skill.zip"
+          python3 scripts/build-skill-zip.py "$RUNNER_TEMP/humanizer-ko-skill.zip"
 
           git add .upstream-version
           if ! git diff --cached --quiet; then

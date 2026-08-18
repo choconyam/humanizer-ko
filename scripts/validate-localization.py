@@ -38,7 +38,7 @@ guide_texts: list[str] = []
 guide_text_by_name: dict[str, str] = {}
 for guide_name in GUIDE_NAMES:
     guide = ROOT / "references" / guide_name
-    plugin_guide = ROOT / "skills" / "humanizer" / "references" / guide_name
+    plugin_guide = ROOT / "skills" / "humanizer-ko" / "references" / guide_name
     if not guide.is_file() or not plugin_guide.is_file():
         fail(f"Add {guide_name} to the root skill and plugin package")
 
@@ -93,6 +93,10 @@ if not re.search(r"[가-힣]", README_KO):
 
 if "blader/humanizer" not in README_KO or "비공식" not in README_KO:
     fail("README.ko.md must identify the upstream project and unofficial fork status")
+
+for readme_name, readme_text in (("README.md", README), ("README.ko.md", README_KO)):
+    if "choconyam/humanizer-ko" not in readme_text or "$humanizer-ko" not in readme_text:
+        fail(f"{readme_name} must use the planned humanizer-ko repository and skill ID")
 
 korean_readme_numbers = {
     int(number) for number in re.findall(r"(?m)^\| ([0-9]+) \|", README_KO)

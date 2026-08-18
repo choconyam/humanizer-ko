@@ -1,6 +1,6 @@
 # Attribution and local changes
 
-This repository is an unofficial Korean and Codex localization of [blader/humanizer](https://github.com/blader/humanizer).
+This repository packages an unofficial Korean and Codex localization of [blader/humanizer](https://github.com/blader/humanizer) under the skill ID `humanizer-ko`. Its display name remains Humanizer.
 
 The exact upstream release used by the current fork is recorded in [`.upstream-version`](.upstream-version).
 

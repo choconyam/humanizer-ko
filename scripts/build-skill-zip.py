@@ -11,11 +11,11 @@ from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCES = {
-    "humanizer/SKILL.md": ROOT / "SKILL.md",
-    "humanizer/references/korean-editing.md": ROOT
+    "humanizer-ko/SKILL.md": ROOT / "SKILL.md",
+    "humanizer-ko/references/korean-editing.md": ROOT
     / "references"
     / "korean-editing.md",
-    "humanizer/references/domain-terminology.md": ROOT
+    "humanizer-ko/references/domain-terminology.md": ROOT
     / "references"
     / "domain-terminology.md",
 }
