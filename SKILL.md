@@ -8,7 +8,7 @@ description: |
   "Signs of AI writing."
 license: MIT
 metadata:
-  version: "2.11.1-ko.1"
+  version: "2.11.1-ko.2"
 ---
 
 # humanizer-ko: remove AI writing patterns
@@ -181,7 +181,7 @@ Do not ban the repeated word. Fix the repeated sentence pattern. The remaining s
 ### 13. Passive voice and missing subjects
 **Problem:** AI writing often hides who acts or drops the subject. Use active voice when it makes the actor and action clearer.
 
-In Korean, subject omission is normal when the actor remains clear. Use K3 instead of adding an explicit subject to every sentence.
+In Korean, subject omission is normal when the actor remains clear. Use K3 instead of adding an explicit subject to every sentence. Keep natural passives, but remove unnecessary double or translation-like passives and make the actor explicit when that improves responsibility or clarity.
 **Before:**
 > No configuration file needed. The results are preserved automatically.
 **After:**
@@ -239,6 +239,8 @@ Before returning an English rewrite, search for `—` and `–`. Remove each one
 
 ### 19. Curly quotation marks
 **Problem:** ChatGPT often uses curly quotes (“...”) where the writer or target format uses straight quotes ("...").
+
+For Korean, use K8 and the target publication style. Preserve Korean quotation marks or title marks such as `“ ”`, `‘ ’`, `「 」`, and `『 』` when appropriate; do not replace them mechanically with ASCII quotes.
 **Before:**
 > He said “the project is on track” but others disagreed.
 **After:**
@@ -250,6 +252,7 @@ Before returning an English rewrite, search for `—` and `–`. Remove each one
 
 **Words to watch:** I hope this helps, Of course!, Certainly!, You're absolutely right!, Would you like..., Want me to...?, Want me to give examples?, Should I continue?, let me know, here is a...
 **Problem:** A chatbot's greeting, offer, or closing sometimes remains in text that should stand on its own.
+For Korean, use K5 to remove equivalent greetings, praise, offers, and closings rather than translating only the English watch list.
 **Before:**
 > Here is an overview of the French Revolution. I hope this helps! Let me know if you'd like me to expand on any section.
 **After:**
@@ -270,6 +273,7 @@ Before returning an English rewrite, search for `—` and `–`. Remove each one
 
 ### 22. Overly agreeable tone
 **Problem:** AI assistants often praise the user or agree before giving the answer.
+For Korean, K5 also covers automatic praise such as `좋은 질문입니다` and `물론입니다!`.
 **Before:**
 > Great question! You're absolutely right that this is a complex topic. That's an excellent point about the economic factors.
 **After:**
@@ -291,6 +295,7 @@ Before returning an English rewrite, search for `—` and `–`. Remove each one
 
 **Phrases to watch:** to be fair, it's also possible, could potentially, might arguably, in some cases it may, this is an inference
 **Problem:** Repeated editing can add one qualifier after another until every claim sounds uncertain. Keep a qualifier only when the source supports it and the meaning needs it. Remove caveats that only repair an earlier overstatement.
+In Korean, repeated `~할 수 있습니다` can be empty hedging or a literal translation. Use K5 to state an ordinary action directly, but preserve the form when it expresses real capability, permission, or uncertainty.
 **Before:**
 > It could potentially possibly be argued that the policy might have some effect on outcomes.
 **After:**
@@ -325,6 +330,7 @@ Before returning an English rewrite, search for `—` and `–`. Remove each one
 
 **Phrases to watch:** Let's dive in, let's explore, let's break this down, here's what you need to know, now let's look at, without further ado, heads up, quick note, before I forget
 **Problem:** AI writing often announces the next point instead of stating it. A casual phrase such as "one thing that bit me" can have the same problem. Remove the announcement, not just its formal tone.
+For Korean, use K5 and K9 to remove equivalent announcements such as `오늘은 ~에 대해 알아보겠습니다` or `함께 알아볼까요?` when the text can begin with the point.
 **Before:**
 > Let's dive into how caching works in Next.js. Here's what you need to know.
 **After:**

@@ -16,12 +16,12 @@ Korean text gets a separate set of checkpoints in [`references/korean-editing.md
 |---|---|
 | K1 | Keep one register and honorific level |
 | K2 | Rebuild translation-like word order |
-| K3 | Handle subjects, pronouns, and plurality naturally |
+| K3 | Handle subjects, pronouns, passive voice, and plurality naturally |
 | K4 | Prefer verbs to abstract noun stacks |
-| K5 | Cut Korean stock AI phrases |
+| K5 | Cut Korean stock AI phrases and chatbot residue |
 | K6 | Use particles and connective endings for their actual meaning |
 | K7 | Use field-appropriate terminology and protect technical tokens |
-| K8 | Set sentence boundaries and rhythm for Korean |
+| K8 | Set Korean sentence boundaries, quotation marks, and rhythm |
 | K9 | Make presentation and narration text easy to speak |
 | K10 | Preserve precision in medical, legal, scientific, financial, and policy text |
 
@@ -267,6 +267,8 @@ After the repository is forked, enable GitHub Actions and allow workflows to cre
 ## Version history
 
 ### Fork releases
+
+- **v2.11.1-ko.2** - Added Korean passive and double-passive handling, literal translation verbs, Korean chatbot residue and stock phrases, K3-K6 and K8 before/after examples, and Korean quotation-mark exceptions.
 
 - **v2.11.1-ko.1** - Ported the existing Korean and Codex adaptation to upstream v2.11.1. Kept the English-oriented upstream patterns and added Korean checkpoints K1-K10, domain-aware terminology handling, localized packaging checks, provenance, scheduled upstream sync PRs, and the distinct `humanizer-ko` display and invocation name.
 

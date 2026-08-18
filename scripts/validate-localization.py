@@ -64,6 +64,26 @@ korean_point_numbers = [
 if korean_point_numbers != list(range(1, 11)):
     fail(f"Number Korean checkpoints from K1 through K10: {korean_point_numbers}")
 
+korean_coverage_terms = (
+    "보여지다",
+    "되어지다",
+    "~하는 데 도움이 됩니다",
+    "도움이 되셨기를 바랍니다",
+    "~할 수 있습니다",
+    "「 」",
+    "『 』",
+)
+missing_korean_coverage = [
+    term
+    for term in korean_coverage_terms
+    if term not in guide_text_by_name["korean-editing.md"]
+]
+if missing_korean_coverage:
+    fail(
+        "Cover Korean passives, literal translations, chatbot residue, and quotes: "
+        + ", ".join(missing_korean_coverage)
+    )
+
 skill_routing_rules = (
     "mainly for English",
     "K1-K10",
@@ -71,6 +91,8 @@ skill_routing_rules = (
     "In Korean, use K2 and K8",
     "In Korean, subject omission is normal",
     "For Korean, do not treat these marks as a blanket error",
+    "For Korean, use K8 and the target publication style",
+    "For Korean, use K5 to remove equivalent greetings",
 )
 if any(rule not in SKILL for rule in skill_routing_rules):
     fail("SKILL.md must route the 35 patterns and rewrite process by language")
