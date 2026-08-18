@@ -1,0 +1,106 @@
+name: Propose upstream update
+
+on:
+  schedule:
+    - cron: "23 1 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: sync-upstream
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Find and merge the latest upstream release
+        id: update
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote get-url upstream >/dev/null 2>&1 || \
+            git remote add upstream https://github.com/blader/humanizer.git
+          git fetch upstream --tags --force
+
+          latest=$(git tag --list 'v*' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1)
+          current=$(tr -d '\r\n' < .upstream-version)
+
+          if [[ -z "$latest" ]]; then
+            echo "No stable upstream tag found"
+            exit 1
+          fi
+
+          if [[ "$latest" == "$current" ]]; then
+            echo "Already based on $current"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          branch="bot/sync-upstream-${latest#v}"
+          if gh pr list --head "$branch" --state open --json number --jq 'length' | grep -qv '^0$'; then
+            echo "An update pull request already exists for $latest"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; then
+            echo "Remote branch $branch exists without an open pull request"
+            exit 1
+          fi
+
+          git switch -c "$branch"
+          set +e
+          git merge --no-edit "$latest"
+          merge_status=$?
+          set -e
+
+          if [[ $merge_status -ne 0 ]]; then
+            conflicts=$(git diff --name-only --diff-filter=U | paste -sd ', ' -)
+            git merge --abort
+            title="Upstream sync conflict: $latest"
+            if [[ $(gh issue list --state open --search "$title in:title" --json number --jq 'length') == "0" ]]; then
+              gh issue create \
+                --title "$title" \
+                --body "Automatic merge failed. Conflicting files: ${conflicts:-unknown}. Create a sync branch from main, merge $latest, preserve the Korean guide, and rerun both validators."
+            fi
+            exit 1
+          fi
+
+          printf '%s\n' "$latest" > .upstream-version
+          python3 scripts/validate-package.py
+          python3 scripts/validate-localization.py
+          python3 scripts/build-skill-zip.py "$RUNNER_TEMP/humanizer-skill.zip"
+
+          git add .upstream-version
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: track upstream $latest"
+          fi
+          git push --set-upstream origin "$branch"
+
+          gh pr create \
+            --draft \
+            --base main \
+            --head "$branch" \
+            --title "Merge upstream $latest" \
+            --body "Automated upstream merge based on $latest. Package, localization, provenance, and archive checks passed. Review behavioral changes before merging."
+
+          echo "changed=true" >> "$GITHUB_OUTPUT"
