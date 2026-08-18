@@ -1,6 +1,6 @@
 # humanizer-ko
 
-[한국어](README.ko.md) | English
+**[한국어로 보기](README.ko.md)** | English
 
 `humanizer-ko` rewrites Korean or English text that sounds AI-generated while keeping the writer's facts, meaning, and voice. This unofficial fork adds Korean editing guidance and Codex-facing behavior to [blader/humanizer](https://github.com/blader/humanizer).
 

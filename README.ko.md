@@ -1,6 +1,6 @@
 # humanizer-ko
 
-한국어 | [English](README.md)
+한국어 | **[Read in English](README.md)**
 
 `humanizer-ko`는 AI가 쓴 듯한 한국어나 영어 문장을 자연스럽게 다듬으면서 작성자의 사실관계, 의미, 목소리를 유지합니다. 이 저장소는 [blader/humanizer](https://github.com/blader/humanizer)에 한국어 편집 지침과 Codex용 동작을 추가한 비공식 포크입니다.
 
