@@ -5,7 +5,7 @@
     "name": "choconyam",
     "url": "https://github.com/choconyam"
   },
-  "description": "Install the Korean and Codex localization of Humanizer.",
+  "description": "Install humanizer-ko, the Korean and Codex localization of Humanizer.",
   "plugins": [
     {
       "name": "humanizer-ko",

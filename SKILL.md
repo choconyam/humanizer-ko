@@ -11,7 +11,7 @@ metadata:
   version: "2.11.1-ko.1"
 ---
 
-# Humanizer: remove AI writing patterns
+# humanizer-ko: remove AI writing patterns
 
 Rewrite text that sounds AI-generated so it reads like the writer, not a chatbot. Keep the writer's facts, meaning, and voice.
 

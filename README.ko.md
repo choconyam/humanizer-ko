@@ -1,8 +1,8 @@
-# Humanizer
+# humanizer-ko
 
 한국어 | [English](README.md)
 
-Humanizer는 AI가 쓴 듯한 한국어나 영어 문장을 자연스럽게 다듬으면서 작성자의 사실관계, 의미, 목소리를 유지합니다. 이 저장소는 [blader/humanizer](https://github.com/blader/humanizer)에 한국어 편집 지침과 Codex용 동작을 추가한 비공식 포크입니다.
+`humanizer-ko`는 AI가 쓴 듯한 한국어나 영어 문장을 자연스럽게 다듬으면서 작성자의 사실관계, 의미, 목소리를 유지합니다. 이 저장소는 [blader/humanizer](https://github.com/blader/humanizer)에 한국어 편집 지침과 Codex용 동작을 추가한 비공식 포크입니다.
 
 정확한 upstream 기준 버전은 [`.upstream-version`](.upstream-version)에 기록합니다. 원저작자 표기와 현지화 변경 사항은 [`NOTICE.md`](NOTICE.md)에서 확인할 수 있습니다.
 
@@ -33,7 +33,7 @@ Humanizer는 AI가 쓴 듯한 한국어나 영어 문장을 자연스럽게 다�
 
 아래 명령은 앞으로 포크를 `choconyam/humanizer-ko`에 공개한다는 전제로 작성했습니다. 아직 해당 저장소가 없으므로 현재는 검증된 로컬 Codex 설치본을 사용해야 하며, GitHub 설치 링크와 릴리스 링크는 작동하지 않습니다.
 
-원본 스킬과 이 한국어·Codex판은 함께 설치할 수 있습니다. upstream 원본은 `humanizer`로 설치해 `$humanizer`로 호출하고, 이 버전은 `humanizer-ko`로 설치해 `$humanizer-ko`로 호출합니다. 화면에 표시되는 이름은 원본처럼 **Humanizer**를 사용합니다.
+원본 스킬과 이 한국어·Codex판은 이름이 겹치지 않아 함께 설치할 수 있습니다. upstream 원본은 `humanizer`로 설치·표시되고 `$humanizer`로 호출합니다. 이 버전은 `humanizer-ko`로 설치·표시되고 `$humanizer-ko`로 호출합니다.
 
 ### Skills CLI
 
@@ -143,11 +143,11 @@ docs/launch-post.md의 문장을 자연스럽게 다듬어줘.
 [다듬을 글]
 ```
 
-Humanizer는 예시의 문장 리듬, 단어 선택, 문장부호, 의도적인 표현 습관을 따릅니다.
+`humanizer-ko`는 예시의 문장 리듬, 단어 선택, 문장부호, 의도적인 표현 습관을 따릅니다.
 
 ## 작동 방식
 
-Humanizer는 WikiProject AI Cleanup이 관리하는 위키백과의 ["Signs of AI writing"](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing)에 정리된 패턴을 사용합니다.
+`humanizer-ko`는 WikiProject AI Cleanup이 관리하는 위키백과의 ["Signs of AI writing"](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing)에 정리된 패턴을 사용합니다.
 
 먼저 교정 초안을 만든 뒤 AI 문체 패턴이 남았는지, 원문의 주장이 달라지지 않았는지 확인하고 최종 문장을 작성합니다.
 
@@ -223,7 +223,7 @@ Humanizer는 WikiProject AI Cleanup이 관리하는 위키백과의 ["Signs of A
 
 ## 전체 예시
 
-*아래 예시에는 실제 작성자가 제공할 법한 여행 시기와 동네 이름이 들어 있습니다. 원문에 이런 정보가 없다면 Humanizer가 만들어내지 말고 작성자에게 물어야 합니다.*
+*아래 예시에는 실제 작성자가 제공할 법한 여행 시기와 동네 이름이 들어 있습니다. 원문에 이런 정보가 없다면 `humanizer-ko`가 만들어내지 말고 작성자에게 물어야 합니다.*
 
 **수정 전(AI 문체):**
 
@@ -270,7 +270,7 @@ Git 충돌이 발생하면 워크플로가 중단되고 이슈가 생성됩니�
 
 ### 포크 릴리스
 
-- **v2.11.1-ko.1** — 기존 한국어·Codex 현지화를 upstream v2.11.1로 옮겼습니다. 영어 중심 upstream 패턴은 유지하고 한국어 전용 점검 항목 K1~K10, 분야별 용어 처리, 현지화 패키지 검사, 출처 표기, upstream 동기화 초안 PR 자동화를 추가했습니다.
+- **v2.11.1-ko.1** — 기존 한국어·Codex 현지화를 upstream v2.11.1로 옮겼습니다. 영어 중심 upstream 패턴은 유지하고 한국어 전용 점검 항목 K1~K10, 분야별 용어 처리, 현지화 패키지 검사, 출처 표기, upstream 동기화 초안 PR 자동화, 구분되는 `humanizer-ko` 표시·호출명을 추가했습니다.
 
 ### Upstream 릴리스
 

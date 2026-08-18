@@ -1,8 +1,8 @@
-# Humanizer
+# humanizer-ko
 
 [한국어](README.ko.md) | English
 
-Humanizer rewrites Korean or English text that sounds AI-generated while keeping the writer's facts, meaning, and voice. This unofficial fork adds Korean editing guidance and Codex-facing behavior to [blader/humanizer](https://github.com/blader/humanizer).
+`humanizer-ko` rewrites Korean or English text that sounds AI-generated while keeping the writer's facts, meaning, and voice. This unofficial fork adds Korean editing guidance and Codex-facing behavior to [blader/humanizer](https://github.com/blader/humanizer).
 
 The exact upstream base is recorded in [`.upstream-version`](.upstream-version). See [`NOTICE.md`](NOTICE.md) for attribution and a summary of the local changes.
 
@@ -25,7 +25,7 @@ Korean text gets a separate set of checkpoints in [`references/korean-editing.md
 | K9 | Make presentation and narration text easy to speak |
 | K10 | Preserve precision in medical, legal, scientific, financial, and policy text |
 
-For English text, Humanizer uses the upstream 35 patterns. For Korean text, it combines the language-independent upstream patterns with K1-K10, and the Korean checkpoints take priority where the languages differ. For mixed-language documents, it evaluates each span in its language while keeping facts, terminology, and the document-level voice consistent.
+For English text, `humanizer-ko` uses the upstream 35 patterns. For Korean text, it combines the language-independent upstream patterns with K1-K10, and the Korean checkpoints take priority where the languages differ. For mixed-language documents, it evaluates each span in its language while keeping facts, terminology, and the document-level voice consistent.
 
 Ordinary chat rewrites return the final text first. Audit and comparison requests still include the draft, remaining-pattern check, and final rewrite.
 
@@ -33,11 +33,11 @@ Ordinary chat rewrites return the final text first. Audit and comparison request
 
 The commands below assume the planned fork will be published at `choconyam/humanizer-ko`. Until that repository exists, keep using the validated local Codex installation; the GitHub install and release links will not work yet.
 
-The original skill and this fork can coexist. Upstream installs as `humanizer` and runs as `$humanizer`; this Korean and Codex edition installs as `humanizer-ko` and runs as `$humanizer-ko`. Its display name remains **Humanizer**.
+The original skill and this fork can coexist without sharing a name. Upstream installs and displays as `humanizer` and runs as `$humanizer`; this Korean and Codex edition installs and displays as `humanizer-ko` and runs as `$humanizer-ko`.
 
 ### Skills CLI
 
-Install Humanizer for all projects:
+Install `humanizer-ko` for all projects:
 
 ```bash
 npx skills add choconyam/humanizer-ko --global
@@ -65,7 +65,7 @@ Omit `--global` to install it in the current project. Start a new agent session 
 
 ### Claude Code plugin
 
-Claude Code users can also install Humanizer as a plugin:
+Claude Code users can also install `humanizer-ko` as a plugin:
 
 ```
 /plugin marketplace add choconyam/humanizer-ko
@@ -123,7 +123,7 @@ Korean requests work in natural language:
 이 보고서를 덜 AI스럽게 고치되 기술용어와 인용은 바꾸지 마.
 ```
 
-You can also ask Humanizer to rewrite a file:
+You can also ask `humanizer-ko` to rewrite a file:
 
 ```
 Humanize the prose in docs/launch-post.md
@@ -131,7 +131,7 @@ Humanize the prose in docs/launch-post.md
 
 ### Match your voice
 
-Provide a writing sample when you want Humanizer to match your style:
+Provide a writing sample when you want `humanizer-ko` to match your style:
 
 ```
 /humanizer-ko
@@ -143,11 +143,11 @@ Now humanize this text:
 [paste AI text to humanize]
 ```
 
-Humanizer matches the sample's rhythm, word choice, punctuation, and deliberate quirks.
+`humanizer-ko` matches the sample's rhythm, word choice, punctuation, and deliberate quirks.
 
 ## How it works
 
-Humanizer uses patterns from Wikipedia's ["Signs of AI writing"](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), maintained by WikiProject AI Cleanup.
+`humanizer-ko` uses patterns from Wikipedia's ["Signs of AI writing"](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), maintained by WikiProject AI Cleanup.
 
 It drafts a rewrite, checks the draft for remaining AI patterns and changed claims, then writes the final version.
 
@@ -223,7 +223,7 @@ For Korean text, it loads [`references/korean-editing.md`](references/korean-edi
 
 ## Full example
 
-*The example includes details that a real writer would provide, such as the month and neighborhood. Humanizer must ask for missing details instead of inventing them.*
+*The example includes details that a real writer would provide, such as the month and neighborhood. `humanizer-ko` must ask for missing details instead of inventing them.*
 
 **Before (AI-sounding):**
 > I recently spent five unforgettable days in Lisbon, and let me tell you — this city completely stole my heart. From the moment I arrived, I knew I was somewhere truly special.
@@ -268,7 +268,7 @@ After the repository is forked, enable GitHub Actions and allow workflows to cre
 
 ### Fork releases
 
-- **v2.11.1-ko.1** - Ported the existing Korean and Codex adaptation to upstream v2.11.1. Kept the English-oriented upstream patterns and added Korean checkpoints K1-K10, domain-aware terminology handling, localized packaging checks, provenance, and scheduled upstream sync PRs.
+- **v2.11.1-ko.1** - Ported the existing Korean and Codex adaptation to upstream v2.11.1. Kept the English-oriented upstream patterns and added Korean checkpoints K1-K10, domain-aware terminology handling, localized packaging checks, provenance, scheduled upstream sync PRs, and the distinct `humanizer-ko` display and invocation name.
 
 ### Upstream releases
 

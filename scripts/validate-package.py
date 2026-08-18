@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check Humanizer's package files without external dependencies."""
+"""Check the humanizer-ko package files without external dependencies."""
 
 from __future__ import annotations
 
@@ -89,10 +89,10 @@ if (
     raise SystemExit("Use humanizer-ko as the Claude marketplace and entry ID")
 
 if (
-    'display_name: "Humanizer"' not in OPENAI_AGENT
+    'display_name: "humanizer-ko"' not in OPENAI_AGENT
     or "$humanizer-ko" not in OPENAI_AGENT
 ):
-    raise SystemExit("Display Humanizer and invoke the skill as $humanizer-ko")
+    raise SystemExit("Display humanizer-ko and invoke the skill as $humanizer-ko")
 
 if not plugin_skill_is_linked:
     raise SystemExit("Link skills/humanizer-ko/SKILL.md to the root SKILL.md")
@@ -130,4 +130,4 @@ if readme_numbers != set(range(1, 36)):
 if len(SKILL.splitlines()) > 500:
     raise SystemExit("Keep SKILL.md at 500 lines or fewer")
 
-print(f"Humanizer package v{skill_version} is valid")
+print(f"humanizer-ko package v{skill_version} is valid")

@@ -1,10 +1,10 @@
 # Guide for agents
 
-This file explains how to change Humanizer without breaking its package or prompt.
+This file explains how to change `humanizer-ko` without breaking its package or prompt.
 
 ## What this repo contains
 
-Humanizer is an agent skill written in Markdown. `SKILL.md` is the prompt that agents read. The repo has no build step.
+`humanizer-ko` is an agent skill written in Markdown. `SKILL.md` is the prompt that agents read. The repo has no build step.
 
 Keep the skill portable. Do not write instructions that limit it to one or two agent tools.
 
