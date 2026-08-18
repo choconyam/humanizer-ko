@@ -18,6 +18,8 @@ Ordinary chat rewrites return the final text first. Audit and comparison request
 
 ## Installation
 
+The commands below assume the planned fork will be published at `choconyam/humanizer`. Until that repository exists, keep using the validated local Codex installation; the GitHub install and release links will not work yet.
+
 ### Skills CLI
 
 Install Humanizer for all projects:
