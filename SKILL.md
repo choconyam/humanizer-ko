@@ -42,7 +42,7 @@ A writing sample takes priority over these style rules. If the sample uses em da
 
 ## Korean text
 
-When the source is Korean or the user asks for Korean output, read [the Korean editing guide](references/korean-editing.md) before rewriting. Apply it together with the shared patterns below. Do not apply Korean-specific rules to non-Korean text.
+When the source is Korean or the user asks for Korean output, read [the Korean editing guide](references/korean-editing.md) before rewriting. Apply it together with the shared patterns below. For technical or specialist text, also read [the domain terminology guide](references/domain-terminology.md). Do not apply Korean-specific rules to non-Korean text.
 
 ## Add personality only when it fits
 

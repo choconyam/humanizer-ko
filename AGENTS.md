@@ -12,7 +12,7 @@ Keep the skill portable. Do not write instructions that limit it to one or two a
 
 - `SKILL.md` is the source of truth. It contains portable YAML metadata, 35 numbered patterns, and their examples.
 - `skills/humanizer/SKILL.md` links to the root skill for Claude Desktop and older plugin loaders. Do not replace the link with a copy or edit it as a separate file.
-- `references/korean-editing.md` contains the conditional Korean guidance. `skills/humanizer/references/korean-editing.md` is its package mirror and must match it exactly.
+- `references/korean-editing.md` contains the conditional Korean guidance, and `references/domain-terminology.md` handles specialist terminology. Their files under `skills/humanizer/references/` are package mirrors and must match exactly.
 - `README.md` explains installation, use, patterns, and version history.
 - `.upstream-version` records the upstream release already merged into this fork.
 - `NOTICE.md` records upstream attribution and the scope of the localization.

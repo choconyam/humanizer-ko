@@ -15,6 +15,9 @@ SOURCES = {
     "humanizer/references/korean-editing.md": ROOT
     / "references"
     / "korean-editing.md",
+    "humanizer/references/domain-terminology.md": ROOT
+    / "references"
+    / "domain-terminology.md",
 }
 
 

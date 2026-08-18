@@ -77,13 +77,13 @@ For example:
 git clone https://github.com/choconyam/humanizer.git /path/to/your/skills/humanizer
 ```
 
-Or, if you already have this repo cloned, copy both the skill and its Korean guide:
+Or, if you already have this repo cloned, copy the skill and its Korean references:
 
 ```bash
 mkdir -p /path/to/your/skills/humanizer
 mkdir -p /path/to/your/skills/humanizer/references
 cp SKILL.md /path/to/your/skills/humanizer/
-cp references/korean-editing.md /path/to/your/skills/humanizer/references/
+cp references/*.md /path/to/your/skills/humanizer/references/
 ```
 
 ## Usage
@@ -138,7 +138,7 @@ It drafts a rewrite, checks the draft for remaining AI patterns and changed clai
 
 It does not invent facts, names, dates, quotes, or citations. Any added detail must come from the source or the writer.
 
-For Korean text, it also loads [`references/korean-editing.md`](references/korean-editing.md) to handle register, terminology, Korean sentence structure, spoken delivery, and high-stakes wording.
+For Korean text, it loads [`references/korean-editing.md`](references/korean-editing.md) to handle register, Korean sentence structure, spoken delivery, and high-stakes wording. Technical and specialist text also uses [`references/domain-terminology.md`](references/domain-terminology.md) to select terminology by field, governing source, document type, and audience instead of translating words mechanically.
 
 ### Wikipedia's main point
 
@@ -253,7 +253,7 @@ After the repository is forked, enable GitHub Actions and allow workflows to cre
 
 ### Fork releases
 
-- **v2.11.1-ko.1** - Ported the existing Korean and Codex adaptation to upstream v2.11.1. Added conditional Korean guidance, localized packaging checks, provenance, and scheduled upstream sync PRs.
+- **v2.11.1-ko.1** - Ported the existing Korean and Codex adaptation to upstream v2.11.1. Added conditional Korean guidance, domain-aware terminology handling, localized packaging checks, provenance, and scheduled upstream sync PRs.
 
 ### Upstream releases
 

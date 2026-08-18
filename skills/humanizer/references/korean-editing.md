@@ -59,6 +59,7 @@ Do not delete a promotional or evaluative word inside a direct quote. Keep sourc
 
 ## Keep natural terminology
 
+- For technical or specialist text, follow [the domain terminology guide](domain-terminology.md). Choose terms by field and audience, not by literal dictionary equivalence.
 - Keep English terms when the field normally uses them, including `feature`, `label`, `baseline`, `validation`, `calibration`, `time-series`, and `prototype`.
 - Keep the writer's established Korean or English term after first use. Do not cycle through synonyms to avoid repetition.
 - Never translate code, model names, product names, API fields, file paths, commands, or citation keys.
