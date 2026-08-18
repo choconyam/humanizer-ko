@@ -42,7 +42,9 @@ A writing sample takes priority over these style rules. If the sample uses em da
 
 ## Korean text
 
-When the source is Korean or the user asks for Korean output, read [the Korean editing guide](references/korean-editing.md) before rewriting. Apply it together with the shared patterns below. For technical or specialist text, also read [the domain terminology guide](references/domain-terminology.md). Do not apply Korean-specific rules to non-Korean text.
+The 35 upstream patterns below were written mainly for English. Keep them for English and mixed-language work, but do not transfer English grammar or punctuation rules mechanically into Korean.
+
+When the source is Korean or the user asks for Korean output, read [the Korean editing guide](references/korean-editing.md) and apply its K1-K10 checkpoints. Use the language-independent upstream patterns and only the English patterns that have a natural Korean equivalent. The Korean guide takes priority for Korean word order, subjects, register, sentence endings, and terminology. For technical or specialist text, also read [the domain terminology guide](references/domain-terminology.md). Do not apply Korean-specific rules to non-Korean text.
 
 ## Add personality only when it fits
 
@@ -178,6 +180,8 @@ Do not ban the repeated word. Fix the repeated sentence pattern. The remaining s
 
 ### 13. Passive voice and missing subjects
 **Problem:** AI writing often hides who acts or drops the subject. Use active voice when it makes the actor and action clearer.
+
+In Korean, subject omission is normal when the actor remains clear. Use K3 instead of adding an explicit subject to every sentence.
 **Before:**
 > No configuration file needed. The results are preserved automatically.
 **After:**
@@ -187,7 +191,9 @@ Do not ban the repeated word. Fix the repeated sentence pattern. The remaining s
 
 ### 14. Em and en dashes
 
-**Rule:** The final rewrite must not contain em dashes (—) or en dashes (–), unless the writer's sample uses them. Replace a dash with a period, comma, colon, or parentheses, or rewrite the sentence. Also check for spaced dashes (` — `) and double hyphens (` -- `) used as dashes.
+**English rule:** The final English rewrite must not contain em dashes (—) or en dashes (–), unless the writer's sample uses them. Replace a dash with a period, comma, colon, or parentheses, or rewrite the sentence. Also check for spaced dashes (` — `) and double hyphens (` -- `) used as dashes.
+
+For Korean, do not treat these marks as a blanket error. Use K8, the writer's sample, and the target format to decide whether the punctuation fits. Remove a dash when it creates imported English rhythm or decorative AI emphasis.
 **Before:**
 > The term is primarily promoted by Dutch institutions—not by the people themselves. You don't say "Netherlands, Europe" as an address—yet this mislabeling continues—even in official documents.
 **After:**
@@ -197,7 +203,7 @@ Do not ban the repeated word. Fix the repeated sentence pattern. The remaining s
 **After:**
 > The new policy, announced without warning, affects thousands of workers. The changes, long overdue according to critics, will take effect immediately.
 
-Before returning the rewrite, search for `—` and `–`. Remove each one unless the writer's sample uses that mark. In that case, match the sample's rate.
+Before returning an English rewrite, search for `—` and `–`. Remove each one unless the writer's sample uses that mark. In that case, match the sample's rate.
 
 ### 15. Too much bold text
 **Problem:** AI chatbots often bold words and phrases without a clear reason.
@@ -440,7 +446,7 @@ These details often carry the writer's voice. Keep them unless they hurt the mea
 
 **Pasted text (default).** Return the final rewrite first. Add only a short note about the main edits when useful.
 
-**Audit or comparison.** When the user asks for an audit, comparison, or explanation, return the draft, a short list of remaining AI patterns, and the final rewrite.
+**Audit or comparison.** When the user asks for an audit, comparison, or explanation, return the draft, a short list of remaining applicable upstream patterns or Korean K-checkpoints, and the final rewrite.
 
 **File mode.** When the user names a file, run the full rewrite process but write only the final text to the file. Change prose only. Keep code blocks, YAML metadata, data, and link targets unchanged. Then give the user a short summary.
 
@@ -448,13 +454,13 @@ These details often carry the writer's voice. Keep them unless they hurt the mea
 
 ## Rewrite process
 
-1. Read the source and mark each AI pattern.
-2. Write a draft. Read it aloud. Check the rhythm, details, simple verbs such as *is* and *has*, and the right level of formality.
+1. Identify the language of each span. Mark the applicable upstream patterns; for Korean, also mark K1-K10.
+2. Write a draft and read it aloud. For English, check rhythm, details, simple verbs such as *is* and *has*, and formality. For Korean, check word order, subjects, particles, sentence endings, rhythm, and terminology with K1-K10.
 3. Ask two questions:
    - **"What still sounds AI-generated?"**
    - **"Did the rewrite add or remove any fact, name, number, date, quote, citation, ranking, or other claim?"**
    Treat any unsupported addition or lost claim as an error.
-4. Write the final version. State each point naturally instead of patching one flagged phrase at a time. If a sentence stays awkward, rewrite the paragraph around its main point. Apply the dash rule in §14.
+4. Write the final version. State each point naturally instead of patching one flagged phrase at a time. If a sentence stays awkward, rewrite the paragraph around its main point. Apply §14 to English unless the writer's sample overrides it. In Korean, use K2 and K8 to decide sentence boundaries and punctuation instead of treating the English dash rule as universal.
 
 Return the result required by [How to return the result](#how-to-return-the-result).
 

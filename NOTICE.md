@@ -16,6 +16,6 @@ The upstream copyright notice and permission notice remain in [`LICENSE`](LICENS
 
 Copyright (c) 2026 choconyam for the original localization changes.
 
-The local work adds Korean editing guidance, Codex-facing metadata, localized output behavior, package checks, and upstream update automation. The repository history and pull requests show the exact changes from each upstream release.
+The local work keeps upstream's English-oriented patterns and adds separate Korean checkpoints K1-K10, domain-aware terminology guidance, Codex-facing metadata, localized output behavior, package checks, and upstream update automation. The repository history and pull requests show the exact changes from each upstream release.
 
 Humanizer draws on Wikipedia's ["Signs of AI writing"](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing). Preserve that source link when redistributing this fork. Wikipedia text is subject to its own applicable license terms.

@@ -35,6 +35,7 @@ if tag_check.returncode:
     fail(f"Fetch the tracked upstream tag before validating: {TRACKED_VERSION}")
 
 guide_texts: list[str] = []
+guide_text_by_name: dict[str, str] = {}
 for guide_name in GUIDE_NAMES:
     guide = ROOT / "references" / guide_name
     plugin_guide = ROOT / "skills" / "humanizer" / "references" / guide_name
@@ -52,9 +53,34 @@ for guide_name in GUIDE_NAMES:
         fail(f"Link {guide_name} from SKILL.md")
 
     guide_texts.append(guide_text)
+    guide_text_by_name[guide_name] = guide_text
 
-if "blader/humanizer" not in NOTICE or "Copyright (c) 2025 Siqi Chen" not in NOTICE:
-    fail("NOTICE.md must preserve the upstream project and copyright attribution")
+korean_point_numbers = [
+    int(number)
+    for number in re.findall(
+        r"(?m)^## K([0-9]+)\. ", guide_text_by_name["korean-editing.md"]
+    )
+]
+if korean_point_numbers != list(range(1, 11)):
+    fail(f"Number Korean checkpoints from K1 through K10: {korean_point_numbers}")
+
+skill_routing_rules = (
+    "mainly for English",
+    "K1-K10",
+    "Identify the language of each span",
+    "In Korean, use K2 and K8",
+    "In Korean, subject omission is normal",
+    "For Korean, do not treat these marks as a blanket error",
+)
+if any(rule not in SKILL for rule in skill_routing_rules):
+    fail("SKILL.md must route the 35 patterns and rewrite process by language")
+
+if (
+    "blader/humanizer" not in NOTICE
+    or "Copyright (c) 2025 Siqi Chen" not in NOTICE
+    or "K1-K10" not in NOTICE
+):
+    fail("NOTICE.md must preserve attribution and identify the Korean checkpoints")
 
 if ".upstream-version" not in README or ".upstream-version" not in README_KO:
     fail("Both README editions must identify .upstream-version as the source of truth")
@@ -73,6 +99,13 @@ korean_readme_numbers = {
 }
 if korean_readme_numbers != set(range(1, 36)):
     fail("README.ko.md must list patterns 1 through 35")
+
+for readme_name, readme_text in (("README.md", README), ("README.ko.md", README_KO)):
+    readme_korean_points = {
+        int(number) for number in re.findall(r"(?m)^\| K([0-9]+) \|", readme_text)
+    }
+    if readme_korean_points != set(range(1, 11)):
+        fail(f"{readme_name} must list Korean checkpoints K1 through K10")
 
 if TRACKED_VERSION.removeprefix("v") not in README_KO:
     fail("README.ko.md must mention the tracked upstream release")

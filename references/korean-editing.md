@@ -1,6 +1,13 @@
 # Korean editing guide
 
-Use this guide only when the source is Korean or the user asks for Korean output. Apply it with the shared Humanizer patterns in `SKILL.md`.
+Use this guide only when the source is Korean or the user asks for Korean output.
+
+The 35 upstream Humanizer patterns were written mainly for English. Preserve them for English and mixed-language work, but do not translate their grammar and punctuation rules mechanically. For Korean:
+
+- Apply language-independent upstream patterns such as inflated claims, vague sourcing, sales language, forced structure, filler, fake objections, and chatbot residue.
+- Apply an English-specific pattern only when it has a natural Korean equivalent or the edited span is English.
+- Let K1-K10 below take priority for Korean word order, subjects, particles, register, sentence endings, rhythm, and terminology.
+- In a mixed-language document, evaluate each span in its language while keeping facts, terminology, and document-level voice consistent.
 
 ## Preserve the source
 
@@ -9,7 +16,7 @@ Use this guide only when the source is Korean or the user asks for Korean output
 - Keep explicit uncertainty such as `가능성이 있습니다`, `검증이 필요합니다`, and `임상 성능을 의미하지 않습니다` when the source needs it.
 - Do not add local examples, personal experience, or supporting evidence unless the user supplied them.
 
-## Keep one register
+## K1. Keep one register and honorific level
 
 Choose the register from the source and audience, then keep it consistent.
 
@@ -19,15 +26,15 @@ Choose the register from the source and audience, then keep it consistent.
 - Do not mix `-다`, `-해요`, and `-합니다` endings without a real change in speaker or quoted material.
 - Preserve honorifics, professional titles, and role names. Do not make patient-facing or senior-facing text more casual by accident.
 
-## Remove translation-like structure
+## K2. Rebuild translation-like word order
 
 Rewrite the clause instead of replacing one phrase mechanically.
 
 - Repeated `이는 ...를 의미합니다` usually becomes a direct statement.
 - Repeated `중요한 것은 ...라는 점입니다` usually becomes the point itself.
 - Break chains built from `~에 대한`, `~를 통해`, `~와 관련하여`, `~에 기반하여`, and `~에 있어`.
-- Avoid English-style dummy subjects such as repeated `이것은` or `그것은` when Korean can omit them naturally.
-- Keep a subject when removing it would make the actor, patient, sample, or system ambiguous.
+- Rebuild long modifiers instead of preserving English clause order. Move the main claim forward or split a dense modifier into another sentence.
+- Do not keep an English sentence boundary when Korean needs two sentences, or split Korean into fragments merely because the English source did.
 
 Example:
 
@@ -35,7 +42,15 @@ Example:
 
 > 이 결과만으로 모델이 다른 데이터에서도 잘 작동한다고 단정할 수는 없습니다.
 
-## Prefer verbs to noun stacks
+## K3. Handle subjects, pronouns, and plurality naturally
+
+- Avoid repeated `이것은`, `그것은`, and `그들은` when Korean can omit them or name the actual topic.
+- Omit a subject only when the actor remains clear. Keep or restore it when patients, researchers, samples, models, or systems could be confused.
+- Do not add `그의`, `그녀의`, `그들의`, or plural `들` mechanically from English.
+- When two possible actors appear in one paragraph, repeat the relevant noun instead of relying on an ambiguous pronoun.
+- Preserve a deliberate subject when it marks contrast, responsibility, or accountability.
+
+## K4. Prefer verbs to noun stacks
 
 Korean AI prose often stacks abstract nouns and then adds `진행하다`, `수행하다`, or `제공하다`.
 
@@ -44,7 +59,7 @@ Korean AI prose often stacks abstract nouns and then adds `진행하다`, `수�
 - Reduce repeated `가능성`, `중요성`, `필요성`, `효율성`, `확장성`, and `연관성` by turning some into verbs or concrete statements.
 - Keep the noun when it is a defined technical concept or changing it would alter the claim.
 
-## Cut Korean stock AI phrases
+## K5. Cut Korean stock AI phrases
 
 Watch for clusters, not single words. Remove the framing and keep the actual claim.
 
@@ -57,7 +72,15 @@ Watch for clusters, not single words. Remove the framing and keep the actual cla
 
 Do not delete a promotional or evaluative word inside a direct quote. Keep sourced judgments when the source clearly names who made them.
 
-## Keep natural terminology
+## K6. Use particles and connective endings for meaning
+
+- Remove repeated sentence openers such as `또한`, `그리고`, `그러나`, and `한편` when the relationship is already clear.
+- Break chains of `~하며`, `~하면서`, `~함으로써`, and `~하는 가운데` when they hide which event causes, contrasts with, or follows another.
+- Keep a connector when it carries real logic such as cause, condition, concession, sequence, or contrast.
+- Do not rotate particles or connective endings merely for variety. Change them only when the relationship between ideas changes.
+- Avoid attaching every topic to `~은/는`; use the particle that matches the sentence's actual role and emphasis.
+
+## K7. Use field-appropriate terminology
 
 - For technical or specialist text, follow [the domain terminology guide](domain-terminology.md). Choose terms by field and audience, not by literal dictionary equivalence.
 - Keep English terms when the field normally uses them, including `feature`, `label`, `baseline`, `validation`, `calibration`, `time-series`, and `prototype`.
@@ -65,7 +88,15 @@ Do not delete a promotional or evaluative word inside a direct quote. Keep sourc
 - Never translate code, model names, product names, API fields, file paths, commands, or citation keys.
 - Preserve spacing and capitalization inside technical tokens. Change unit formatting only when the user asks for a style conversion.
 
-## Write for speaking when needed
+## K8. Set Korean sentence boundaries and rhythm
+
+- Split a sentence that carries several conditions, exceptions, actors, and conclusions. Keep related information together when splitting would hide the relationship.
+- Merge clipped fragments that imitate English emphasis but sound abrupt in Korean.
+- Formal Korean may repeat `-습니다` or `-다`. Vary sentence structure without mixing the chosen register just to avoid repeated endings.
+- Let paragraph breaks follow changes in idea, speaker, time, or argument instead of a fixed paragraph length.
+- Remove a closing sentence that merely repeats the paragraph's first sentence without adding evidence or a decision.
+
+## K9. Write for speaking when needed
 
 For presentation scripts, lectures, interviews, and video narration:
 
@@ -76,7 +107,7 @@ For presentation scripts, lectures, interviews, and video narration:
 - Remove report-like throat-clearing such as `이번 발표에서는 ...에 대해 살펴보도록 하겠습니다` when the next sentence can start with the topic.
 - Read the result aloud mentally and fix tongue-twisting repetitions or abrupt register changes.
 
-## Handle high-stakes text carefully
+## K10. Handle high-stakes text carefully
 
 For medical, legal, scientific, financial, or policy text:
 
@@ -91,6 +122,9 @@ Before returning the rewrite, check that:
 
 1. The register and honorific level are consistent.
 2. No fact, number, citation, technical token, or uncertainty marker changed.
-3. Subjects are omitted only where the actor remains clear.
-4. Translation-like connectors and abstract noun stacks are not repeated mechanically.
-5. Spoken text is easy to say aloud, and written text still fits its audience.
+3. English-specific rules were not imposed mechanically on Korean sentences.
+4. Word order, subjects, pronouns, particles, and connective endings are natural and unambiguous.
+5. Abstract noun stacks and Korean stock AI phrases are not repeated mechanically.
+6. Specialist terms match the field and remain consistent.
+7. Sentence boundaries fit Korean rhythm; spoken text is easy to say aloud.
+8. High-stakes limits, scope, and uncertainty remain precise.

@@ -8,13 +8,24 @@ The exact upstream base is recorded in [`.upstream-version`](.upstream-version).
 
 ## Korean and Codex localization
 
-This fork keeps upstream's 35 shared writing patterns and adds a conditional Korean editing guide. The guide covers:
+This fork keeps upstream's 35 writing patterns because it still edits English and mixed-language documents. Those patterns were written mainly for English. Korean work uses their language-independent ideas, but it does not apply English grammar, word order, capitalization, dash, quote, or hyphen rules mechanically.
 
-- consistent Korean register and honorifics
-- translation-like sentence structure and unnecessary dummy subjects
-- abstract noun stacks and stock Korean AI phrases
-- field-native English terminology and protected technical tokens
-- spoken presentation scripts and high-stakes medical or scientific wording
+Korean text gets a separate set of checkpoints in [`references/korean-editing.md`](references/korean-editing.md):
+
+| Point | Korean-specific check |
+|---|---|
+| K1 | Keep one register and honorific level |
+| K2 | Rebuild translation-like word order |
+| K3 | Handle subjects, pronouns, and plurality naturally |
+| K4 | Prefer verbs to abstract noun stacks |
+| K5 | Cut Korean stock AI phrases |
+| K6 | Use particles and connective endings for their actual meaning |
+| K7 | Use field-appropriate terminology and protect technical tokens |
+| K8 | Set sentence boundaries and rhythm for Korean |
+| K9 | Make presentation and narration text easy to speak |
+| K10 | Preserve precision in medical, legal, scientific, financial, and policy text |
+
+For English text, Humanizer uses the upstream 35 patterns. For Korean text, it combines the language-independent upstream patterns with K1-K10, and the Korean checkpoints take priority where the languages differ. For mixed-language documents, it evaluates each span in its language while keeping facts, terminology, and the document-level voice consistent.
 
 Ordinary chat rewrites return the final text first. Audit and comparison requests still include the draft, remaining-pattern check, and final rewrite.
 
@@ -140,13 +151,13 @@ It drafts a rewrite, checks the draft for remaining AI patterns and changed clai
 
 It does not invent facts, names, dates, quotes, or citations. Any added detail must come from the source or the writer.
 
-For Korean text, it loads [`references/korean-editing.md`](references/korean-editing.md) to handle register, Korean sentence structure, spoken delivery, and high-stakes wording. Technical and specialist text also uses [`references/domain-terminology.md`](references/domain-terminology.md) to select terminology by field, governing source, document type, and audience instead of translating words mechanically.
+For Korean text, it loads [`references/korean-editing.md`](references/korean-editing.md) and applies K1-K10 instead of transferring English-specific rules mechanically. Technical and specialist text also uses [`references/domain-terminology.md`](references/domain-terminology.md) to select terminology by field, governing source, document type, and audience instead of translating words mechanically.
 
 ### Wikipedia's main point
 
 > "LLMs use statistical algorithms to guess what should come next. The result tends toward the most statistically likely result that applies to the widest variety of cases."
 
-## 35 patterns with examples
+## Upstream's 35 patterns with examples
 
 ### Content patterns
 
@@ -255,7 +266,7 @@ After the repository is forked, enable GitHub Actions and allow workflows to cre
 
 ### Fork releases
 
-- **v2.11.1-ko.1** - Ported the existing Korean and Codex adaptation to upstream v2.11.1. Added conditional Korean guidance, domain-aware terminology handling, localized packaging checks, provenance, and scheduled upstream sync PRs.
+- **v2.11.1-ko.1** - Ported the existing Korean and Codex adaptation to upstream v2.11.1. Kept the English-oriented upstream patterns and added Korean checkpoints K1-K10, domain-aware terminology handling, localized packaging checks, provenance, and scheduled upstream sync PRs.
 
 ### Upstream releases
 
