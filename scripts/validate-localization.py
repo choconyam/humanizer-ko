@@ -11,6 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SKILL = (ROOT / "SKILL.md").read_text(encoding="utf-8")
 README = (ROOT / "README.md").read_text(encoding="utf-8")
+README_KO = (ROOT / "README.ko.md").read_text(encoding="utf-8")
 NOTICE = (ROOT / "NOTICE.md").read_text(encoding="utf-8")
 GUIDE_NAMES = ("korean-editing.md", "domain-terminology.md")
 TRACKED_VERSION = (ROOT / ".upstream-version").read_text(encoding="utf-8").strip()
@@ -55,8 +56,26 @@ for guide_name in GUIDE_NAMES:
 if "blader/humanizer" not in NOTICE or "Copyright (c) 2025 Siqi Chen" not in NOTICE:
     fail("NOTICE.md must preserve the upstream project and copyright attribution")
 
-if ".upstream-version" not in README:
-    fail("README.md must identify .upstream-version as the source of truth")
+if ".upstream-version" not in README or ".upstream-version" not in README_KO:
+    fail("Both README editions must identify .upstream-version as the source of truth")
+
+if "](README.ko.md)" not in README or "](README.md)" not in README_KO:
+    fail("Link the English and Korean README editions to each other")
+
+if not re.search(r"[가-힣]", README_KO):
+    fail("README.ko.md must contain Korean text")
+
+if "blader/humanizer" not in README_KO or "비공식" not in README_KO:
+    fail("README.ko.md must identify the upstream project and unofficial fork status")
+
+korean_readme_numbers = {
+    int(number) for number in re.findall(r"(?m)^\| ([0-9]+) \|", README_KO)
+}
+if korean_readme_numbers != set(range(1, 36)):
+    fail("README.ko.md must list patterns 1 through 35")
+
+if TRACKED_VERSION.removeprefix("v") not in README_KO:
+    fail("README.ko.md must mention the tracked upstream release")
 
 license_at_tag = subprocess.run(
     ["git", "show", f"{TRACKED_VERSION}:LICENSE"],
@@ -72,7 +91,7 @@ current_license = (ROOT / "LICENSE").read_text(encoding="utf-8").replace("\r\n",
 if current_license != license_at_tag.stdout.replace("\r\n", "\n"):
     fail("Keep LICENSE identical to the tracked upstream release")
 
-public_text = "\n".join((SKILL, README, NOTICE, *guide_texts))
+public_text = "\n".join((SKILL, README, README_KO, NOTICE, *guide_texts))
 if re.search(r"(?i)[a-z]:\\users\\", public_text):
     fail("Remove personal Windows paths before publishing")
 

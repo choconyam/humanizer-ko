@@ -1,5 +1,7 @@
 # Humanizer Korean for Codex
 
+[한국어](README.ko.md) | English
+
 Humanizer rewrites Korean or English text that sounds AI-generated while keeping the writer's facts, meaning, and voice. This unofficial fork adds Korean editing guidance and Codex-facing behavior to [blader/humanizer](https://github.com/blader/humanizer).
 
 The exact upstream base is recorded in [`.upstream-version`](.upstream-version). See [`NOTICE.md`](NOTICE.md) for attribution and a summary of the local changes.
