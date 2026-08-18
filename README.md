@@ -35,8 +35,6 @@ Ordinary chat rewrites return the final text first. Audit and comparison request
 
 ## Installation
 
-The commands below assume the planned fork will be published at `choconyam/humanizer-ko`. Until that repository exists, install by copying the local clone manually; the GitHub install and release links will not work yet.
-
 The original skill and this fork can coexist without sharing a name. Upstream uses the name `humanizer`; this Korean and Codex edition uses `humanizer-ko`. On Windows, read `~` in the paths below as `%USERPROFILE%`. Start a new agent session or reload skills after installation.
 
 ### Codex
