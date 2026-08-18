@@ -18,6 +18,8 @@ SOURCES = {
     "humanizer-ko/references/domain-terminology.md": ROOT
     / "references"
     / "domain-terminology.md",
+    "humanizer-ko/LICENSE": ROOT / "LICENSE",
+    "humanizer-ko/NOTICE.md": ROOT / "NOTICE.md",
 }
 
 

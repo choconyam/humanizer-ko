@@ -8,6 +8,7 @@ The 35 upstream Humanizer patterns were written mainly for English. Preserve the
 - Apply an English-specific pattern only when it has a natural Korean equivalent or the edited span is English.
 - Let K1-K10 below take priority for Korean word order, subjects, particles, register, sentence endings, rhythm, and terminology.
 - In a mixed-language document, evaluate each span in its language while keeping facts, terminology, and document-level voice consistent.
+- When the writer's sample and the target style guide do not settle spelling, spacing, or punctuation, follow the National Institute of Korean Language norms (한국어 어문 규범, https://korean.go.kr/kornorms).
 
 ## Preserve the source
 

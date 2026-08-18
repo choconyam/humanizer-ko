@@ -4,6 +4,10 @@
 
 `humanizer-ko` rewrites Korean or English text that sounds AI-generated while keeping the writer's facts, meaning, and voice. This unofficial fork adds Korean editing guidance and Codex-facing behavior to [blader/humanizer](https://github.com/blader/humanizer).
 
+The original was built around English prose, so applying its dash, quote, and subject rules directly to Korean produces awkward sentences. This Korean edition adds the dedicated checkpoints K1-K10 for the AI patterns that actually appear in Korean writing: translation-like word order, double passives, particles and connective endings, register and honorific level, and Korean chatbot boilerplate.
+
+Use it to make text that started as an AI draft read like the writer: blog posts, reports, and presentation scripts. It does not change facts, numbers, quotes, or terminology. It is an editing aid, not a tool for evading AI detectors.
+
 The exact upstream base is recorded in [`.upstream-version`](.upstream-version). See [`NOTICE.md`](NOTICE.md) for attribution and a summary of the local changes.
 
 ## Korean and Codex localization
@@ -31,16 +35,65 @@ Ordinary chat rewrites return the final text first. Audit and comparison request
 
 ## Installation
 
-The commands below assume the planned fork will be published at `choconyam/humanizer-ko`. Until that repository exists, keep using the validated local Codex installation; the GitHub install and release links will not work yet.
+The commands below assume the planned fork will be published at `choconyam/humanizer-ko`. Until that repository exists, install by copying the local clone manually; the GitHub install and release links will not work yet.
 
-The original skill and this fork can coexist without sharing a name. Upstream installs and displays as `humanizer` and runs as `$humanizer`; this Korean and Codex edition installs and displays as `humanizer-ko` and runs as `$humanizer-ko`.
+The original skill and this fork can coexist without sharing a name. Upstream uses the name `humanizer`; this Korean and Codex edition uses `humanizer-ko`. On Windows, read `~` in the paths below as `%USERPROFILE%`. Start a new agent session or reload skills after installation.
 
-### Skills CLI
+### Codex
 
-Install `humanizer-ko` for all projects:
+Install globally with the Skills CLI. The skill lands in `~/.codex/skills/humanizer-ko`:
 
 ```bash
-npx skills add choconyam/humanizer-ko --global
+npx skills add choconyam/humanizer-ko --global --agent codex
+```
+
+To install manually, clone the repository into the Codex skills folder:
+
+```bash
+git clone https://github.com/choconyam/humanizer-ko.git ~/.codex/skills/humanizer-ko
+```
+
+In Codex, run the skill with `$humanizer-ko` or ask in natural language.
+
+### Claude Code
+
+Install globally with the Skills CLI. The skill lands in `~/.claude/skills/humanizer-ko`:
+
+```bash
+npx skills add choconyam/humanizer-ko --global --agent claude-code
+```
+
+To install manually, copy `SKILL.md` and the reference guides:
+
+```bash
+mkdir -p ~/.claude/skills/humanizer-ko/references
+cp SKILL.md ~/.claude/skills/humanizer-ko/
+cp references/*.md ~/.claude/skills/humanizer-ko/references/
+```
+
+In Claude Code, run the skill with `/humanizer-ko` or ask in natural language.
+
+You can also install it as a plugin:
+
+```
+/plugin marketplace add choconyam/humanizer-ko
+/plugin install humanizer-ko@humanizer-ko
+```
+
+Run the plugin-installed skill with `/humanizer-ko:humanizer-ko`. The plugin links `skills/humanizer-ko/SKILL.md` to the root `SKILL.md`, so Claude Desktop and older plugin loaders find the skill without creating a second prompt.
+
+### Claude Desktop upload
+
+Download [`humanizer-ko-skill.zip`](https://github.com/choconyam/humanizer-ko/releases/latest/download/humanizer-ko-skill.zip) from the latest release when you install or replace this edition through the Claude Desktop GUI.
+
+Do not use GitHub's **Code > Download ZIP** archive for this. The source archive contains the plugin's internal symbolic link, which Claude Desktop rejects. The release package contains regular files for the skill, its Korean editing guide, and the license notices.
+
+### Other agents and updates
+
+The Skills CLI supports many agents beyond Codex and Claude Code. Install for every supported agent at once:
+
+```bash
+npx skills add choconyam/humanizer-ko --global --agent '*'
 ```
 
 Update an existing install:
@@ -49,57 +102,7 @@ Update an existing install:
 npx skills update humanizer-ko --global
 ```
 
-Install it for every supported agent:
-
-```bash
-npx skills add choconyam/humanizer-ko --global --agent '*'
-```
-
-Install it for one agent:
-
-```bash
-npx skills add choconyam/humanizer-ko --global --agent <agent-name>
-```
-
-Omit `--global` to install it in the current project. Start a new agent session or reload skills after installation.
-
-### Claude Code plugin
-
-Claude Code users can also install `humanizer-ko` as a plugin:
-
-```
-/plugin marketplace add choconyam/humanizer-ko
-/plugin install humanizer-ko@humanizer-ko
-```
-
-Run the installed skill with `/humanizer-ko:humanizer-ko`.
-
-The plugin links `skills/humanizer-ko/SKILL.md` to the root `SKILL.md`. This lets Claude Desktop and older plugin loaders find the skill without creating a second prompt.
-
-### Claude Desktop upload
-
-Download [`humanizer-ko-skill.zip`](https://github.com/choconyam/humanizer-ko/releases/latest/download/humanizer-ko-skill.zip) from the latest release when you install or replace this edition through the Claude Desktop GUI.
-
-Do not use GitHub's **Code > Download ZIP** archive for this. The source archive contains the plugin's internal symbolic link, which Claude Desktop rejects. The release package contains regular files for the skill and its Korean editing guide.
-
-### Manual
-
-You can also place `SKILL.md` in any agent's skill folder.
-
-For example:
-
-```bash
-git clone https://github.com/choconyam/humanizer-ko.git /path/to/your/skills/humanizer-ko
-```
-
-Or, if you already have this repo cloned, copy the skill and its Korean references:
-
-```bash
-mkdir -p /path/to/your/skills/humanizer-ko
-mkdir -p /path/to/your/skills/humanizer-ko/references
-cp SKILL.md /path/to/your/skills/humanizer-ko/
-cp references/*.md /path/to/your/skills/humanizer-ko/references/
-```
+Omit `--global` to install in the current project. For any agent the Skills CLI does not support, place `SKILL.md` and the `references/` folder together in that agent's skills directory.
 
 ## Usage
 
@@ -255,6 +258,10 @@ For Korean text, it loads [`references/korean-editing.md`](references/korean-edi
 
 - [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) - Main source
 - [WikiProject AI Cleanup](https://en.wikipedia.org/wiki/Wikipedia:WikiProject_AI_Cleanup) - Maintains the source page
+- Wikipedia article text is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+- [National Institute of Korean Language norms](https://korean.go.kr/kornorms) - Default reference for Korean spelling, punctuation, and loanword transcription
+- [Standard Korean Language Dictionary](https://stdict.korean.go.kr/) - Standard word forms and meanings
+- Field-specific term sources (the TTA ICT terminology dictionary, the National Law Information Center, and others) are listed in [`references/domain-terminology.md`](references/domain-terminology.md).
 
 ## Upstream maintenance
 
@@ -268,6 +275,7 @@ After the repository is forked, enable GitHub Actions and allow workflows to cre
 
 ### Fork releases
 
+- **v2.11.1-ko.3** - Reorganized the installation guide by agent (Codex, Claude Code, Claude Desktop), added a Korean-edition introduction, bundled LICENSE and NOTICE into the Claude Desktop package, and added the Wikipedia CC BY-SA 4.0 notice plus authoritative Korean terminology references with a single-lookup rule.
 - **v2.11.1-ko.2** - Added Korean passive and double-passive handling, literal translation verbs, Korean chatbot residue and stock phrases, K3-K6 and K8 before/after examples, and Korean quotation-mark exceptions.
 
 - **v2.11.1-ko.1** - Ported the existing Korean and Codex adaptation to upstream v2.11.1. Kept the English-oriented upstream patterns and added Korean checkpoints K1-K10, domain-aware terminology handling, localized packaging checks, provenance, scheduled upstream sync PRs, and the distinct `humanizer-ko` display and invocation name.

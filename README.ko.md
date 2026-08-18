@@ -4,6 +4,10 @@
 
 `humanizer-ko`는 AI가 쓴 듯한 한국어나 영어 문장을 자연스럽게 다듬으면서 작성자의 사실관계, 의미, 목소리를 유지합니다. 이 저장소는 [blader/humanizer](https://github.com/blader/humanizer)에 한국어 편집 지침과 Codex용 동작을 추가한 비공식 포크입니다.
 
+원본은 영어 문장을 기준으로 만들어져서, 대시·따옴표·주어 규칙을 한국어에 그대로 적용하면 문장이 오히려 어색해집니다. 이 한국어판은 번역투 어순, 이중 피동, 조사와 연결어미, 문체와 높임 수준, 한국어 챗봇 상투 문구처럼 한국어 글에 실제로 나타나는 AI 문체를 전용 점검 항목 K1~K10으로 다듬습니다.
+
+블로그 글, 보고서, 발표 대본처럼 AI 초안에서 시작한 글을 작성자가 쓴 글처럼 만들 때 사용합니다. 사실, 수치, 인용, 전문용어는 바꾸지 않습니다. AI 탐지기를 우회하는 도구가 아니라 문장을 다듬는 교정 도구입니다.
+
 정확한 upstream 기준 버전은 [`.upstream-version`](.upstream-version)에 기록합니다. 원저작자 표기와 현지화 변경 사항은 [`NOTICE.md`](NOTICE.md)에서 확인할 수 있습니다.
 
 ## 한국어·Codex 현지화
@@ -31,16 +35,65 @@
 
 ## 설치
 
-아래 명령은 앞으로 포크를 `choconyam/humanizer-ko`에 공개한다는 전제로 작성했습니다. 아직 해당 저장소가 없으므로 현재는 검증된 로컬 Codex 설치본을 사용해야 하며, GitHub 설치 링크와 릴리스 링크는 작동하지 않습니다.
+아래 명령은 앞으로 포크를 `choconyam/humanizer-ko`에 공개한다는 전제로 작성했습니다. 아직 해당 저장소가 없으므로 현재는 로컬 복제본을 수동으로 복사해 설치해야 하며, GitHub 설치 링크와 릴리스 링크는 작동하지 않습니다.
 
-원본 스킬과 이 한국어·Codex판은 이름이 겹치지 않아 함께 설치할 수 있습니다. upstream 원본은 `humanizer`로 설치·표시되고 `$humanizer`로 호출합니다. 이 버전은 `humanizer-ko`로 설치·표시되고 `$humanizer-ko`로 호출합니다.
+원본 스킬과 이 한국어·Codex판은 이름이 겹치지 않아 함께 설치할 수 있습니다. upstream 원본은 `humanizer`, 이 버전은 `humanizer-ko`라는 이름을 사용합니다. Windows에서는 아래 경로의 `~`를 `%USERPROFILE%`로 바꿔 읽으세요. 설치한 뒤에는 새 에이전트 세션을 시작하거나 스킬을 다시 불러오세요.
 
-### Skills CLI
+### Codex
 
-모든 프로젝트에서 사용하도록 설치합니다.
+Skills CLI로 전역 설치합니다. 스킬은 `~/.codex/skills/humanizer-ko`에 들어갑니다.
 
 ```bash
-npx skills add choconyam/humanizer-ko --global
+npx skills add choconyam/humanizer-ko --global --agent codex
+```
+
+수동으로 설치하려면 저장소를 Codex 스킬 폴더에 복제합니다.
+
+```bash
+git clone https://github.com/choconyam/humanizer-ko.git ~/.codex/skills/humanizer-ko
+```
+
+Codex에서는 `$humanizer-ko`로 호출하거나 자연어로 요청합니다.
+
+### Claude Code
+
+Skills CLI로 전역 설치합니다. 스킬은 `~/.claude/skills/humanizer-ko`에 들어갑니다.
+
+```bash
+npx skills add choconyam/humanizer-ko --global --agent claude-code
+```
+
+수동으로 설치하려면 `SKILL.md`와 참조 문서만 복사하면 됩니다.
+
+```bash
+mkdir -p ~/.claude/skills/humanizer-ko/references
+cp SKILL.md ~/.claude/skills/humanizer-ko/
+cp references/*.md ~/.claude/skills/humanizer-ko/references/
+```
+
+Claude Code에서는 `/humanizer-ko`로 호출하거나 자연어로 요청합니다.
+
+플러그인으로도 설치할 수 있습니다.
+
+```text
+/plugin marketplace add choconyam/humanizer-ko
+/plugin install humanizer-ko@humanizer-ko
+```
+
+플러그인으로 설치한 스킬은 `/humanizer-ko:humanizer-ko`로 실행합니다. 플러그인은 `skills/humanizer-ko/SKILL.md`를 루트의 `SKILL.md`에 연결합니다. 따라서 Claude Desktop과 이전 플러그인 로더에서도 프롬프트를 중복으로 만들지 않고 같은 스킬을 찾을 수 있습니다.
+
+### Claude Desktop 업로드
+
+Claude Desktop GUI에서 이 버전을 설치하거나 교체할 때는 최신 릴리스의 [`humanizer-ko-skill.zip`](https://github.com/choconyam/humanizer-ko/releases/latest/download/humanizer-ko-skill.zip)을 받으세요.
+
+GitHub의 **Code > Download ZIP**은 사용하지 마세요. 소스 압축 파일에는 Claude Desktop에서 거부하는 플러그인 내부 심볼릭 링크가 들어 있습니다. 릴리스 패키지는 스킬, 한국어 참조 문서, 라이선스 고지를 일반 파일로 담습니다.
+
+### 다른 에이전트와 업데이트
+
+Skills CLI는 Codex와 Claude Code 외에도 여러 에이전트를 지원합니다. 지원되는 모든 에이전트에 한 번에 설치합니다.
+
+```bash
+npx skills add choconyam/humanizer-ko --global --agent '*'
 ```
 
 기존 설치본을 업데이트합니다.
@@ -49,57 +102,7 @@ npx skills add choconyam/humanizer-ko --global
 npx skills update humanizer-ko --global
 ```
 
-지원되는 모든 에이전트에 설치합니다.
-
-```bash
-npx skills add choconyam/humanizer-ko --global --agent '*'
-```
-
-특정 에이전트에만 설치합니다.
-
-```bash
-npx skills add choconyam/humanizer-ko --global --agent <agent-name>
-```
-
-현재 프로젝트에만 설치하려면 `--global`을 빼면 됩니다. 설치한 뒤에는 새 에이전트 세션을 시작하거나 스킬을 다시 불러오세요.
-
-### Claude Code 플러그인
-
-Claude Code에서는 플러그인으로도 설치할 수 있습니다.
-
-```text
-/plugin marketplace add choconyam/humanizer-ko
-/plugin install humanizer-ko@humanizer-ko
-```
-
-설치한 스킬은 `/humanizer-ko:humanizer-ko`로 실행합니다.
-
-플러그인은 `skills/humanizer-ko/SKILL.md`를 루트의 `SKILL.md`에 연결합니다. 따라서 Claude Desktop과 이전 플러그인 로더에서도 프롬프트를 중복으로 만들지 않고 같은 스킬을 찾을 수 있습니다.
-
-### Claude Desktop 업로드
-
-Claude Desktop GUI에서 이 버전을 설치하거나 교체할 때는 최신 릴리스의 [`humanizer-ko-skill.zip`](https://github.com/choconyam/humanizer-ko/releases/latest/download/humanizer-ko-skill.zip)을 받으세요.
-
-GitHub의 **Code > Download ZIP**은 사용하지 마세요. 소스 압축 파일에는 Claude Desktop에서 거부하는 플러그인 내부 심볼릭 링크가 들어 있습니다. 릴리스 패키지는 스킬과 한국어 참조 문서를 일반 파일로 담습니다.
-
-### 수동 설치
-
-어떤 에이전트든 스킬 폴더에 `SKILL.md`를 직접 둘 수 있습니다.
-
-예시:
-
-```bash
-git clone https://github.com/choconyam/humanizer-ko.git /path/to/your/skills/humanizer-ko
-```
-
-이미 저장소를 복제했다면 스킬과 한국어 참조 문서를 함께 복사합니다.
-
-```bash
-mkdir -p /path/to/your/skills/humanizer-ko
-mkdir -p /path/to/your/skills/humanizer-ko/references
-cp SKILL.md /path/to/your/skills/humanizer-ko/
-cp references/*.md /path/to/your/skills/humanizer-ko/references/
-```
+현재 프로젝트에만 설치하려면 `--global`을 빼면 됩니다. Skills CLI가 지원하지 않는 에이전트라도 스킬 폴더에 `SKILL.md`와 `references/` 폴더를 함께 두면 작동합니다.
 
 ## 사용법
 
@@ -257,6 +260,10 @@ docs/launch-post.md의 문장을 자연스럽게 다듬어줘.
 
 - [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) — 주요 출처
 - [WikiProject AI Cleanup](https://en.wikipedia.org/wiki/Wikipedia:WikiProject_AI_Cleanup) — 출처 문서 관리
+- 위키백과 문서 본문은 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.ko)을 따릅니다.
+- [국립국어원 한국어 어문 규범](https://korean.go.kr/kornorms) — 맞춤법·문장부호·외래어 표기의 기본 기준
+- [국립국어원 표준국어대사전](https://stdict.korean.go.kr/) — 표준어형과 뜻풀이 확인
+- 분야별 용어 출처(TTA 정보통신용어사전, 국가법령정보센터 등)는 [`references/domain-terminology.md`](references/domain-terminology.md)에 정리되어 있습니다.
 
 ## Upstream 유지보수
 
@@ -270,6 +277,7 @@ Git 충돌이 발생하면 워크플로가 중단되고 이슈가 생성됩니�
 
 ### 포크 릴리스
 
+- **v2.11.1-ko.3** — 설치 안내를 Codex·Claude Code·Claude Desktop 기준으로 재구성하고 한국어판 소개를 추가했습니다. Claude Desktop 패키지에 LICENSE와 NOTICE를 동봉하고, 위키백과 CC BY-SA 4.0 표기, 국립국어원 등 한국어 용어 출처와 단발 조회 원칙을 추가했습니다.
 - **v2.11.1-ko.2** — 한국어 피동·이중 피동, 번역투 동사, 한국어 챗봇 잔여 문구와 상투 표현, K3~K6·K8의 수정 전후 예시, 한국어 인용부호 예외를 추가했습니다.
 
 - **v2.11.1-ko.1** — 기존 한국어·Codex 현지화를 upstream v2.11.1로 옮겼습니다. 영어 중심 upstream 패턴은 유지하고 한국어 전용 점검 항목 K1~K10, 분야별 용어 처리, 현지화 패키지 검사, 출처 표기, upstream 동기화 초안 PR 자동화, 구분되는 `humanizer-ko` 표시·호출명을 추가했습니다.

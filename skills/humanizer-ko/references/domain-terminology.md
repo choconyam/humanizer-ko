@@ -44,6 +44,19 @@ The examples below show why domain context matters. They are examples, not a fix
 | `claim` | insurance | 청구 or 보험금 청구 |
 | `claim` | academic argument | 주장 |
 
+## Authoritative Korean references
+
+Use these references to verify spelling, spacing, punctuation, loanword transcription, and standard terms when the user's glossary and the source document do not settle the choice. The order of preference above still applies: a user glossary or an established source-document term wins over a dictionary entry.
+
+- Korean orthography, spacing, punctuation, and loanword rules: the National Institute of Korean Language norms (한국어 어문 규범), https://korean.go.kr/kornorms
+- Standard word forms and meanings: the Standard Korean Language Dictionary (표준국어대사전), https://stdict.korean.go.kr
+- New and specialist words collected from real usage: Urimalsaem (우리말샘), https://opendict.korean.go.kr
+- Information and communications technology terms: the TTA ICT terminology dictionary (정보통신용어사전), https://terms.tta.or.kr
+- Korean statutes and legal terms: the National Law Information Center (국가법령정보센터), https://www.law.go.kr
+- Medical terms: the terminology published by the Korean Medical Association and the relevant specialty societies (대한의사협회·대한의학회 의학용어집)
+
+These are lookup aids, not sources of new facts. Look terms up one page at a time through the agent's approved browsing tools, as a person would. Do not bulk-download, crawl, or scrape these sites, and do not call their APIs without the registration and terms those APIs require. Do not copy definitions into the rewrite, and do not let a dictionary form override a term the field or the governing document actually uses.
+
 ## Final terminology check
 
 Before returning the rewrite, check that:
