@@ -273,7 +273,7 @@ After the repository is forked, enable GitHub Actions and allow workflows to cre
 
 ### Fork releases
 
-- **v2.11.1-ko.4** - Added K8 guidance and an example for breaking long sentences that chain many clauses with commas and connective endings. Broadened K10 from a fixed field list to any field where a wording error causes real harm, and added terminology-table rows so the context-first method reads as field-agnostic.
+- **v2.11.1-ko.4** - Added K8 guidance and an example for breaking long sentences that chain many clauses with commas and connective endings. Broadened K10 from a fixed field list to any field where a wording error causes real harm, and added terminology-table rows so the context-first method reads as field-agnostic. Also cleaned up the post-publication install wording and made the README language-switcher link bold.
 - **v2.11.1-ko.3** - Reorganized the installation guide by agent (Codex, Claude Code, Claude Desktop), added a Korean-edition introduction, bundled LICENSE and NOTICE into the Claude Desktop package, and added the Wikipedia CC BY-SA 4.0 notice plus authoritative Korean terminology references with a single-lookup rule.
 - **v2.11.1-ko.2** - Added Korean passive and double-passive handling, literal translation verbs, Korean chatbot residue and stock phrases, K3-K6 and K8 before/after examples, and Korean quotation-mark exceptions.
 

@@ -29,7 +29,7 @@ Keep `SKILL.md` and `README.md` in sync.
 - **Patterns:** The skill has 35 numbered patterns. If you add, remove, or renumber a pattern, update the README table, heading, validator, and every pattern reference.
 - **Version:** Keep the same version in `SKILL.md` under `metadata.version`, the first README version entry, and `.claude-plugin/plugin.json`. Do not add a top-level `version` field to the skill.
 - **Compatibility:** Keep install and use instructions neutral across agents. Names such as Claude Code, OpenCode, and Codex are examples, not limits.
-- **History:** Add a short README version note for any behavior change or non-obvious fix.
+- **History:** Add a short README version note for any behavior change or non-obvious fix. Fold minor doc-only cleanups into the current version's note so the history stays complete instead of leaving them only in the commit log.
 - **Korean guide:** Keep the root guide and its plugin package mirror byte-for-byte identical.
 - **Upstream sync:** Update `.upstream-version` only after the corresponding upstream tag is merged. Keep the upstream `LICENSE` unchanged.
 - **Checks:** Before publishing, run `python3 scripts/validate-package.py`, `python3 scripts/validate-localization.py`, `python3 scripts/build-skill-zip.py /tmp/humanizer-ko-skill.zip`, `npx skills add . --list`, and `claude plugin validate .`.
