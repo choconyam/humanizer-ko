@@ -26,7 +26,7 @@ Do not replace an organization's official term merely because another translatio
 
 ## Context changes the translation
 
-The examples below show why domain context matters. They are examples, not a fixed glossary.
+The examples below show why domain context matters. They cover only a few fields for illustration, not a fixed glossary. Apply the same context-first method to any specialty, including engineering, IT, finance, accounting, law, medicine, science, the humanities, and public policy.
 
 | English term | Context | Likely Korean usage |
 |---|---|---|
@@ -43,6 +43,11 @@ The examples below show why domain context matters. They are examples, not a fix
 | `claim` | patent | 청구항 |
 | `claim` | insurance | 청구 or 보험금 청구 |
 | `claim` | academic argument | 주장 |
+| `cell` | biology | 세포 |
+| `cell` | spreadsheet or table | 셀 |
+| `cell` | battery or power | 전지 |
+| `interest` | finance | 이자 |
+| `interest` | law | 이해관계 or 지분 |
 
 ## Authoritative Korean references
 

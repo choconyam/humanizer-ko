@@ -8,7 +8,7 @@ description: |
   "Signs of AI writing."
 license: MIT
 metadata:
-  version: "2.11.1-ko.3"
+  version: "2.11.1-ko.4"
 ---
 
 # humanizer-ko: remove AI writing patterns

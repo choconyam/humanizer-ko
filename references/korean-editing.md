@@ -126,6 +126,7 @@ Example:
 ## K8. Set Korean sentence boundaries and rhythm
 
 - Split a sentence that carries several conditions, exceptions, actors, and conclusions. Keep related information together when splitting would hide the relationship.
+- Chaining many clauses with commas and connective endings (`~고`, `~며`, `~하며`, `~로`) into one long sentence is a common Korean AI tell. When the clauses are a plain list of parallel items, break the sentence or turn it into a list. When a clause carries cause, condition, or contrast, split it into two or three sentences that show the relation.
 - Merge clipped fragments that imitate English emphasis but sound abrupt in Korean.
 - Formal Korean may repeat `-습니다` or `-다`. Vary sentence structure without mixing the chosen register just to avoid repeated endings.
 - Let paragraph breaks follow changes in idea, speaker, time, or argument instead of a fixed paragraph length.
@@ -137,6 +138,12 @@ Example:
 > 이 모델은 정확도가 높고 처리 속도가 빠르며 저전력 환경에서도 작동할 수 있지만 임상 데이터에서는 아직 검증되지 않았기 때문에 실제 진단에 사용할 수 없습니다.
 
 > 이 모델은 정확도가 높고 처리 속도가 빠르며 저전력 환경에서도 작동할 수 있습니다. 다만 임상 데이터에서는 아직 검증되지 않아 실제 진단에는 사용할 수 없습니다.
+
+Comma-chained example:
+
+> 이 도구는 문서를 자동으로 분류하고, 중복을 제거하며, 우선순위를 지정하고, 담당자에게 전달합니다.
+
+> 이 도구는 문서를 자동으로 분류해 중복을 제거합니다. 그런 다음 우선순위를 지정해 담당자에게 전달합니다.
 
 ## K9. Write for speaking when needed
 
@@ -151,7 +158,7 @@ For presentation scripts, lectures, interviews, and video narration:
 
 ## K10. Handle high-stakes text carefully
 
-For medical, legal, scientific, financial, or policy text:
+Medical, legal, scientific, financial, and policy text are the common examples, but the same care applies to any field where a wording error causes real harm, such as safety engineering, tax and accounting, standards compliance, and pharmacovigilance. For any such text:
 
 - Preserve caution, scope, population, time range, comparison group, and validation status.
 - Do not replace a precise term with a friendlier but broader word.
