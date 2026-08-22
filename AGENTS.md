@@ -12,7 +12,7 @@ Keep the skill portable. Do not write instructions that limit it to one or two a
 
 - `SKILL.md` is the compact routing prompt and source of truth for behavior and metadata.
 - `skills/humanizer-ko/SKILL.md` links to the root skill for Claude Desktop and older plugin loaders. Do not replace the link with a copy or edit it as a separate file.
-- `references/english-patterns.md` preserves upstream's numbered 1-35 patterns and examples. `references/korean-editing.md` contains K1-K10. `references/korean-genres.md` handles genre and edit strength, `references/fidelity-review.md` handles meaning and token preservation, and `references/domain-terminology.md` handles specialist terminology. Their files under `skills/humanizer-ko/references/` are package mirrors and must match exactly.
+- `references/english-patterns.md` preserves upstream's numbered 1-35 patterns and examples. `references/korean-editing.md` contains compact K1-K10 guidance. `references/korean-genres.md` handles genre and edit strength, `references/fidelity-review.md` handles meaning and token preservation, and `references/terminology/` routes specialist terminology by field. Their files under `skills/humanizer-ko/references/` are package mirrors and must match exactly.
 - `README.md` explains installation, use, patterns, and version history in English. `README.ko.md` is the maintained Korean edition; keep its facts, commands, links, and release history aligned with the English README.
 - `.upstream-version` records the upstream release already merged into this fork.
 - `NOTICE.md` records upstream attribution and the scope of the localization.

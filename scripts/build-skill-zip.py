@@ -24,12 +24,21 @@ SOURCES = {
     "humanizer-ko/references/english-patterns.md": ROOT
     / "references"
     / "english-patterns.md",
-    "humanizer-ko/references/domain-terminology.md": ROOT
-    / "references"
-    / "domain-terminology.md",
     "humanizer-ko/LICENSE": ROOT / "LICENSE",
     "humanizer-ko/NOTICE.md": ROOT / "NOTICE.md",
 }
+
+for terminology_name in (
+    "index.md",
+    "science-materials.md",
+    "software-ml.md",
+    "medical-biotech.md",
+    "legal-policy.md",
+    "finance-accounting.md",
+):
+    SOURCES[f"humanizer-ko/references/terminology/{terminology_name}"] = (
+        ROOT / "references" / "terminology" / terminology_name
+    )
 
 
 def build_archive(output: Path) -> None:

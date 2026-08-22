@@ -35,7 +35,7 @@ Decide by the language of the requested output, not by isolated borrowed words.
 - **Fact-dense or high-risk text:** Read [the fidelity review guide](references/fidelity-review.md) when the text contains factual claims, technical tokens, negation, limitations, status, attribution, or other wording that must survive the rewrite. A short casual passage without those constraints does not need it.
 - **Substantial English prose:** Read [the 35 English patterns](references/english-patterns.md) once.
 - **Mixed prose:** Read each language guide only when that language forms a substantial prose span. English product names, code, identifiers, citations, and established technical terms inside Korean text do not trigger the English reference.
-- **Unsettled specialist terminology:** Read [the domain terminology guide](references/domain-terminology.md) only when the task requires choosing or translating a field-specific term. Do not read it merely to preserve terms the source already uses consistently.
+- **Unsettled specialist terminology:** Read [the terminology router](references/terminology/index.md) only when the task requires choosing, translating, correcting, or explaining a field-specific term. Stop when its quick map resolves the term; read a matching field guide only for unresolved detail. Do not load terminology guidance merely to preserve terms the source already uses consistently.
 
 Do not read the same reference more than once in one task.
 

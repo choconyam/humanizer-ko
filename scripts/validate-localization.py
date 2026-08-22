@@ -17,8 +17,19 @@ GUIDE_NAMES = (
     "korean-editing.md",
     "korean-genres.md",
     "fidelity-review.md",
-    "domain-terminology.md",
+    "terminology/index.md",
+    "terminology/science-materials.md",
+    "terminology/software-ml.md",
+    "terminology/medical-biotech.md",
+    "terminology/legal-policy.md",
+    "terminology/finance-accounting.md",
 )
+DIRECT_SKILL_GUIDES = {
+    "korean-editing.md",
+    "korean-genres.md",
+    "fidelity-review.md",
+    "terminology/index.md",
+}
 TRACKED_VERSION = (ROOT / ".upstream-version").read_text(encoding="utf-8").strip()
 
 
@@ -54,11 +65,20 @@ for guide_name in GUIDE_NAMES:
     if not re.search(r"[가-힣]", guide_text):
         fail(f"{guide_name} must contain real Korean examples")
 
-    if f"](references/{guide_name})" not in SKILL:
+    if guide_name in DIRECT_SKILL_GUIDES and f"](references/{guide_name})" not in SKILL:
         fail(f"Link {guide_name} from SKILL.md")
 
     guide_texts.append(guide_text)
     guide_text_by_name[guide_name] = guide_text
+
+terminology_index = guide_text_by_name["terminology/index.md"]
+for guide_name in GUIDE_NAMES:
+    if guide_name.startswith("terminology/") and guide_name != "terminology/index.md":
+        if f"]({Path(guide_name).name})" not in terminology_index:
+            fail(f"Link {guide_name} from the terminology router")
+
+if (ROOT / "references" / "domain-terminology.md").exists():
+    fail("Remove the legacy domain-terminology.md after splitting field guides")
 
 korean_point_numbers = [
     int(number)
@@ -102,6 +122,8 @@ skill_routing_rules = (
     "Context-aware Korean review gate",
     "references/korean-genres.md",
     "references/fidelity-review.md",
+    "references/terminology/index.md",
+    "matching field guide",
     "Preserve tense, modality, negation, scope, attribution, and completion status",
     "Return only the final rewrite",
     "Do not open `SKILL.md` again",

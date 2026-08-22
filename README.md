@@ -29,7 +29,7 @@ Korean text gets a separate set of checkpoints in [`references/korean-editing.md
 | K9 | Make presentation and narration text easy to speak |
 | K10 | Preserve precision in medical, legal, scientific, financial, and policy text |
 
-For substantial English prose, `humanizer-ko` loads the upstream 35-pattern reference. For Korean text, it loads K1-K10, and the Korean checkpoints take priority where the languages differ. English product names, code, citations, and established technical terms inside Korean prose do not trigger the full English reference. The terminology guide loads only when the task actually requires choosing or translating a specialist term.
+For substantial English prose, `humanizer-ko` loads the upstream 35-pattern reference. For Korean text, it loads the compact K1-K10 guide, and the Korean checkpoints take priority where the languages differ. English product names, code, citations, and established technical terms inside Korean prose do not trigger the full English reference. Terminology guidance loads only when a specialist term must be chosen, translated, corrected, or explained: a small router handles common ambiguities, and a field file loads only when more detail is needed.
 
 Longer conditional guidance is split by purpose. [`references/korean-genres.md`](references/korean-genres.md) distinguishes boilerplate from useful courtesy, commitments, safety emphasis, approved marketing, and personal voice. [`references/fidelity-review.md`](references/fidelity-review.md) separates exact tokens from semantic claims and checks status, negation, scope, attribution, limitations, evaluation, and commitment.
 
@@ -156,7 +156,7 @@ It records the source constraints and genre, loads only the references needed fo
 
 It does not invent facts, names, dates, quotes, or citations. Any added detail must come from the source or the writer. It also preserves tense, uncertainty, and completion status so a plan does not become a completed event.
 
-For Korean text, it loads [`references/korean-editing.md`](references/korean-editing.md) once and applies K1-K10 instead of transferring English-specific rules mechanically. K5 phrases are review triggers rather than banned words: the skill keeps justified courtesy, commitments, safety emphasis, approved copy, and personal voice. It reads the genre, fidelity, and terminology guides only when their conditions apply.
+For Korean text, it loads the compact [`references/korean-editing.md`](references/korean-editing.md) once and applies K1-K10 instead of transferring English-specific rules mechanically. K5 phrases are review triggers rather than banned words: the skill keeps justified courtesy, commitments, safety emphasis, approved copy, and personal voice. It reads the genre and fidelity guides only when their conditions apply. Terminology work starts with [`references/terminology/index.md`](references/terminology/index.md); its quick context map handles common collisions, and the matching science, software, medical, legal, or finance guide loads only for unresolved detail.
 
 ### Wikipedia's main point
 
@@ -261,7 +261,7 @@ For Korean text, it loads [`references/korean-editing.md`](references/korean-edi
 - Wikipedia article text is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 - [National Institute of Korean Language norms](https://korean.go.kr/kornorms) - Default reference for Korean spelling, punctuation, and loanword transcription
 - [Standard Korean Language Dictionary](https://stdict.korean.go.kr/) - Standard word forms and meanings
-- Field-specific term sources (the TTA ICT terminology dictionary, the National Law Information Center, and others) are listed in [`references/domain-terminology.md`](references/domain-terminology.md).
+- The terminology router, field guides, and authoritative lookup sources are under [`references/terminology/`](references/terminology/index.md).
 
 ## Upstream maintenance
 
@@ -275,7 +275,7 @@ After the repository is forked, enable GitHub Actions and allow workflows to cre
 
 ### Fork releases
 
-- **v2.11.1-ko.6** - Replaced the lexical pass/fail mindset with a context-aware Korean review. Added separate genre and fidelity guides for edit strength, useful courtesy, official commitments, safety emphasis, personal voice, approved marketing, semantic claim checks, and exact technical tokens. Strengthened specialist terminology routing and preservation while keeping conditional detail out of the main prompt.
+- **v2.11.1-ko.6** - Replaced the lexical pass/fail mindset with a context-aware Korean review. Added separate genre and fidelity guides for edit strength, useful courtesy, official commitments, safety emphasis, personal voice, approved marketing, semantic claim checks, and exact technical tokens. Compacted the always-loaded Korean guide and split terminology into a small router plus science, software, medical, legal, and finance files so only the relevant field loads.
 - **v2.11.1-ko.5** - Refactored the skill after an A/B benchmark. The routing prompt is now compact, the 35 detailed English patterns load only for substantial English prose, and specialist terminology guidance loads only when a term must be chosen or translated. Added a mandatory Korean stock-phrase sweep, final-text-only chat output, and explicit preservation of tense, modality, and completion status.
 - **v2.11.1-ko.4** - Added K8 guidance and an example for breaking long sentences that chain many clauses with commas and connective endings. Broadened K10 from a fixed field list to any field where a wording error causes real harm, and added terminology-table rows so the context-first method reads as field-agnostic. Also cleaned up the post-publication install wording and made the README language-switcher link bold.
 - **v2.11.1-ko.3** - Reorganized the installation guide by agent (Codex, Claude Code, Claude Desktop), added a Korean-edition introduction, bundled LICENSE and NOTICE into the Claude Desktop package, and added the Wikipedia CC BY-SA 4.0 notice plus authoritative Korean terminology references with a single-lookup rule.
