@@ -14,9 +14,9 @@ The 35 upstream Humanizer patterns were written mainly for English. Preserve the
 
 For an ordinary Korean rewrite, focus on three things before the detailed K1-K10 review:
 
-1. Preserve facts and epistemic status, including tense, uncertainty, plans, completion, and validation.
+1. Preserve facts, epistemic status, and the writer's stance, including tense, uncertainty, plans, completion, validation, evaluation, and commitment.
 2. Rebuild translation-like clauses as Korean sentences instead of swapping watched words.
-3. Run the mandatory K5 residue scan immediately before returning the text.
+3. Run the context-aware K5 review immediately before returning the text.
 
 ## Preserve the source
 
@@ -91,7 +91,7 @@ Example:
 
 ## K5. Cut Korean stock AI phrases
 
-Treat the following expressions as review triggers even when only one appears. Remove the framing and keep the actual claim.
+Treat the following expressions as review triggers, not banned words. Review even one occurrence, but change it only when it is generic, unsupported, redundant, or wrong for the genre. Keep the actual claim and the writer's justified stance.
 
 - `단순히 ...를 넘어`, `...에 그치지 않고`
 - `혁신적인`, `획기적인`, `놀라운`, `뛰어난`, `고무적인`, `괄목할 만한`, `무궁무진한`
@@ -104,9 +104,9 @@ Treat the following expressions as review triggers even when only one appears. R
 - Chatbot residue such as `물론입니다!`, `좋은 질문입니다`, `함께 알아볼까요?`, `도움이 되셨기를 바랍니다`, `궁금한 점이 있으시면 언제든지`, `오늘은 ~에 대해 알아보겠습니다`, `오늘은 ~ 결과를 말씀드리겠습니다`, and `이번 발표에서는 ~를 살펴보겠습니다`
 - Repeated `첫째`, `둘째`, `셋째` when the ideas do not need a numbered structure
 
-The fact that a promotional or evaluative phrase appears in the source does not make that framing factual. Before returning the rewrite, search for every item above and close variants. Remove or rewrite each one unless it is inside a direct quote or proper name, attributed to a named source, supported by concrete evidence, necessary as a field term, or required by the requested marketing voice.
+The fact that a promotional or evaluative phrase appears in the source does not make that framing factual. Before returning the rewrite, search for every item above and close variants. Remove or rewrite an item unless it is inside a direct quote or proper name, attributed to a named source, supported by concrete evidence, necessary as a field term, required by approved marketing copy, or serving a clear genre function such as ordinary courtesy, an official commitment, safety emphasis, or deliberate personal voice.
 
-Do not delete a promotional or evaluative word inside a direct quote. Keep sourced judgments when the source clearly names who made them. Do not invent concrete details just to replace a vague modifier.
+Do not delete a sentence merely to make the phrase scan clean. Keep sourced judgments and the direction of the writer's evaluation; lower unsupported intensity without erasing the proposition. Do not replace one stock phrase with a different vague metaphor or generic praise. Do not invent concrete details just to replace a vague modifier. Read [the Korean genre guide](korean-genres.md) when the phrase's function depends on genre.
 
 Examples:
 
@@ -166,6 +166,8 @@ Comma-chained example:
 
 For presentation scripts, lectures, interviews, and video narration:
 
+Read [the Korean genre guide](korean-genres.md) when deciding whether an opening, closing, navigation cue, or audience address is useful rather than boilerplate.
+
 - Prefer sentences that can be spoken in one breath, but do not impose a fixed character limit.
 - Put the main point before a long condition or list.
 - Split dense parentheses and stacked modifiers into a following sentence.
@@ -175,7 +177,7 @@ For presentation scripts, lectures, interviews, and video narration:
 
 ## K10. Handle high-stakes text carefully
 
-Medical, legal, scientific, financial, and policy text are the common examples, but the same care applies to any field where a wording error causes real harm, such as safety engineering, tax and accounting, standards compliance, and pharmacovigilance. For any such text:
+Medical, legal, scientific, financial, and policy text are the common examples, but the same care applies to any field where a wording error causes real harm, such as safety engineering, tax and accounting, standards compliance, and pharmacovigilance. For any such text, read [the fidelity review guide](fidelity-review.md) before returning the draft:
 
 - Preserve caution, scope, population, time range, comparison group, and validation status.
 - Do not replace a precise term with a friendlier but broader word.
@@ -187,10 +189,10 @@ Medical, legal, scientific, financial, and policy text are the common examples, 
 Before returning the rewrite, check that:
 
 1. The register and honorific level are consistent.
-2. No fact, number, citation, technical token, tense, modality, completion status, or uncertainty marker changed.
+2. No fact, number, citation, technical token, tense, modality, completion status, uncertainty marker, evaluation, or commitment changed in meaning.
 3. English-specific rules were not imposed mechanically on Korean sentences.
 4. Word order, subjects, pronouns, passive voice, particles, and connective endings are natural and unambiguous.
-5. Every K5 watch phrase in the final draft is justified by quotation, attribution, evidence, field meaning, or the requested voice; unsupported stock AI phrases and chatbot residue are gone.
+5. Every K5 watch phrase in the final draft is justified by quotation, attribution, evidence, field meaning, genre function, or the requested voice; unsupported stock AI phrases and chatbot residue are gone.
 6. Specialist terms match the field and remain consistent.
 7. Sentence boundaries and quotation marks fit Korean usage; spoken text is easy to say aloud.
 8. High-stakes limits, scope, and uncertainty remain precise.

@@ -13,7 +13,12 @@ SKILL = (ROOT / "SKILL.md").read_text(encoding="utf-8")
 README = (ROOT / "README.md").read_text(encoding="utf-8")
 README_KO = (ROOT / "README.ko.md").read_text(encoding="utf-8")
 NOTICE = (ROOT / "NOTICE.md").read_text(encoding="utf-8")
-GUIDE_NAMES = ("korean-editing.md", "domain-terminology.md")
+GUIDE_NAMES = (
+    "korean-editing.md",
+    "korean-genres.md",
+    "fidelity-review.md",
+    "domain-terminology.md",
+)
 TRACKED_VERSION = (ROOT / ".upstream-version").read_text(encoding="utf-8").strip()
 
 
@@ -94,8 +99,10 @@ skill_routing_rules = (
     "references/english-patterns.md",
     "substantial prose span",
     "Do not read the same reference more than once",
-    "Mandatory Korean residue gate",
-    "Preserve tense, modality, and completion status",
+    "Context-aware Korean review gate",
+    "references/korean-genres.md",
+    "references/fidelity-review.md",
+    "Preserve tense, modality, negation, scope, attribution, and completion status",
     "Return only the final rewrite",
     "Do not open `SKILL.md` again",
 )

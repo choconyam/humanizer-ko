@@ -1,6 +1,15 @@
 # Korean domain terminology
 
-Use this guide when Korean text contains professional, academic, technical, legal, medical, financial, scientific, or industry-specific terms. Its purpose is to prevent awkward literal translations and false synonym changes.
+Use this guide only when the task requires choosing, translating, correcting, or explaining an unsettled specialist term. Do not load it merely because Korean text contains an established English or Korean term that can be preserved unchanged. Its purpose is to prevent awkward literal translations and false synonym changes.
+
+## Separate preservation from terminology work
+
+- **Preservation:** If the source already uses a correct, consistent field term, keep it. Do not replace it merely to make the prose more Korean or to avoid repetition.
+- **Selection:** When the source is inconsistent or offers alternatives, choose one term from the field, document type, and audience.
+- **Translation:** Translate the concept, not the English spelling. Keep English when Korean practitioners normally do or when no stable Korean equivalent exists.
+- **Correction:** Change an established source term only when the user asks for terminology correction or reliable context shows that it is wrong for the field. In an audit, explain the correction briefly.
+
+Do not claim that a term is standard based on fluency alone. When a term choice matters, identify the source term, field, audience, chosen form, and reason internally before rewriting.
 
 ## Choose the term from its context
 
@@ -22,6 +31,7 @@ Do not replace an organization's official term merely because another translatio
 - Keep a common English loanword when professionals use it more naturally than a translated form.
 - If two Korean terms are both established, follow the source, audience, and governing document instead of mixing them for variety.
 - If a reliable choice cannot be made, keep the original term and briefly flag the ambiguity. Do not silently invent a translation.
+- Do not hide a genuine ambiguity by picking the most familiar dictionary meaning. Preserve the original term when two field meanings remain possible.
 - Preserve abbreviations after defining them once. Do not translate API names, code symbols, model names, standards identifiers, or citation keys.
 
 ## Context changes the translation
@@ -71,3 +81,4 @@ Before returning the rewrite, check that:
 3. Korean translation did not broaden, narrow, or change the technical claim.
 4. Official terms, protected tokens, abbreviations, and bilingual definitions remain intact.
 5. Any unresolved ambiguity is visible to the user rather than hidden behind a confident guess.
+6. A correct existing term was not changed merely for stylistic variety or unnecessary Koreanization.

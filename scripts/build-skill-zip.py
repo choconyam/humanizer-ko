@@ -15,6 +15,12 @@ SOURCES = {
     "humanizer-ko/references/korean-editing.md": ROOT
     / "references"
     / "korean-editing.md",
+    "humanizer-ko/references/korean-genres.md": ROOT
+    / "references"
+    / "korean-genres.md",
+    "humanizer-ko/references/fidelity-review.md": ROOT
+    / "references"
+    / "fidelity-review.md",
     "humanizer-ko/references/english-patterns.md": ROOT
     / "references"
     / "english-patterns.md",

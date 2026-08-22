@@ -6,7 +6,7 @@
 
 The original was built around English prose, so applying its dash, quote, and subject rules directly to Korean produces awkward sentences. This Korean edition adds the dedicated checkpoints K1-K10 for the AI patterns that actually appear in Korean writing: translation-like word order, double passives, particles and connective endings, register and honorific level, and Korean chatbot boilerplate.
 
-Use it to make text that started as an AI draft read like the writer: blog posts, reports, and presentation scripts. It does not change facts, numbers, quotes, or terminology. It is an editing aid, not a tool for evading AI detectors.
+Use it to make text that started as an AI draft read like the writer: blog posts, reports, emails, notices, and presentation scripts. It preserves facts, technical material, viewpoint, and intentional voice. It is an editing aid, not a tool for evading AI detectors.
 
 The exact upstream base is recorded in [`.upstream-version`](.upstream-version). See [`NOTICE.md`](NOTICE.md) for attribution and a summary of the local changes.
 
@@ -22,7 +22,7 @@ Korean text gets a separate set of checkpoints in [`references/korean-editing.md
 | K2 | Rebuild translation-like word order |
 | K3 | Handle subjects, pronouns, passive voice, and plurality naturally |
 | K4 | Prefer verbs to abstract noun stacks |
-| K5 | Cut Korean stock AI phrases and chatbot residue |
+| K5 | Review Korean stock AI phrases and chatbot residue in context |
 | K6 | Use particles and connective endings for their actual meaning |
 | K7 | Use field-appropriate terminology and protect technical tokens |
 | K8 | Set Korean sentence boundaries, quotation marks, and rhythm |
@@ -30,6 +30,8 @@ Korean text gets a separate set of checkpoints in [`references/korean-editing.md
 | K10 | Preserve precision in medical, legal, scientific, financial, and policy text |
 
 For substantial English prose, `humanizer-ko` loads the upstream 35-pattern reference. For Korean text, it loads K1-K10, and the Korean checkpoints take priority where the languages differ. English product names, code, citations, and established technical terms inside Korean prose do not trigger the full English reference. The terminology guide loads only when the task actually requires choosing or translating a specialist term.
+
+Longer conditional guidance is split by purpose. [`references/korean-genres.md`](references/korean-genres.md) distinguishes boilerplate from useful courtesy, commitments, safety emphasis, approved marketing, and personal voice. [`references/fidelity-review.md`](references/fidelity-review.md) separates exact tokens from semantic claims and checks status, negation, scope, attribution, limitations, evaluation, and commitment.
 
 Ordinary chat rewrites return only the final text, without a skill announcement or editing preamble. Audit and comparison requests include only the analysis the user asked for.
 
@@ -150,11 +152,11 @@ Now humanize this text:
 
 `humanizer-ko` uses patterns from Wikipedia's ["Signs of AI writing"](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), maintained by WikiProject AI Cleanup.
 
-It records the source constraints, loads only the language reference needed for the passage, rewrites the text, and checks the result once for changed claims and remaining AI patterns.
+It records the source constraints and genre, loads only the references needed for the passage, rewrites the text, and checks the result for changed claims, flattened voice, and remaining AI patterns.
 
 It does not invent facts, names, dates, quotes, or citations. Any added detail must come from the source or the writer. It also preserves tense, uncertainty, and completion status so a plan does not become a completed event.
 
-For Korean text, it loads [`references/korean-editing.md`](references/korean-editing.md) once and applies K1-K10 instead of transferring English-specific rules mechanically. Before returning Korean prose, it runs a mandatory K5 scan for unsupported stock phrases. It reads [`references/domain-terminology.md`](references/domain-terminology.md) only when terminology is unsettled, then selects the term by field, governing source, document type, and audience.
+For Korean text, it loads [`references/korean-editing.md`](references/korean-editing.md) once and applies K1-K10 instead of transferring English-specific rules mechanically. K5 phrases are review triggers rather than banned words: the skill keeps justified courtesy, commitments, safety emphasis, approved copy, and personal voice. It reads the genre, fidelity, and terminology guides only when their conditions apply.
 
 ### Wikipedia's main point
 
@@ -273,6 +275,7 @@ After the repository is forked, enable GitHub Actions and allow workflows to cre
 
 ### Fork releases
 
+- **v2.11.1-ko.6** - Replaced the lexical pass/fail mindset with a context-aware Korean review. Added separate genre and fidelity guides for edit strength, useful courtesy, official commitments, safety emphasis, personal voice, approved marketing, semantic claim checks, and exact technical tokens. Strengthened specialist terminology routing and preservation while keeping conditional detail out of the main prompt.
 - **v2.11.1-ko.5** - Refactored the skill after an A/B benchmark. The routing prompt is now compact, the 35 detailed English patterns load only for substantial English prose, and specialist terminology guidance loads only when a term must be chosen or translated. Added a mandatory Korean stock-phrase sweep, final-text-only chat output, and explicit preservation of tense, modality, and completion status.
 - **v2.11.1-ko.4** - Added K8 guidance and an example for breaking long sentences that chain many clauses with commas and connective endings. Broadened K10 from a fixed field list to any field where a wording error causes real harm, and added terminology-table rows so the context-first method reads as field-agnostic. Also cleaned up the post-publication install wording and made the README language-switcher link bold.
 - **v2.11.1-ko.3** - Reorganized the installation guide by agent (Codex, Claude Code, Claude Desktop), added a Korean-edition introduction, bundled LICENSE and NOTICE into the Claude Desktop package, and added the Wikipedia CC BY-SA 4.0 notice plus authoritative Korean terminology references with a single-lookup rule.
