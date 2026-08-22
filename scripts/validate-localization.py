@@ -69,6 +69,10 @@ korean_coverage_terms = (
     "되어지다",
     "~하는 데 도움이 됩니다",
     "도움이 되셨기를 바랍니다",
+    "센터는 다음 달 문을 열 예정입니다",
+    "놀라운",
+    "고무적인",
+    "오늘은 ~ 결과를 말씀드리겠습니다",
     "~할 수 있습니다",
     "「 」",
     "『 』",
@@ -85,17 +89,18 @@ if missing_korean_coverage:
     )
 
 skill_routing_rules = (
-    "mainly for English",
+    "Load only the needed reference",
     "K1-K10",
-    "Identify the language of each span",
-    "In Korean, use K2 and K8",
-    "In Korean, subject omission is normal",
-    "For Korean, do not treat these marks as a blanket error",
-    "For Korean, use K8 and the target publication style",
-    "For Korean, use K5 to remove equivalent greetings",
+    "references/english-patterns.md",
+    "substantial prose span",
+    "Do not read the same reference more than once",
+    "Mandatory Korean residue gate",
+    "Preserve tense, modality, and completion status",
+    "Return only the final rewrite",
+    "Do not open `SKILL.md` again",
 )
 if any(rule not in SKILL for rule in skill_routing_rules):
-    fail("SKILL.md must route the 35 patterns and rewrite process by language")
+    fail("SKILL.md must route references, preserve status, and return concise output")
 
 if (
     "blader/humanizer" not in NOTICE

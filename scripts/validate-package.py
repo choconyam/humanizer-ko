@@ -11,6 +11,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SKILL = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+ENGLISH_PATTERNS = (ROOT / "references" / "english-patterns.md").read_text(
+    encoding="utf-8"
+)
 README = (ROOT / "README.md").read_text(encoding="utf-8")
 AGENTS = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
 OPENAI_AGENT = (ROOT / "agents" / "openai.yaml").read_text(encoding="utf-8")
@@ -19,6 +22,9 @@ MARKETPLACE = json.loads(
     (ROOT / ".claude-plugin" / "marketplace.json").read_text(encoding="utf-8")
 )
 PLUGIN_SKILL = ROOT / "skills" / "humanizer-ko" / "SKILL.md"
+PLUGIN_ENGLISH_PATTERNS = (
+    ROOT / "skills" / "humanizer-ko" / "references" / "english-patterns.md"
+)
 
 
 def require_match(match: re.Match[str] | None, message: str) -> re.Match[str]:
@@ -97,6 +103,12 @@ if (
 if not plugin_skill_is_linked:
     raise SystemExit("Link skills/humanizer-ko/SKILL.md to the root SKILL.md")
 
+if ENGLISH_PATTERNS != PLUGIN_ENGLISH_PATTERNS.read_text(encoding="utf-8"):
+    raise SystemExit("Keep both copies of english-patterns.md byte-for-byte identical")
+
+if "](references/english-patterns.md)" not in SKILL:
+    raise SystemExit("Link the English pattern reference from SKILL.md")
+
 plain_language_rules = (
     "## Writing style",
     "Lead with the main point.",
@@ -116,10 +128,15 @@ if missing_plain_language_rules:
 
 pattern_numbers = [
     int(number)
-    for number in re.findall(r"(?m)^### ([0-9]+)\. ", SKILL)
+    for number in re.findall(r"(?m)^### ([0-9]+)\. ", ENGLISH_PATTERNS)
 ]
 if pattern_numbers != list(range(1, 36)):
-    raise SystemExit(f"Number SKILL.md patterns from 1 through 35: {pattern_numbers}")
+    raise SystemExit(
+        f"Number english-patterns.md patterns from 1 through 35: {pattern_numbers}"
+    )
+
+if re.search(r"(?m)^### ([0-9]+)\. ", SKILL):
+    raise SystemExit("Keep detailed English patterns out of the routing SKILL.md")
 
 readme_numbers = {
     int(number) for number in re.findall(r"(?m)^\| ([0-9]+) \|", README)
@@ -127,7 +144,7 @@ readme_numbers = {
 if readme_numbers != set(range(1, 36)):
     raise SystemExit("List patterns 1 through 35 in the README table")
 
-if len(SKILL.splitlines()) > 500:
-    raise SystemExit("Keep SKILL.md at 500 lines or fewer")
+if len(SKILL.splitlines()) > 180:
+    raise SystemExit("Keep the routing SKILL.md at 180 lines or fewer")
 
 print(f"humanizer-ko package v{skill_version} is valid")

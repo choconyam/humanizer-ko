@@ -10,12 +10,23 @@ The 35 upstream Humanizer patterns were written mainly for English. Preserve the
 - In a mixed-language document, evaluate each span in its language while keeping facts, terminology, and document-level voice consistent.
 - When the writer's sample and the target style guide do not settle spelling, spacing, or punctuation, follow the National Institute of Korean Language norms (한국어 어문 규범, https://korean.go.kr/kornorms).
 
+## High-priority pass
+
+For an ordinary Korean rewrite, focus on three things before the detailed K1-K10 review:
+
+1. Preserve facts and epistemic status, including tense, uncertainty, plans, completion, and validation.
+2. Rebuild translation-like clauses as Korean sentences instead of swapping watched words.
+3. Run the mandatory K5 residue scan immediately before returning the text.
+
 ## Preserve the source
 
 - Keep every fact, number, unit, date, name, quote, citation, URL, identifier, and technical limitation.
+- Keep tense, aspect, modality, and completion status. Preserve distinctions such as `예정이다` versus `완료했다`, `가능성이 있다` versus `확인됐다`, and `제안했다` versus `도입했다`.
 - Do not turn a correlation into causation, a prototype into a finished product, or a preliminary result into a verified claim.
 - Keep explicit uncertainty such as `가능성이 있습니다`, `검증이 필요합니다`, and `임상 성능을 의미하지 않습니다` when the source needs it.
 - Do not add local examples, personal experience, or supporting evidence unless the user supplied them.
+
+If the source says `센터는 다음 달 문을 열 예정입니다`, do not strengthen it to `센터는 다음 달 문을 엽니다`. Naturalness never justifies changing a plan into a settled event.
 
 ## K1. Keep one register and honorific level
 
@@ -80,26 +91,32 @@ Example:
 
 ## K5. Cut Korean stock AI phrases
 
-Watch for clusters, not single words. Remove the framing and keep the actual claim.
+Treat the following expressions as review triggers even when only one appears. Remove the framing and keep the actual claim.
 
 - `단순히 ...를 넘어`, `...에 그치지 않고`
-- `혁신적인`, `획기적인`, `괄목할 만한`, `무궁무진한`
+- `혁신적인`, `획기적인`, `놀라운`, `뛰어난`, `고무적인`, `괄목할 만한`, `무궁무진한`
 - `새로운 패러다임을 제시합니다`, `중요한 시사점을 제공합니다`
 - `앞으로의 귀추가 주목됩니다`, `밝은 미래가 기대됩니다`
 - `오늘날 빠르게 변화하는 환경에서`, `현대 사회에서 그 중요성이 커지고 있습니다`
 - Unsupported or repeated `다양한`, `해당`, `성공적으로`, `효과적으로`, `~를 자랑합니다`, and `~에 자리 잡은`
 - `결론적으로`, `요약하자면`, `~라고 해도 과언이 아니다`, and paragraph-closing `이처럼` or `이렇듯` that only restate the previous sentence
 - Repeated `~할 수 있습니다` when the sentence states an ordinary action rather than a real capability, permission, or uncertainty
-- Chatbot residue such as `물론입니다!`, `좋은 질문입니다`, `함께 알아볼까요?`, `도움이 되셨기를 바랍니다`, `궁금한 점이 있으시면 언제든지`, and `오늘은 ~에 대해 알아보겠습니다`
+- Chatbot residue such as `물론입니다!`, `좋은 질문입니다`, `함께 알아볼까요?`, `도움이 되셨기를 바랍니다`, `궁금한 점이 있으시면 언제든지`, `오늘은 ~에 대해 알아보겠습니다`, `오늘은 ~ 결과를 말씀드리겠습니다`, and `이번 발표에서는 ~를 살펴보겠습니다`
 - Repeated `첫째`, `둘째`, `셋째` when the ideas do not need a numbered structure
 
-Do not delete a promotional or evaluative word inside a direct quote. Keep sourced judgments when the source clearly names who made them.
+The fact that a promotional or evaluative phrase appears in the source does not make that framing factual. Before returning the rewrite, search for every item above and close variants. Remove or rewrite each one unless it is inside a direct quote or proper name, attributed to a named source, supported by concrete evidence, necessary as a field term, or required by the requested marketing voice.
 
-Example:
+Do not delete a promotional or evaluative word inside a direct quote. Keep sourced judgments when the source clearly names who made them. Do not invent concrete details just to replace a vague modifier.
+
+Examples:
 
 > 물론입니다! 다음은 요청하신 요약입니다. 이 실험은 20개 샘플을 사용했습니다. 도움이 되셨기를 바랍니다.
 
 > 이 실험은 20개 샘플을 사용했습니다.
+
+> 이 혁신적인 플랫폼은 예약·결제·알림 기능을 성공적으로 제공하며 무궁무진한 가능성을 보여줍니다.
+
+> 이 플랫폼은 예약, 결제, 알림 기능을 제공합니다.
 
 ## K6. Use particles and connective endings for meaning
 
@@ -153,7 +170,7 @@ For presentation scripts, lectures, interviews, and video narration:
 - Put the main point before a long condition or list.
 - Split dense parentheses and stacked modifiers into a following sentence.
 - Keep slide numbers, figure references, and transition cues that help the presenter navigate.
-- Remove report-like throat-clearing such as `이번 발표에서는 ...에 대해 살펴보도록 하겠습니다` when the next sentence can start with the topic.
+- Remove report-like throat-clearing such as `오늘은 ...에 대해 알아보겠습니다`, `오늘은 ... 결과를 말씀드리겠습니다`, and `이번 발표에서는 ...를 살펴보겠습니다` when the next sentence can start with the topic. Keep `오늘은` when it refers to the actual date or contrasts today with another time.
 - Read the result aloud mentally and fix tongue-twisting repetitions or abrupt register changes.
 
 ## K10. Handle high-stakes text carefully
@@ -170,10 +187,10 @@ Medical, legal, scientific, financial, and policy text are the common examples, 
 Before returning the rewrite, check that:
 
 1. The register and honorific level are consistent.
-2. No fact, number, citation, technical token, or uncertainty marker changed.
+2. No fact, number, citation, technical token, tense, modality, completion status, or uncertainty marker changed.
 3. English-specific rules were not imposed mechanically on Korean sentences.
 4. Word order, subjects, pronouns, passive voice, particles, and connective endings are natural and unambiguous.
-5. Abstract noun stacks, Korean stock AI phrases, and chatbot residue are not repeated mechanically.
+5. Every K5 watch phrase in the final draft is justified by quotation, attribution, evidence, field meaning, or the requested voice; unsupported stock AI phrases and chatbot residue are gone.
 6. Specialist terms match the field and remain consistent.
 7. Sentence boundaries and quotation marks fit Korean usage; spoken text is easy to say aloud.
 8. High-stakes limits, scope, and uncertainty remain precise.

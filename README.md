@@ -12,7 +12,7 @@ The exact upstream base is recorded in [`.upstream-version`](.upstream-version).
 
 ## Korean and Codex localization
 
-This fork keeps upstream's 35 writing patterns because it still edits English and mixed-language documents. Those patterns were written mainly for English. Korean work uses their language-independent ideas, but it does not apply English grammar, word order, capitalization, dash, quote, or hyphen rules mechanically.
+This fork preserves upstream's 35 writing patterns in [`references/english-patterns.md`](references/english-patterns.md) because it still edits English and mixed-language documents. It loads those details only for substantial English prose. Korean work uses their language-independent ideas, but it does not apply English grammar, word order, capitalization, dash, quote, or hyphen rules mechanically.
 
 Korean text gets a separate set of checkpoints in [`references/korean-editing.md`](references/korean-editing.md):
 
@@ -29,9 +29,9 @@ Korean text gets a separate set of checkpoints in [`references/korean-editing.md
 | K9 | Make presentation and narration text easy to speak |
 | K10 | Preserve precision in medical, legal, scientific, financial, and policy text |
 
-For English text, `humanizer-ko` uses the upstream 35 patterns. For Korean text, it combines the language-independent upstream patterns with K1-K10, and the Korean checkpoints take priority where the languages differ. For mixed-language documents, it evaluates each span in its language while keeping facts, terminology, and the document-level voice consistent.
+For substantial English prose, `humanizer-ko` loads the upstream 35-pattern reference. For Korean text, it loads K1-K10, and the Korean checkpoints take priority where the languages differ. English product names, code, citations, and established technical terms inside Korean prose do not trigger the full English reference. The terminology guide loads only when the task actually requires choosing or translating a specialist term.
 
-Ordinary chat rewrites return the final text first. Audit and comparison requests still include the draft, remaining-pattern check, and final rewrite.
+Ordinary chat rewrites return only the final text, without a skill announcement or editing preamble. Audit and comparison requests include only the analysis the user asked for.
 
 ## Installation
 
@@ -84,7 +84,7 @@ Run the plugin-installed skill with `/humanizer-ko:humanizer-ko`. The plugin lin
 
 Download [`humanizer-ko-skill.zip`](https://github.com/choconyam/humanizer-ko/releases/latest/download/humanizer-ko-skill.zip) from the latest release when you install or replace this edition through the Claude Desktop GUI.
 
-Do not use GitHub's **Code > Download ZIP** archive for this. The source archive contains the plugin's internal symbolic link, which Claude Desktop rejects. The release package contains regular files for the skill, its Korean editing guide, and the license notices.
+Do not use GitHub's **Code > Download ZIP** archive for this. The source archive contains the plugin's internal symbolic link, which Claude Desktop rejects. The release package contains regular files for the skill, all reference guides, and the license notices.
 
 ### Other agents and updates
 
@@ -150,11 +150,11 @@ Now humanize this text:
 
 `humanizer-ko` uses patterns from Wikipedia's ["Signs of AI writing"](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), maintained by WikiProject AI Cleanup.
 
-It drafts a rewrite, checks the draft for remaining AI patterns and changed claims, then writes the final version.
+It records the source constraints, loads only the language reference needed for the passage, rewrites the text, and checks the result once for changed claims and remaining AI patterns.
 
-It does not invent facts, names, dates, quotes, or citations. Any added detail must come from the source or the writer.
+It does not invent facts, names, dates, quotes, or citations. Any added detail must come from the source or the writer. It also preserves tense, uncertainty, and completion status so a plan does not become a completed event.
 
-For Korean text, it loads [`references/korean-editing.md`](references/korean-editing.md) and applies K1-K10 instead of transferring English-specific rules mechanically. Technical and specialist text also uses [`references/domain-terminology.md`](references/domain-terminology.md) to select terminology by field, governing source, document type, and audience instead of translating words mechanically.
+For Korean text, it loads [`references/korean-editing.md`](references/korean-editing.md) once and applies K1-K10 instead of transferring English-specific rules mechanically. Before returning Korean prose, it runs a mandatory K5 scan for unsupported stock phrases. It reads [`references/domain-terminology.md`](references/domain-terminology.md) only when terminology is unsettled, then selects the term by field, governing source, document type, and audience.
 
 ### Wikipedia's main point
 
@@ -273,6 +273,7 @@ After the repository is forked, enable GitHub Actions and allow workflows to cre
 
 ### Fork releases
 
+- **v2.11.1-ko.5** - Refactored the skill after an A/B benchmark. The routing prompt is now compact, the 35 detailed English patterns load only for substantial English prose, and specialist terminology guidance loads only when a term must be chosen or translated. Added a mandatory Korean stock-phrase sweep, final-text-only chat output, and explicit preservation of tense, modality, and completion status.
 - **v2.11.1-ko.4** - Added K8 guidance and an example for breaking long sentences that chain many clauses with commas and connective endings. Broadened K10 from a fixed field list to any field where a wording error causes real harm, and added terminology-table rows so the context-first method reads as field-agnostic. Also cleaned up the post-publication install wording and made the README language-switcher link bold.
 - **v2.11.1-ko.3** - Reorganized the installation guide by agent (Codex, Claude Code, Claude Desktop), added a Korean-edition introduction, bundled LICENSE and NOTICE into the Claude Desktop package, and added the Wikipedia CC BY-SA 4.0 notice plus authoritative Korean terminology references with a single-lookup rule.
 - **v2.11.1-ko.2** - Added Korean passive and double-passive handling, literal translation verbs, Korean chatbot residue and stock phrases, K3-K6 and K8 before/after examples, and Korean quotation-mark exceptions.
