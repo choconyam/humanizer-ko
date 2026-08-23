@@ -51,7 +51,7 @@ Rewrite the passage as a whole instead of replacing watched words one by one.
 
 ## Context-aware Korean review gate
 
-Before returning Korean prose, run the K5 review in the Korean guide. Rewrite an expression only when it is generic, unsupported, redundant, or mismatched to the genre. Keep it when it carries a quote, approved copy, evidence, attribution, technical meaning, ordinary courtesy, an official promise, safety emphasis, or deliberate personal voice.
+Before returning Korean prose, run the K5 review in the Korean guide. Rewrite an expression only when it is generic, unsupported, redundant, or mismatched to the genre. Keep it when it carries a quote, approved copy, evidence, attribution, technical meaning, ordinary courtesy, an official promise tied to a concrete action, safety emphasis, or deliberate personal voice. Resolve or optimism with no action or claim behind it is decoration, not a commitment: state the measure or end on the last concrete fact.
 
 Do not pass a phrase scan by deleting the sentence that contains it. Preserve the concrete claim and the writer's stance. A clean lexical scan is not more important than fidelity.
 

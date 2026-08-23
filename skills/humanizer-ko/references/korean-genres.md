@@ -58,6 +58,8 @@ Possible balanced rewrite:
 
 If the source also states who holds the view, preserve that attribution. If the evaluation is approved copy, retain the approved wording. If it is unsupported but central to the writer's stance, lower its certainty instead of deleting the proposition. If it is unsupported and merely decorative, delete the evaluation itself; replacing it with a milder synonym keeps the same problem.
 
+A commitment is the action it promises, not the emotion around it. When a closing only reaffirms determination or paints a brighter future, replace it with the concrete measure the source states, or end on the last fact. Poetic decoration (`깊은 울림`, `다채로운 영감`) counts as personal voice only when the writer's own perspective carries it; in an institutional briefing it is promotional filler.
+
 ## Keep useful politeness
 
 Korean politeness is not the same as chatbot residue.

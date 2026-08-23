@@ -57,7 +57,7 @@ Treat these as review triggers, not banned words:
 - Chatbot residue such as `물론입니다!`, `좋은 질문입니다`, `도움이 되셨기를 바랍니다`, `궁금한 점이 있으시면 언제든지`, `오늘은 ~ 결과를 말씀드리겠습니다`
 - Repeated `첫째`, `둘째`, `셋째` when the structure is not useful
 
-Rewrite a trigger only when it is generic, unsupported, redundant, or wrong for the genre. Keep it when it is a direct quote, proper name, supported or attributed evaluation, field term, approved copy, ordinary courtesy, official commitment, safety emphasis, or deliberate personal voice.
+Rewrite a trigger only when it is generic, unsupported, redundant, or wrong for the genre. Keep it when it is a direct quote, proper name, supported or attributed evaluation, field term, approved copy, ordinary courtesy, an official commitment that names a concrete action, safety emphasis, or deliberate personal voice. Formulaic resolve or vision closings — `확고한 의지`, `더 나은 ~를 만들어가겠습니다` with no concrete measure — are decoration, not commitments: state the action or end on the last fact.
 
 Apply a deletion test before rewording a flagged evaluation: if removing it costs no verifiable information and no stance the writer needs, delete it instead of softening it. `놀라운 잠재력` → `주목할 만한 잠재력` and `귀중한 인사이트` → `의미 있는 단서` launder the cliché rather than fix it.
 
