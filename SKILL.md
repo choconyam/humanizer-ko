@@ -8,7 +8,7 @@ description: |
   "Signs of AI writing."
 license: MIT
 metadata:
-  version: "2.11.1-ko.5"
+  version: "2.11.1-ko.6"
 ---
 
 # humanizer-ko
@@ -21,7 +21,7 @@ The host has already loaded this file. Do not open `SKILL.md` again during the t
 
 1. Preserve every fact, number, unit, date, name, quote, citation, URL, identifier, and technical limitation.
 2. Preserve tense, modality, negation, scope, attribution, and completion status. Do not turn *planned* into *completed*, *may* into *does*, correlation into causation, a prototype into a product, or a preliminary result into a verified claim.
-3. Preserve the source's viewpoint, evaluation, emotion, commitment, and degree of certainty. Lower unsupported intensity without deleting the underlying proposition or making the writer sound indifferent.
+3. Preserve the source's viewpoint, evaluation, emotion, commitment, and degree of certainty. Lower unsupported intensity without deleting the underlying proposition or making the writer sound indifferent. This protects propositions, not decoration: when an unsupported evaluative modifier adds no claim the text needs, delete the modifier instead of swapping in a softer synonym.
 4. Do not invent support, examples, opinions, experiences, or specifics. Fiction is exempt because invention is the task.
 5. Match the source's genre, register, and writing sample. A supplied sample overrides general style preferences unless it conflicts with accuracy or the user's explicit request.
 6. Keep code blocks, commands, paths, schema fields, link targets, product names, approved copy, and established technical tokens unchanged unless the user asks to edit them.
@@ -67,7 +67,8 @@ Do not pass a phrase scan by deleting the sentence that contains it. Preserve th
 1. Record hard constraints and the source's genre, stance, and intended edit strength. Use a balanced edit unless the user requests lighter or stronger intervention; accuracy always wins.
 2. Load only the references selected above and rewrite the passage as a whole.
 3. Compare the draft with the source. Check hard tokens, claims, status, limitations, stance, and justified K5 phrases.
-4. Return the result under the output contract. Do not narrate these steps.
+4. Compress the checked draft in a pass whose only job is cutting. Remove leftover filler, decorative evaluations, and duplicated courtesy, transitions, or emphasis. Do not cut facts, numbers, quotes, terms, commitments, or required caution. If the rewrite is longer than the source, justify each addition or remove it.
+5. Return the result under the output contract. Do not narrate these steps.
 
 ## Source
 

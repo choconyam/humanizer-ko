@@ -56,7 +56,7 @@ Possible balanced rewrite:
 
 > 이 결과는 현장 적용 가능성을 보여줍니다.
 
-If the source also states who holds the view, preserve that attribution. If the evaluation is approved copy, retain the approved wording. If it is unsupported but central to the writer's stance, lower its certainty instead of deleting the proposition.
+If the source also states who holds the view, preserve that attribution. If the evaluation is approved copy, retain the approved wording. If it is unsupported but central to the writer's stance, lower its certainty instead of deleting the proposition. If it is unsupported and merely decorative, delete the evaluation itself; replacing it with a milder synonym keeps the same problem.
 
 ## Keep useful politeness
 
@@ -64,6 +64,7 @@ Korean politeness is not the same as chatbot residue.
 
 - Keep the honorific level appropriate to the relationship.
 - Preserve a greeting or closing when it performs a normal social function.
+- When several expressions perform the same courtesy function, keep the one the relationship requires. One act of thanks is usually enough.
 - Remove ceremonial praise that buries the request.
 - Do not make a request harsher merely to shorten it.
 - Do not add courtesy that the source does not contain when the genre calls for a direct instruction.

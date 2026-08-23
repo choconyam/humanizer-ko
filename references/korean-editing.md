@@ -59,7 +59,11 @@ Treat these as review triggers, not banned words:
 
 Rewrite a trigger only when it is generic, unsupported, redundant, or wrong for the genre. Keep it when it is a direct quote, proper name, supported or attributed evaluation, field term, approved copy, ordinary courtesy, official commitment, safety emphasis, or deliberate personal voice.
 
-Do not delete the sentence to pass the scan. Preserve the proposition and stance, and do not replace one stock phrase with another vague metaphor. Read [the Korean genre guide](korean-genres.md) when the phrase's function depends on genre.
+Apply a deletion test before rewording a flagged evaluation: if removing it costs no verifiable information and no stance the writer needs, delete it instead of softening it. `놀라운 잠재력` → `주목할 만한 잠재력` and `귀중한 인사이트` → `의미 있는 단서` launder the cliché rather than fix it.
+
+One function, one expression. When several phrases perform the same social or structural function — thanks, apology, softened request, greeting, closing, transition — keep the single expression the relationship and genre require and cut the rest. A polite email usually needs one act of thanks, not three.
+
+Do not delete the sentence to pass the scan. Preserve the proposition and stance, and do not replace one stock phrase with another vague metaphor or a softer synonym. Read [the Korean genre guide](korean-genres.md) when the phrase's function depends on genre.
 
 ## K6. Use particles and connective endings for meaning
 
@@ -104,3 +108,4 @@ Check that:
 5. Every remaining K5 trigger has a clear reason.
 6. Specialist terms remain correct and consistent.
 7. Sentence boundaries and quotation marks fit Korean usage.
+8. No flagged phrase was replaced with a softer synonym, no courtesy function appears twice, and the rewrite is not longer than the source without a reason.
