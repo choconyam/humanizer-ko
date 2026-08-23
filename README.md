@@ -63,12 +63,13 @@ Install globally with the Skills CLI. The skill lands in `~/.claude/skills/human
 npx skills add choconyam/humanizer-ko --global --agent claude-code
 ```
 
-To install manually, copy `SKILL.md` and the reference guides:
+To install manually, copy `SKILL.md`, the reference guides, and the optional checker:
 
 ```bash
-mkdir -p ~/.claude/skills/humanizer-ko/references
+mkdir -p ~/.claude/skills/humanizer-ko/scripts
 cp SKILL.md ~/.claude/skills/humanizer-ko/
-cp references/*.md ~/.claude/skills/humanizer-ko/references/
+cp -R references ~/.claude/skills/humanizer-ko/
+cp scripts/check-rewrite.py ~/.claude/skills/humanizer-ko/scripts/
 ```
 
 In Claude Code, run the skill with `/humanizer-ko` or ask in natural language.
@@ -275,6 +276,7 @@ After the repository is forked, enable GitHub Actions and allow workflows to cre
 
 ### Fork releases
 
+- **v2.11.1-ko.7** - Added the optional deterministic checker `check-rewrite.py`. After a rewrite it verifies that the source's numbers, quoted spans, and technical tokens survived, lists leftover stock phrases, and flags growth in length, all without a model call. Environments that cannot run scripts keep working with the checklists alone. Also fixed the manual install commands to copy the reference subfolders.
 - **v2.11.1-ko.6** - Reinforced three weaknesses found by the benchmark. Added a deletion test that stops laundering unsupported evaluations into softer synonyms, a one-function-one-expression rule for stacked thanks, greetings, and hedged courtesy, and a final compression pass that cuts filler while keeping facts, quotes, and commitments. A rewrite longer than its source now needs a reason for each addition.
 - **v2.11.1-ko.5** - Compacted the routing prompt and core Korean K1-K10 guide after an A/B benchmark. The 35 detailed English patterns now load only for substantial English prose, while a small context router selects only the needed science, software, medical, legal, or finance terminology guide. Replaced lexical pass/fail checks with context-aware Korean review and added genre guidance that preserves ordinary courtesy, official commitments, safety emphasis, personal voice, and approved marketing copy. Added a fidelity review for facts and meaning: it keeps dates, numbers, units, quotations, sources, and technical terms exact, then checks that negation, conditions, exceptions, scope, tense, uncertainty, causality, validation status, planned or completed state, and field-specific limitations have not changed. Ordinary rewrites now return only the finished text without extra explanation.
 - **v2.11.1-ko.4** - Added K8 guidance and an example for breaking long sentences that chain many clauses with commas and connective endings. Broadened K10 from a fixed field list to any field where a wording error causes real harm, and added terminology-table rows so the context-first method reads as field-agnostic. Also cleaned up the post-publication install wording and made the README language-switcher link bold.

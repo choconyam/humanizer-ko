@@ -26,6 +26,7 @@ SOURCES = {
     / "english-patterns.md",
     "humanizer-ko/LICENSE": ROOT / "LICENSE",
     "humanizer-ko/NOTICE.md": ROOT / "NOTICE.md",
+    "humanizer-ko/scripts/check-rewrite.py": ROOT / "scripts" / "check-rewrite.py",
 }
 
 for terminology_name in (

@@ -18,6 +18,7 @@ Keep the skill portable. Do not write instructions that limit it to one or two a
 - `NOTICE.md` records upstream attribution and the scope of the localization.
 - `.claude-plugin/plugin.json` describes the Claude plugin.
 - `.claude-plugin/marketplace.json` lets users add this repo as a Claude marketplace.
+- `scripts/check-rewrite.py` is the optional deterministic rewrite check that ships with the skill. It must stay dependency-free and safe to skip.
 - `scripts/build-skill-zip.py` builds the symlink-free archive for Claude Desktop uploads.
 - `scripts/validate-package.py` checks package files and shared values.
 - `scripts/validate-localization.py` checks the Korean guide, attribution, tracked upstream release, and package mirror.
