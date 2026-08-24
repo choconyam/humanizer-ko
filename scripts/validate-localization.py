@@ -11,7 +11,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SKILL = (ROOT / "SKILL.md").read_text(encoding="utf-8")
 README = (ROOT / "README.md").read_text(encoding="utf-8")
-README_KO = (ROOT / "README.ko.md").read_text(encoding="utf-8")
 NOTICE = (ROOT / "NOTICE.md").read_text(encoding="utf-8")
 GUIDE_NAMES = (
     "korean-editing.md",
@@ -138,37 +137,32 @@ if (
 ):
     fail("NOTICE.md must preserve attribution and identify the Korean checkpoints")
 
-if ".upstream-version" not in README or ".upstream-version" not in README_KO:
-    fail("Both README editions must identify .upstream-version as the source of truth")
+if ".upstream-version" not in README:
+    fail("README.md must identify .upstream-version as the source of truth")
 
-if "](README.ko.md)" not in README or "](README.md)" not in README_KO:
-    fail("Link the English and Korean README editions to each other")
+if not re.search(r"[가-힣]", README):
+    fail("README.md must contain Korean text")
 
-if not re.search(r"[가-힣]", README_KO):
-    fail("README.ko.md must contain Korean text")
+if "blader/humanizer" not in README or "비공식" not in README:
+    fail("README.md must identify the upstream project and unofficial fork status")
 
-if "blader/humanizer" not in README_KO or "비공식" not in README_KO:
-    fail("README.ko.md must identify the upstream project and unofficial fork status")
-
-for readme_name, readme_text in (("README.md", README), ("README.ko.md", README_KO)):
-    if "choconyam/humanizer-ko" not in readme_text or "$humanizer-ko" not in readme_text:
-        fail(f"{readme_name} must use the planned humanizer-ko repository and skill ID")
+if "choconyam/humanizer-ko" not in README or "$humanizer-ko" not in README:
+    fail("README.md must use the humanizer-ko repository and skill ID")
 
 korean_readme_numbers = {
-    int(number) for number in re.findall(r"(?m)^\| ([0-9]+) \|", README_KO)
+    int(number) for number in re.findall(r"(?m)^\| ([0-9]+) \|", README)
 }
 if korean_readme_numbers != set(range(1, 36)):
-    fail("README.ko.md must list patterns 1 through 35")
+    fail("README.md must list patterns 1 through 35")
 
-for readme_name, readme_text in (("README.md", README), ("README.ko.md", README_KO)):
-    readme_korean_points = {
-        int(number) for number in re.findall(r"(?m)^\| K([0-9]+) \|", readme_text)
-    }
-    if readme_korean_points != set(range(1, 11)):
-        fail(f"{readme_name} must list Korean checkpoints K1 through K10")
+readme_korean_points = {
+    int(number) for number in re.findall(r"(?m)^\| K([0-9]+) \|", README)
+}
+if readme_korean_points != set(range(1, 11)):
+    fail("README.md must list Korean checkpoints K1 through K10")
 
-if TRACKED_VERSION.removeprefix("v") not in README_KO:
-    fail("README.ko.md must mention the tracked upstream release")
+if TRACKED_VERSION.removeprefix("v") not in README:
+    fail("README.md must mention the tracked upstream release")
 
 license_at_tag = subprocess.run(
     ["git", "show", f"{TRACKED_VERSION}:LICENSE"],
@@ -184,7 +178,7 @@ current_license = (ROOT / "LICENSE").read_text(encoding="utf-8").replace("\r\n",
 if current_license != license_at_tag.stdout.replace("\r\n", "\n"):
     fail("Keep LICENSE identical to the tracked upstream release")
 
-public_text = "\n".join((SKILL, README, README_KO, NOTICE, *guide_texts))
+public_text = "\n".join((SKILL, README, NOTICE, *guide_texts))
 if re.search(r"(?i)[a-z]:\\users\\", public_text):
     fail("Remove personal Windows paths before publishing")
 
