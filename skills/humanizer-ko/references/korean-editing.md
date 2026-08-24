@@ -39,6 +39,7 @@ If the source says `센터는 다음 달 문을 열 예정입니다`, do not str
 
 - `검토를 진행하다` usually becomes `검토하다`.
 - Turn repeated `가능성`, `중요성`, `필요성`, `효율성`, and `연관성` into concrete predicates when meaning stays the same.
+- A repeated middle-dot chain that joins three or more nouns (`사실·수치·인용` style) signals a noun stack. Keep it where the genre expects it — official notices, headlines, technical specifications — and otherwise trim the list or unfold it into a sentence.
 - Keep a noun when it is a defined concept or when changing it would strengthen the claim.
 - Do not shorten a sentence by deleting its interpretation, instruction, or commitment.
 
