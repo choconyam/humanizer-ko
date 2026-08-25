@@ -40,6 +40,8 @@ Judge clusters and function, not a single token. Several generic phrases surroun
 
 Personal writing may use metaphor, exaggeration, fragments, or repetition deliberately. Keep details that anchor the voice.
 
+Personal voice means the writer's own first-person experience or feeling. Emotional decoration attributed to an institution, venue, artwork, or event — `깊은 울림을 줍니다`, `다채로운 영감` — is promotional filler even in a spoken script.
+
 > 바다는 보석처럼 빛났고, 돌아오는 50분은 멀미 때문에 꽤 힘들었다.
 
 The concrete inconvenience makes this a personal observation rather than generic destination copy. Remove stacked tourism clichés around it if needed, but do not force the passage into a neutral report.

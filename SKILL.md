@@ -8,7 +8,7 @@ description: |
   "Signs of AI writing."
 license: MIT
 metadata:
-  version: "2.11.1-ko.8"
+  version: "2.11.1-ko.9"
 ---
 
 # humanizer-ko
@@ -67,7 +67,7 @@ Do not pass a phrase scan by deleting the sentence that contains it. Preserve th
 1. Record hard constraints and the source's genre, stance, and intended edit strength. Use a balanced edit unless the user requests lighter or stronger intervention; accuracy always wins.
 2. Load only the references selected above and rewrite the passage as a whole.
 3. Compare the draft with the source. Check hard tokens, claims, status, limitations, stance, and justified K5 phrases. When the environment can run scripts, write the source and draft to temporary files and run `python scripts/check-rewrite.py SOURCE DRAFT`; fix every fact error it reports and review its residue list. Skip it silently when scripts cannot run.
-4. Compress the checked draft in a pass whose only job is cutting. Remove leftover filler, decorative evaluations, and duplicated courtesy, transitions, or emphasis. Do not cut facts, numbers, quotes, terms, commitments, or required caution. If the rewrite is longer than the source, justify each addition or remove it.
+4. Compress the checked draft in a pass whose only job is cutting. Remove leftover filler, decorative evaluations, and duplicated courtesy, transitions, or emphasis. Do not cut facts, numbers, quotes, terms, commitments, or required caution. A negative qualifier that limits a claim — `입증되지 않았다`, `영향을 주지 않는다`, `아직 미정이다` — is a claim, not filler; keep it even when it sits next to a positive result. Only rhetorical negation such as `~라고 해도 과언이 아니다` falls under the stock-phrase rules. If the rewrite is longer than the source, justify each addition or remove it.
 5. Return the result under the output contract. Do not narrate these steps.
 
 ## Source

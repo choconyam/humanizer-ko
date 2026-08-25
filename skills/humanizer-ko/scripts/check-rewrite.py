@@ -107,6 +107,15 @@ def main() -> int:
         if count >= threshold:
             reviews.append(f"{label}: {count} occurrences")
 
+    # Negative qualifiers are claims; a sharp drop suggests limits were cut.
+    negation = r"않|없|아니|미정|보류"
+    source_negations = len(re.findall(negation, source))
+    rewrite_negations = len(re.findall(negation, rewrite))
+    if source_negations >= 3 and rewrite_negations * 2 < source_negations:
+        reviews.append(
+            f"negation drop: source {source_negations} -> rewrite {rewrite_negations}; check limiting claims"
+        )
+
     src_len = len(source.strip())
     out_len = len(rewrite.strip())
     ratio = out_len / src_len if src_len else 0.0

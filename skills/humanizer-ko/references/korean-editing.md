@@ -23,6 +23,7 @@ If the source says `센터는 다음 달 문을 열 예정입니다`, do not str
 - Break chains built from `~에 대한`, `~를 통해`, `~와 관련하여`, `~에 기반하여`, and `~에 있어`.
 - `의미를 가지다` often becomes `의미가 있다`; `문제가 존재하다` often becomes `문제가 있다`.
 - Remove a generic translated `당신` when Korean would omit the reader. Keep direct address in responsibility or safety instructions.
+- Watch concept nouns calqued from English, such as `목소리` used for a writer's voice. Prefer the established Korean word (`말투`, `문체`) unless the field's standard term really is the loan.
 - Replace `~하는 데 도움이 됩니다` with the concrete effect only when the source states that effect.
 - Move the main claim forward or split a dense modifier. Do not copy English sentence boundaries mechanically.
 
@@ -53,12 +54,15 @@ Treat these as review triggers, not banned words:
 - `앞으로의 귀추가 주목됩니다`, `밝은 미래가 기대됩니다`
 - `오늘날 빠르게 변화하는 환경에서`, `현대 사회에서 그 중요성이 커지고 있습니다`
 - Unsupported or repeated `다양한`, `해당`, `성공적으로`, `효과적으로`, `~를 자랑합니다`, `~에 자리 잡은`
+- `다양한 X` with no named variety: name the actual kinds when the source gives them, and delete the modifier otherwise. Swapping in `여러` is the same laundering. Keep it only when variety itself is the claim.
+- `성공적으로` before a completion verb is redundant: `복구를 성공적으로 완료했다` becomes `복구를 마쳤다`.
+- `단순한 X가 아니라 Y` used to inflate Y. Keep a sentence that really contrasts two options; drop the frame when X is a strawman no reader would assume.
 - Empty `결론적으로`, `요약하자면`, paragraph-closing `이처럼` or `이렇듯`, and `~라고 해도 과언이 아니다`
 - Repeated `~할 수 있습니다` when it does not express real ability, permission, or uncertainty
 - Chatbot residue such as `물론입니다!`, `좋은 질문입니다`, `도움이 되셨기를 바랍니다`, `궁금한 점이 있으시면 언제든지`, `오늘은 ~ 결과를 말씀드리겠습니다`
 - Repeated `첫째`, `둘째`, `셋째` when the structure is not useful
 
-Rewrite a trigger only when it is generic, unsupported, redundant, or wrong for the genre. Keep it when it is a direct quote, proper name, supported or attributed evaluation, field term, approved copy, ordinary courtesy, an official commitment that names a concrete action, safety emphasis, or deliberate personal voice. Formulaic resolve or vision closings — `확고한 의지`, `더 나은 ~를 만들어가겠습니다` with no concrete measure — are decoration, not commitments: state the action or end on the last fact.
+Rewrite a trigger only when it is generic, unsupported, redundant, or wrong for the genre. Keep it when it is a direct quote, proper name, supported or attributed evaluation, field term, approved copy, ordinary courtesy, an official commitment that names a concrete action, safety emphasis, or deliberate personal voice grounded in the writer's own first-person experience. To keep a trigger, name which of these reasons applies; if none fits, rewrite it. Formulaic resolve or vision closings — `확고한 의지`, `더 나은 ~를 만들어가겠습니다` with no concrete measure — are decoration, not commitments: state the action or end on the last fact.
 
 Apply a deletion test before rewording a flagged evaluation: if removing it costs no verifiable information and no stance the writer needs, delete it instead of softening it. `놀라운 잠재력` → `주목할 만한 잠재력` and `귀중한 인사이트` → `의미 있는 단서` launder the cliché rather than fix it.
 
