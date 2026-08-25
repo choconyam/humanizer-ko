@@ -21,7 +21,7 @@ import re
 import sys
 from pathlib import Path
 
-# Stock-phrase patterns documented in references/korean-editing.md (K2, K3, K5).
+# Stock-phrase patterns documented in SKILL.md (K2, K3, K5).
 RESIDUE_PATTERNS = (
     (r"되어[지진질졌짐]", "K3 double passive"),
     (r"보여[지진질졌짐]", "K3 double passive"),

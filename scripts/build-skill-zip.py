@@ -12,9 +12,6 @@ from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 ROOT = Path(__file__).resolve().parent.parent
 SOURCES = {
     "humanizer-ko/SKILL.md": ROOT / "SKILL.md",
-    "humanizer-ko/references/korean-editing.md": ROOT
-    / "references"
-    / "korean-editing.md",
     "humanizer-ko/references/korean-genres.md": ROOT
     / "references"
     / "korean-genres.md",

@@ -13,7 +13,6 @@ SKILL = (ROOT / "SKILL.md").read_text(encoding="utf-8")
 README = (ROOT / "README.md").read_text(encoding="utf-8")
 NOTICE = (ROOT / "NOTICE.md").read_text(encoding="utf-8")
 GUIDE_NAMES = (
-    "korean-editing.md",
     "korean-genres.md",
     "fidelity-review.md",
     "terminology/index.md",
@@ -24,7 +23,6 @@ GUIDE_NAMES = (
     "terminology/finance-accounting.md",
 )
 DIRECT_SKILL_GUIDES = {
-    "korean-editing.md",
     "korean-genres.md",
     "fidelity-review.md",
     "terminology/index.md",
@@ -79,14 +77,15 @@ for guide_name in GUIDE_NAMES:
 if (ROOT / "references" / "domain-terminology.md").exists():
     fail("Remove the legacy domain-terminology.md after splitting field guides")
 
+if (ROOT / "references" / "korean-editing.md").exists():
+    fail("K1-K10 now live in SKILL.md; remove the legacy korean-editing.md")
+
 korean_point_numbers = [
     int(number)
-    for number in re.findall(
-        r"(?m)^## K([0-9]+)\. ", guide_text_by_name["korean-editing.md"]
-    )
+    for number in re.findall(r"(?m)^### K([0-9]+)\. ", SKILL)
 ]
 if korean_point_numbers != list(range(1, 11)):
-    fail(f"Number Korean checkpoints from K1 through K10: {korean_point_numbers}")
+    fail(f"Number Korean checkpoints from K1 through K10 in SKILL.md: {korean_point_numbers}")
 
 korean_coverage_terms = (
     "보여지다",
@@ -104,7 +103,7 @@ korean_coverage_terms = (
 missing_korean_coverage = [
     term
     for term in korean_coverage_terms
-    if term not in guide_text_by_name["korean-editing.md"]
+    if term not in SKILL
 ]
 if missing_korean_coverage:
     fail(

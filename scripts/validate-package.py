@@ -144,7 +144,7 @@ readme_numbers = {
 if readme_numbers != set(range(1, 36)):
     raise SystemExit("List patterns 1 through 35 in the README table")
 
-if len(SKILL.splitlines()) > 180:
-    raise SystemExit("Keep the routing SKILL.md at 180 lines or fewer")
+if len(SKILL.splitlines()) > 260:
+    raise SystemExit("Keep SKILL.md (body with K1-K10) at 260 lines or fewer")
 
 print(f"humanizer-ko package v{skill_version} is valid")

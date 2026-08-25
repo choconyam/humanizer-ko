@@ -2,7 +2,7 @@
 
 Read this reference only when editing substantial English prose. It preserves the 35 numbered patterns and examples from upstream Humanizer v2.11.1.
 
-For Korean prose, use `korean-editing.md`. Isolated English product names, code, identifiers, and established technical terms inside Korean text do not require this reference.
+For Korean prose, apply the K1-K10 checkpoints in `SKILL.md`. Isolated English product names, code, identifiers, and established technical terms inside Korean text do not require this reference.
 
 ## Content patterns
 

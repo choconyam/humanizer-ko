@@ -12,7 +12,7 @@ Keep the skill portable. Do not write instructions that limit it to one or two a
 
 - `SKILL.md` is the compact routing prompt and source of truth for behavior and metadata.
 - `skills/humanizer-ko/SKILL.md` links to the root skill for Claude Desktop and older plugin loaders. Do not replace the link with a copy or edit it as a separate file.
-- `references/english-patterns.md` preserves upstream's numbered 1-35 patterns and examples. `references/korean-editing.md` contains compact K1-K10 guidance. `references/korean-genres.md` handles genre and edit strength, `references/fidelity-review.md` handles meaning and token preservation, and `references/terminology/` routes specialist terminology by field. Their files under `skills/humanizer-ko/references/` are package mirrors and must match exactly.
+- The Korean K1-K10 checkpoints live in `SKILL.md` itself so they always load. `references/english-patterns.md` preserves upstream's numbered 1-35 patterns and examples. `references/korean-genres.md` handles genre and edit strength, `references/fidelity-review.md` handles meaning and token preservation, and `references/terminology/` routes specialist terminology by field. Their files under `skills/humanizer-ko/references/` are package mirrors and must match exactly.
 - `README.md` is the maintained Korean documentation for installation, use, patterns, and version history. It is the repository's only README.
 - `.upstream-version` records the upstream release already merged into this fork.
 - `NOTICE.md` records upstream attribution and the scope of the localization.
@@ -27,7 +27,7 @@ Keep the skill portable. Do not write instructions that limit it to one or two a
 
 Keep `SKILL.md` and `README.md` in sync.
 
-- **Patterns:** Keep the 35 English patterns in `references/english-patterns.md` and K1-K10 in `references/korean-editing.md`. If you add, remove, or renumber one, update the README table, heading, validator, and every reference.
+- **Patterns:** Keep the 35 English patterns in `references/english-patterns.md` and K1-K10 in `SKILL.md`. If you add, remove, or renumber one, update the README table, heading, validator, and every reference.
 - **Version:** Keep the same version in `SKILL.md` under `metadata.version`, the first README version entry, and `.claude-plugin/plugin.json`. Do not add a top-level `version` field to the skill.
 - **Compatibility:** Keep install and use instructions neutral across agents. Names such as Claude Code, OpenCode, and Codex are examples, not limits.
 - **History:** Add a short README version note for any behavior change or non-obvious fix. Fold minor doc-only cleanups into the current version's note so the history stays complete instead of leaving them only in the commit log.
