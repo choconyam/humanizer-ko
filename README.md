@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/humanizer-ko-banner.jpg" alt="humanizer-ko" width="100%">
+</p>
+
 # humanizer-ko
 
 `humanizer-ko`는 AI가 쓴 듯한 한국어·영어 문장을 자연스럽게 다듬되, 원문의 사실과 의미, 글쓴이의 말투와 관점을 유지하는 편집 스킬입니다. [blader/humanizer](https://github.com/blader/humanizer)를 바탕으로 한국어 편집 지침과 Codex·Claude 등 에이전트 환경에 맞춘 설치·동작 구성을 더한 비공식 포크입니다.
