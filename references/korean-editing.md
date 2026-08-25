@@ -53,7 +53,7 @@ Treat these as review triggers, not banned words:
 - `새로운 패러다임을 제시합니다`, `중요한 시사점을 제공합니다`
 - `앞으로의 귀추가 주목됩니다`, `밝은 미래가 기대됩니다`
 - `오늘날 빠르게 변화하는 환경에서`, `현대 사회에서 그 중요성이 커지고 있습니다`
-- Unsupported or repeated `다양한`, `해당`, `성공적으로`, `효과적으로`, `~를 자랑합니다`, `~에 자리 잡은`
+- Unsupported or repeated `해당`, `효과적으로`, `~를 자랑합니다`, `~에 자리 잡은`
 - `다양한 X` with no named variety: name the actual kinds when the source gives them, and delete the modifier otherwise. Swapping in `여러` is the same laundering. Keep it only when variety itself is the claim.
 - `성공적으로` before a completion verb is redundant: `복구를 성공적으로 완료했다` becomes `복구를 마쳤다`.
 - `단순한 X가 아니라 Y` used to inflate Y. Keep a sentence that really contrasts two options; drop the frame when X is a strawman no reader would assume.

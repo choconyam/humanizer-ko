@@ -93,10 +93,17 @@ def main() -> int:
     for span in sorted(extract_quotes(source)):
         if span not in rewrite:
             fact_errors.append(f"missing quoted span: {span}")
+    source_tokens = extract_latin_tokens(source)
     rewrite_tokens = extract_latin_tokens(rewrite)
-    for token in sorted(extract_latin_tokens(source)):
+    for token in sorted(source_tokens):
         if token not in rewrite_tokens:
             fact_errors.append(f"missing technical token: {token}")
+    # Inventions are fact errors too: tokens or numbers that appear only in the rewrite.
+    for token in sorted(rewrite_tokens - source_tokens):
+        fact_errors.append(f"added technical token: {token}")
+    source_numbers = extract_numbers(source)
+    for number in sorted(rewrite_numbers - source_numbers):
+        fact_errors.append(f"added number: {number}")
 
     reviews: list[str] = []
     for pattern, label in RESIDUE_PATTERNS:
