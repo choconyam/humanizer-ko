@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import json
 import re
-import subprocess
 from pathlib import Path
 
 
@@ -18,6 +17,9 @@ README = (ROOT / "README.md").read_text(encoding="utf-8")
 AGENTS = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
 OPENAI_AGENT = (ROOT / "agents" / "openai.yaml").read_text(encoding="utf-8")
 PLUGIN = json.loads((ROOT / ".claude-plugin" / "plugin.json").read_text(encoding="utf-8"))
+CODEX_PLUGIN = json.loads(
+    (ROOT / ".codex-plugin" / "plugin.json").read_text(encoding="utf-8")
+)
 MARKETPLACE = json.loads(
     (ROOT / ".claude-plugin" / "marketplace.json").read_text(encoding="utf-8")
 )
@@ -61,30 +63,25 @@ readme_version = require_match(
     "Add a version entry to README.md",
 ).group(1)
 
-package_versions = {skill_version, readme_version, str(PLUGIN.get("version", ""))}
+package_versions = {
+    skill_version,
+    readme_version,
+    str(PLUGIN.get("version", "")),
+    str(CODEX_PLUGIN.get("version", "")),
+}
 if len(package_versions) != 1:
     raise SystemExit(
         f"Use one package version in all files: {sorted(package_versions)}"
     )
 
-if PLUGIN_SKILL.is_symlink():
-    plugin_skill_is_linked = PLUGIN_SKILL.resolve() == (ROOT / "SKILL.md").resolve()
-else:
-    index_entry = subprocess.run(
-        ["git", "ls-files", "-s", "--", "skills/humanizer-ko/SKILL.md"],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
-    plugin_skill_is_linked = (
-        index_entry.returncode == 0
-        and index_entry.stdout.startswith("120000 ")
-        and PLUGIN_SKILL.read_text(encoding="utf-8").strip() == "../../SKILL.md"
-    )
-
 if PLUGIN.get("name") != "humanizer-ko":
     raise SystemExit("Use humanizer-ko as the Claude plugin ID")
+
+if CODEX_PLUGIN.get("name") != "humanizer-ko":
+    raise SystemExit("Use humanizer-ko as the Codex plugin ID")
+
+if CODEX_PLUGIN.get("skills") != "./skills/":
+    raise SystemExit("Point the Codex plugin at ./skills/")
 
 marketplace_plugins = MARKETPLACE.get("plugins", [])
 if (
@@ -100,8 +97,8 @@ if (
 ):
     raise SystemExit("Display humanizer-ko and invoke the skill as $humanizer-ko")
 
-if not plugin_skill_is_linked:
-    raise SystemExit("Link skills/humanizer-ko/SKILL.md to the root SKILL.md")
+if SKILL != PLUGIN_SKILL.read_text(encoding="utf-8"):
+    raise SystemExit("Keep both copies of SKILL.md byte-for-byte identical")
 
 if ENGLISH_PATTERNS != PLUGIN_ENGLISH_PATTERNS.read_text(encoding="utf-8"):
     raise SystemExit("Keep both copies of english-patterns.md byte-for-byte identical")
