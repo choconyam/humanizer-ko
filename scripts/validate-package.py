@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
 from pathlib import Path
 
 
@@ -96,6 +97,16 @@ if (
     or "$humanizer-ko" not in OPENAI_AGENT
 ):
     raise SystemExit("Display humanizer-ko and invoke the skill as $humanizer-ko")
+
+plugin_skill_index = subprocess.run(
+    ["git", "ls-files", "-s", "--", "skills/humanizer-ko/SKILL.md"],
+    cwd=ROOT,
+    capture_output=True,
+    text=True,
+    check=False,
+)
+if not plugin_skill_index.stdout.startswith("100644 "):
+    raise SystemExit("Store skills/humanizer-ko/SKILL.md as a regular file")
 
 if SKILL != PLUGIN_SKILL.read_text(encoding="utf-8"):
     raise SystemExit("Keep both copies of SKILL.md byte-for-byte identical")
