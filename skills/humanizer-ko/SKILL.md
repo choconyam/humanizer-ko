@@ -8,7 +8,7 @@ description: |
   "Signs of AI writing."
 license: MIT
 metadata:
-  version: "2.11.1-ko.11"
+  version: "2.11.1-ko.12"
 ---
 
 # humanizer-ko
@@ -30,22 +30,21 @@ The host has already loaded this file. Do not open `SKILL.md` again during the t
 
 ## Korean checkpoints K1-K10
 
-Do not transfer English grammar, capitalization, dash, quote, or subject rules into Korean mechanically. Rebuild translation-like clauses as Korean sentences instead of swapping watched words. If the source says `센터는 다음 달 문을 열 예정입니다`, do not strengthen it to a completed or guaranteed event.
+Do not transfer English grammar, capitalization, dash, quote, or subject rules into Korean mechanically. Rebuild translation-like clauses as Korean sentences instead of swapping watched words. If the source says `센터는 다음 달 문을 열 예정입니다`, do not strengthen it to a completed or guaranteed event. Leave already-natural Korean unchanged unless coherence requires revision; never edit just to show the skill was used.
 
 ### K1. Keep one register and honorific level
 
-- Choose the register from the source and audience, then keep it consistent.
-- Preserve honorifics, titles, role names, and the relationship between writer and reader.
-- Do not mix `-다`, `-해요`, and `-합니다` without a real change in speaker or quoted material.
+- Match the source and audience, and keep overall politeness consistent. A conventional `안녕하세요` greeting with a `-합니다` body is natural; fix unexplained drift among `-다`, `-해요`, and `-합니다`.
+- Preserve titles, role names, and respect for people, but do not honorify objects: `자료가 준비되셨습니다` → `자료가 준비됐습니다`.
 - Formal repetition is acceptable when changing endings would make the text less precise.
 
 ### K2. Rebuild translation-like word order
 
-- Replace repeated `이는 ...를 의미합니다` with the concrete statement when the source supports it.
+- Strip repeated, empty frames such as `이는 ...를 의미합니다`, `~라는 점에서 의미가 있습니다`, and `~라고 할 수 있습니다`; state only the source-supported predicate. Keep real uncertainty or semantic explanation.
 - Break chains built from `~에 대한`, `~를 통해`, `~와 관련하여`, `~에 기반하여`, and `~에 있어`.
 - `의미를 가지다` often becomes `의미가 있다`; `문제가 존재하다` often becomes `문제가 있다`.
 - Remove a generic translated `당신` when Korean would omit the reader. Keep direct address in responsibility or safety instructions.
-- Watch concept nouns calqued from English, such as `목소리` used for a writer's voice. Prefer the established Korean word (`말투`, `문체`) unless the field's standard term really is the loan.
+- Avoid calqued concept nouns: use `말투` or `문체` for a writer's voice unless the field uses `목소리`.
 - Replace `~하는 데 도움이 됩니다` with the concrete effect only when the source states that effect.
 - Move the main claim forward or split a dense modifier. Do not copy English sentence boundaries mechanically.
 
@@ -60,11 +59,9 @@ Do not transfer English grammar, capitalization, dash, quote, or subject rules i
 
 ### K4. Prefer verbs to abstract noun stacks
 
-- `검토를 진행하다` usually becomes `검토하다`.
-- Turn repeated `가능성`, `중요성`, `필요성`, `효율성`, and `연관성` into concrete predicates when meaning stays the same.
-- A repeated middle-dot chain that joins three or more nouns (`사실·수치·인용` style) signals a noun stack. Keep it where the genre expects it — official notices, headlines, technical specifications — and otherwise trim the list or unfold it into a sentence.
-- Keep a noun when it is a defined concept or when changing it would strengthen the claim.
-- Do not shorten a sentence by deleting its interpretation, instruction, or commitment.
+- Prefer concrete verbs and predicates when meaning stays the same: `검토를 진행하다` → `검토하다`; revise repeated `가능성`, `중요성`, `필요성`, `효율성`, and `연관성` likewise.
+- Treat cramped or repeated middle-dot noun chains, not the number of items, as a review signal. Preserve every distinct item; unfold the chain only when it improves readability.
+- Keep defined concepts and any distinct interpretation, instruction, or commitment.
 
 ### K5. Review Korean stock AI phrases in context
 
@@ -77,27 +74,27 @@ Treat these as review triggers, not banned words:
 - `오늘날 빠르게 변화하는 환경에서`, `현대 사회에서 그 중요성이 커지고 있습니다`
 - Unsupported or repeated `해당`, `효과적으로`, `~를 자랑합니다`, `~에 자리 잡은`
 - `다양한 X` with no named variety: name the actual kinds when the source gives them, and delete the modifier otherwise. Swapping in `여러` is the same laundering. Keep it only when variety itself is the claim.
-- `성공적으로` before a completion verb is redundant: `복구를 성공적으로 완료했다` becomes `복구를 마쳤다`.
+- Remove `성공적으로` when completion proves success (`복구를 성공적으로 완료했다` → `복구를 마쳤다`); keep it when success versus completion or attempt is a separate fact.
 - `단순한 X가 아니라 Y` used to inflate Y. Keep a sentence that really contrasts two options; drop the frame when X is a strawman no reader would assume.
 - Empty `결론적으로`, `요약하자면`, paragraph-closing `이처럼` or `이렇듯`, and `~라고 해도 과언이 아니다`
 - Repeated `~할 수 있습니다` when it does not express real ability, permission, or uncertainty
 - Chatbot residue such as `물론입니다!`, `좋은 질문입니다`, `도움이 되셨기를 바랍니다`, `궁금한 점이 있으시면 언제든지`, `오늘은 ~ 결과를 말씀드리겠습니다`
 - Repeated `첫째`, `둘째`, `셋째` when the structure is not useful
 
-Rewrite a trigger only when it is generic, unsupported, redundant, or wrong for the genre. Keep it when it is a direct quote, proper name, supported or attributed evaluation, field term, approved copy, ordinary courtesy, an official commitment that names a concrete action, safety emphasis, or deliberate personal voice grounded in the writer's own first-person experience. To keep a trigger, name which of these reasons applies; if none fits, rewrite it. Formulaic resolve or vision closings — `확고한 의지`, `더 나은 ~를 만들어가겠습니다` with no concrete measure — are decoration, not commitments: state the action or end on the last fact.
+Judge triggers internally, not as banned words or an audit checklist. Rewrite generic, unsupported, redundant, or mismatched wording; keep content-bearing quotes, evaluations, terms, courtesy, accountability, safety emphasis, and deliberate narrator or attributed-speaker voice. Institutional authorship neither proves nor excuses hype. Keep a formulaic pledge only for needed reassurance or a source-stated action; otherwise cut it, never inventing a measure.
 
-Apply a deletion test before rewording a flagged evaluation: if removing it costs no verifiable information and no stance the writer needs, delete it instead of softening it. `놀라운 잠재력` → `주목할 만한 잠재력` and `귀중한 인사이트` → `의미 있는 단서` launder the cliché rather than fix it.
+Delete a flagged evaluation if no verifiable information or needed stance is lost. Do not launder a cliché with a softer synonym: `놀라운 잠재력` → `주목할 만한 잠재력` has the same problem.
 
-One function, one expression. When several phrases perform the same social or structural function — thanks, apology, softened request, greeting, closing, transition — keep the single expression the relationship and genre require and cut the rest. A polite email usually needs one act of thanks, not three.
+Cut adjacent phrases that merely repeat the same courtesy or structural act. Preserve different speech acts, relationship cues, deliberate repetition, and safety emphasis; do not edit to a phrase count.
 
-Do not delete the sentence to pass the scan. Preserve the proposition and stance, and do not replace one stock phrase with another vague metaphor or a softer synonym. Read [the Korean genre guide](references/korean-genres.md) when the phrase's function depends on genre.
+Preserve the proposition and stance. If a trigger's function remains unclear, read [the Korean genre guide](references/korean-genres.md).
 
 ### K6. Use particles and connective endings for meaning
 
 - Remove repeated `또한`, `그리고`, `그러나`, and `한편` when the relation is already clear.
 - Break chains of `~하며`, `~하면서`, `~함으로써`, and `~하는 가운데` when they hide logic.
 - Keep connectors that carry cause, condition, concession, sequence, or contrast.
-- Do not rotate particles or endings merely for variety.
+- Keep `-지 않다` distinct from `-지 못하다`: `진행하지 않았다` ≠ `진행하지 못했다`. Do not turn nonoccurrence into failure or infer inability or cause.
 - Avoid attaching every topic to `~은/는`; use the particle that matches its role.
 
 ### K7. Use field-appropriate terminology
@@ -112,13 +109,14 @@ When the task requires choosing, translating, correcting, or explaining an unset
 - Break long comma and connective-ending chains when doing so makes the relation clearer.
 - Merge clipped fragments that imitate English emphasis but sound abrupt in Korean.
 - Keep related information together when splitting would hide cause, scope, or contrast.
-- Let paragraph breaks follow changes in idea, speaker, time, or argument.
+- Rebuild paragraphs when several sentences repeat one topic plus abstract conclusions. State each source-supported predicate once; keep distinct explanation, contrast, or uncertainty.
+- Vary sentence length, structure, or endings only to clarify rhythm or logic, not for surface variety.
 - Remove a conclusion only when it adds no claim, stance, decision, or audience function.
 - Preserve Korean quotation and title marks such as `“ ”`, `‘ ’`, `「 」`, and `『 』`.
 
 ### K9. Write for speaking when needed
 
-For presentations, lectures, interviews, and narration, read [the Korean genre guide](references/korean-genres.md). Keep useful navigation and audience cues, but remove empty staging. Keep `오늘은` when it marks a real date or contrast.
+For a substantial spoken rewrite, or when a spoken cue's audience function is unclear, read [the Korean genre guide](references/korean-genres.md). Keep useful navigation and audience cues, but remove empty staging. Keep `오늘은` when it marks a real date or contrast.
 
 ### K10. Handle high-stakes text carefully
 
@@ -128,21 +126,19 @@ For medical, legal, scientific, financial, policy, safety, compliance, tax, acco
 
 Check that:
 
-1. Register and honorific level are consistent.
+1. Overall politeness, register shifts, and honorifics fit the speaker and audience.
 2. Facts, exact tokens, status, negation, scope, attribution, limitations, evaluation, and commitment retain their meaning.
-3. English-specific rules were not imposed mechanically.
-4. Word order, subjects, passives, particles, and connective endings are natural and unambiguous.
-5. Every remaining K5 trigger has a clear reason.
-6. Specialist terms remain correct and consistent.
-7. Sentence boundaries and quotation marks fit Korean usage.
-8. No flagged phrase was replaced with a softer synonym, no courtesy function appears twice, and the rewrite is not longer than the source without a reason.
+3. English-specific rules were not imposed; specialist terms remain consistent.
+4. Korean syntax, sentence boundaries, and quotation marks are natural and unambiguous.
+5. Empty frames, repeated abstract conclusions, and K5 triggers were handled without erasing meaning.
+6. No synonym-only cliché swaps, redundant courtesy, or needless additions remain.
 
 ## Load only the needed reference
 
 The Korean checkpoints above are always active. Load extra references only when the text calls for them.
 
-- **Genre-sensitive Korean prose:** Read [the Korean genre guide](references/korean-genres.md) for email, notices, support text, presentations, personal writing, approved marketing copy, or safety instructions. Read it when a phrase may be either boilerplate or intentional voice.
-- **Fact-dense or high-risk text:** Read [the fidelity review guide](references/fidelity-review.md) whenever the text contains a number, an English technical token, or research, legal, patent, or product content. When unsure, read it. Skip it only for a short casual passage with none of those.
+- **Unresolved genre choices:** Read [the Korean genre guide](references/korean-genres.md) when boilerplate, deliberate voice, repetition, or an audience cue remains unclear, or for a substantial spoken, approved-marketing, or safety rewrite. A routine email or presentation with clear register and courtesy does not trigger it.
+- **Difficult or high-risk fidelity:** Read [the fidelity review guide](references/fidelity-review.md) when the text has several interacting facts, constraints, attributions, or status claims, or when an error would carry high stakes. One ordinary number or English token alone does not trigger the guide.
 - **Substantial English prose:** Read [upstream's 35 English patterns](references/english-patterns.md) once. English product names, code, identifiers, citations, and established technical terms inside Korean text do not trigger this reference; it is for text where English forms a substantial prose span.
 - **Unsettled specialist terminology:** Read [the terminology router](references/terminology/index.md) only when the task requires choosing, translating, correcting, or explaining a field-specific term. Stop when its quick map resolves the term; read a matching field guide only for unresolved detail. Do not load terminology guidance merely to preserve terms the source already uses consistently.
 
@@ -150,7 +146,7 @@ Do not read the same reference more than once in one task.
 
 ## Editing priorities
 
-Rewrite the passage as a whole instead of replacing watched words one by one.
+For Korean prose, build natural Korean around source-supported predicates by revising sentence and paragraph shape, not by replacing watched words one by one.
 
 - Remove unsupported hype, sweeping importance claims, unwanted sales framing, vague attribution, and generic conclusions. Keep an approved marketing voice, a sourced evaluation, or a personal reaction when the genre calls for it.
 - Cut repetitive openings, forced groups, fake contrasts, canned transitions, filler, stacked hedges, and chatbot greetings or closings.
@@ -160,9 +156,7 @@ Rewrite the passage as a whole instead of replacing watched words one by one.
 
 ## Context-aware Korean review gate
 
-Before returning Korean prose, run the K5 review above. Rewrite an expression only when it is generic, unsupported, redundant, or mismatched to the genre. Keep it when it carries a quote, approved copy, evidence, attribution, technical meaning, ordinary courtesy, an official promise tied to a concrete action, safety emphasis, or deliberate personal voice. Resolve or optimism with no action or claim behind it is decoration, not a commitment: state the measure or end on the last concrete fact.
-
-Do not pass a phrase scan by deleting the sentence that contains it. Preserve the concrete claim and the writer's stance. A clean lexical scan is not more important than fidelity.
+Use K5 and the Final Korean pass as one gate; do not sacrifice meaning or natural prose to a lexical scan.
 
 ## Output contract
 
@@ -173,11 +167,10 @@ Do not pass a phrase scan by deleting the sentence that contains it. Preserve th
 
 ## Fast rewrite process
 
-1. Record hard constraints and the source's genre, stance, and intended edit strength. Use a balanced edit unless the user requests lighter or stronger intervention; accuracy always wins.
-2. Apply K1-K10 to Korean text, load only the references selected above, and rewrite the passage as a whole.
-3. Compare the draft with the source. Check hard tokens, claims, status, limitations, stance, and justified K5 phrases. When the environment can run scripts, write the source and draft to temporary files and run `python scripts/check-rewrite.py SOURCE DRAFT`; fix every fact error it reports and run it again until no fact errors remain, then review its residue list. Skip it silently when scripts cannot run.
-4. Compress the checked draft in a pass whose only job is cutting. Remove leftover filler, decorative evaluations, and duplicated courtesy, transitions, or emphasis. Do not cut facts, numbers, quotes, terms, commitments, result statements, or required caution. A negative qualifier that limits a claim — `입증되지 않았다`, `영향을 주지 않는다`, `아직 미정이다` — is a claim, not filler; keep it even when it sits next to a positive result. Only rhetorical negation such as `~라고 해도 과언이 아니다` falls under the stock-phrase rules. If the rewrite is longer than the source, justify each addition or remove it.
-5. Return the result under the output contract. Do not narrate these steps.
+1. Internally record hard constraints and the source's genre, stance, and intended edit strength. Use a balanced edit unless the user requests lighter or stronger intervention; accuracy always wins.
+2. Apply K1-K10 to Korean text, load only the references selected above, and rewrite the passage once as a whole. Remove filler and duplicated courtesy, transitions, or emphasis during that rewrite, but keep facts, limitations, stance, and required caution. A limiting negative such as `입증되지 않았다` is a claim, not filler.
+3. Compare the final draft with the source once. Check hard tokens, claims, status, negation, scope, attribution, limitations, stance, and justified K5 phrases. If the user requests an audit or the text is precision-sensitive and dense with numbers or technical tokens, the optional checker may help: resolve `scripts/check-rewrite.py` relative to this `SKILL.md` and run it on the source and final draft. Its output lists surface-level candidates, not factual or semantic verdicts. Inspect every candidate against the source, fix real mismatches, and rerun once if the draft changed. Do not dismiss a real mismatch, but do not damage correct prose merely to satisfy a regex. Semantic comparison is always required. Skip the checker silently otherwise.
+4. Return the result under the output contract. Do not narrate these steps.
 
 ## Source
 

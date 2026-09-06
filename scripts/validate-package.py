@@ -28,6 +28,11 @@ PLUGIN_SKILL = ROOT / "skills" / "humanizer-ko" / "SKILL.md"
 PLUGIN_ENGLISH_PATTERNS = (
     ROOT / "skills" / "humanizer-ko" / "references" / "english-patterns.md"
 )
+PACKAGE_MIRRORS = {
+    "scripts/check-rewrite.py": ROOT / "scripts" / "check-rewrite.py",
+    "LICENSE": ROOT / "LICENSE",
+    "NOTICE.md": ROOT / "NOTICE.md",
+}
 
 
 def require_match(match: re.Match[str] | None, message: str) -> re.Match[str]:
@@ -113,6 +118,15 @@ if SKILL != PLUGIN_SKILL.read_text(encoding="utf-8"):
 
 if ENGLISH_PATTERNS != PLUGIN_ENGLISH_PATTERNS.read_text(encoding="utf-8"):
     raise SystemExit("Keep both copies of english-patterns.md byte-for-byte identical")
+
+for relative_path, source_path in PACKAGE_MIRRORS.items():
+    package_path = ROOT / "skills" / "humanizer-ko" / relative_path
+    if not package_path.is_file():
+        raise SystemExit(f"Add {relative_path} to the plugin package")
+    if source_path.read_text(encoding="utf-8") != package_path.read_text(
+        encoding="utf-8"
+    ):
+        raise SystemExit(f"Keep both copies of {relative_path} byte-for-byte identical")
 
 if "](references/english-patterns.md)" not in SKILL:
     raise SystemExit("Link the English pattern reference from SKILL.md")

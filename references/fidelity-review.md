@@ -48,7 +48,7 @@ An evaluative phrase is not always a hard fact, but the writer's position is sti
 
 > 이번 결과는 시장 기회가 무궁무진하다는 점을 보여줍니다.
 
-If the evidence does not support `무궁무진`, lower the intensity while keeping the positive assessment, for example `회사는 이번 결과에서 추가 시장 기회를 기대하고 있습니다`. Do not delete the assessment solely to remove the watched word. Keep attribution when the source supplies it; do not invent attribution when it does not.
+If the evidence does not support `무궁무진`, lower the intensity while keeping the positive assessment, for example `이번 결과는 시장 기회가 있다는 점을 보여줍니다`. Do not delete the assessment solely to remove the watched word. Keep attribution when the source supplies it; do not invent attribution when it does not.
 
 In personal writing, preserve first-person reactions and deliberate imagery. In reports, preserve conclusions and recommendations at their original confidence level. In notices, preserve commitments. In approved marketing copy, preserve the authorized promise and tone within the stated limits.
 

@@ -1,6 +1,6 @@
 {
   "name": "humanizer-ko",
-  "version": "2.11.1-ko.11",
+  "version": "2.11.1-ko.12",
   "description": "AI가 쓴 듯한 한국어·영어 문장을 사실과 의미를 유지하며 자연스럽게 다듬습니다.",
   "author": {
     "name": "choconyam",
