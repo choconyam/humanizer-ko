@@ -1,6 +1,6 @@
 # Fidelity review
 
-Read this guide when a rewrite contains facts, technical tokens, negation, attribution, limitations, status, or other wording whose loss would matter. It separates exact preservation from semantic preservation so a style cleanup does not become a content edit.
+Read this guide when several facts, constraints, attributions, or status claims interact, or an editing error would have serious consequences. A field label, ordinary number, or technical token alone does not trigger it. It separates exact preservation from semantic preservation.
 
 ## Build a compact source map
 
@@ -34,7 +34,7 @@ These variations are acceptable only when scope and force stay the same. Watch f
 
 Preserve the type of proposition as well as its topic. Do not turn an observation into a recommendation, an evaluation into a requirement, an aspiration into a promise, a possibility into a plan, or a commitment into a prediction. For example, `솔직한 대화가 방향을 잡는 데 도움이 된다` must not become `솔직한 대화가 필요하다` unless the source makes that recommendation.
 
-For each factual paragraph, verify:
+Within the main source comparison, verify relevant points:
 
 1. Who did or will do the action.
 2. What happened, is planned, is allowed, or is prohibited.
@@ -60,14 +60,5 @@ Shorter is not automatically more faithful or more natural.
 - Remove a sentence only when it is genuinely redundant and carries no distinct stance, condition, or audience function.
 - When a watched phrase contains a real proposition, rewrite the proposition instead of dropping the sentence.
 - Do not add a new concluding inference merely because the rewrite feels abrupt.
-
-## Final fidelity gate
-
-Before returning the draft, compare it with the source in this order:
-
-1. Exact tokens and quoted material.
-2. Facts, status, negation, scope, attribution and limitations.
-3. Evaluation, emotion, commitment and degree of certainty.
-4. Genre and audience function.
 
 If naturalness conflicts with any protected meaning, keep the meaning and simplify the surrounding prose instead.

@@ -111,20 +111,19 @@ if missing_korean_coverage:
         + ", ".join(missing_korean_coverage)
     )
 
+# Structural coverage only; prose wording and stopping behavior need review,
+# not exact-string assertions that freeze obsolete instructions.
 skill_routing_rules = (
     "Load only the needed reference",
     "K1-K10",
     "references/english-patterns.md",
     "substantial prose span",
-    "Do not read the same reference more than once",
-    "Context-aware Korean review gate",
     "references/korean-genres.md",
     "references/fidelity-review.md",
     "references/terminology/index.md",
     "matching field guide",
     "Preserve tense, modality, negation, scope, attribution, and completion status",
     "Return only the final rewrite",
-    "Do not open `SKILL.md` again",
 )
 if any(rule not in SKILL for rule in skill_routing_rules):
     fail("SKILL.md must route references, preserve status, and return concise output")

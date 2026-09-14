@@ -1,14 +1,13 @@
 ---
 name: humanizer-ko
 description: |
-  Rewrite Korean or English text that sounds AI-generated while keeping the
-  writer's facts, meaning, and voice. Use when humanizing prose, polishing Korean
-  presentation scripts, or reviewing text for inflated claims, translation-like
-  phrasing, stock AI words, filler, and chatbot artifacts. Based on Wikipedia's
-  "Signs of AI writing."
+  Review or rewrite supplied Korean or English prose for AI-like phrasing,
+  translation-like syntax, inflated claims, filler, or chatbot artifacts while
+  preserving facts, meaning, and voice. Use for prose naturalization, including
+  presentation scripts; not for unrelated code review or fact-checking alone.
 license: MIT
 metadata:
-  version: "2.11.1-ko.12"
+  version: "2.11.1-ko.13"
 ---
 
 # humanizer-ko
@@ -17,7 +16,7 @@ Rewrite AI-like prose so it sounds like the writer. Keep the meaning, facts, and
 
 Korean is this skill's primary target: the K1-K10 checkpoints below apply to any Korean source or output. The upstream English patterns live in a reference and load only when the text has substantial English prose.
 
-The host has already loaded this file. Do not open `SKILL.md` again during the task.
+Read this file fully if only its description is available. Reuse instructions already present in context and unchanged; reread only when content changed or is no longer available.
 
 ## Non-negotiable constraints
 
@@ -120,11 +119,11 @@ For a substantial spoken rewrite, or when a spoken cue's audience function is un
 
 ### K10. Handle high-stakes text carefully
 
-For medical, legal, scientific, financial, policy, safety, compliance, tax, accounting, or other high-risk text, read [the fidelity review guide](references/fidelity-review.md). Precision, scope, status, and limitations take priority over smoothness.
+Precision, scope, status, and limitations take priority over smoothness. Use the fidelity routing condition below; a medical, legal, scientific, or financial topic alone does not require an extra guide.
 
 ### Final Korean pass
 
-Check that:
+During the source comparison below, check that:
 
 1. Overall politeness, register shifts, and honorifics fit the speaker and audience.
 2. Facts, exact tokens, status, negation, scope, attribution, limitations, evaluation, and commitment retain their meaning.
@@ -142,7 +141,7 @@ The Korean checkpoints above are always active. Load extra references only when 
 - **Substantial English prose:** Read [upstream's 35 English patterns](references/english-patterns.md) once. English product names, code, identifiers, citations, and established technical terms inside Korean text do not trigger this reference; it is for text where English forms a substantial prose span.
 - **Unsettled specialist terminology:** Read [the terminology router](references/terminology/index.md) only when the task requires choosing, translating, correcting, or explaining a field-specific term. Stop when its quick map resolves the term; read a matching field guide only for unresolved detail. Do not load terminology guidance merely to preserve terms the source already uses consistently.
 
-Do not read the same reference more than once in one task.
+Reuse unchanged references already present in context. Apply their relevant checks within the same source comparison, not as separate full review passes.
 
 ## Editing priorities
 
@@ -154,23 +153,23 @@ For Korean prose, build natural Korean around source-supported predicates by rev
 - Treat watched phrases as review triggers, not banned words. Do not treat one formal word, ordinary courtesy, an official commitment, a safety emphasis, or a personal metaphor as proof of AI writing. Judge the phrase in context.
 - Add personality only when the genre and source voice call for it. Keep technical, legal, medical, scientific, financial, policy, and reference text precise.
 
-## Context-aware Korean review gate
-
-Use K5 and the Final Korean pass as one gate; do not sacrifice meaning or natural prose to a lexical scan.
-
 ## Output contract
 
-- **Ordinary pasted text:** Return only the final rewrite. Do not announce the skill, explain that you will apply it, show analysis, or add a closing offer.
-- **Audit, comparison, or explanation requested:** Show only the material needed for that request, followed by the final rewrite.
-- **Named file:** Edit prose only, preserve non-prose structure, then give a short summary.
+- **Rewrite requested:** Return only the final rewrite unless explanation is requested. Do not announce the skill, show internal analysis, or add a closing offer.
+- **Review, comparison, or explanation only:** Return the requested findings or explanation. Do not add a full rewrite or modify files unless requested.
+- **File editing requested:** Edit prose only, preserve non-prose structure, then give a short summary. Naming a file alone is not an editing request.
 - **Embedded use:** Return only the finished text required by the parent task.
 
 ## Fast rewrite process
 
-1. Internally record hard constraints and the source's genre, stance, and intended edit strength. Use a balanced edit unless the user requests lighter or stronger intervention; accuracy always wins.
-2. Apply K1-K10 to Korean text, load only the references selected above, and rewrite the passage once as a whole. Remove filler and duplicated courtesy, transitions, or emphasis during that rewrite, but keep facts, limitations, stance, and required caution. A limiting negative such as `입증되지 않았다` is a claim, not filler.
-3. Compare the final draft with the source once. Check hard tokens, claims, status, negation, scope, attribution, limitations, stance, and justified K5 phrases. If the user requests an audit or the text is precision-sensitive and dense with numbers or technical tokens, the optional checker may help: resolve `scripts/check-rewrite.py` relative to this `SKILL.md` and run it on the source and final draft. Its output lists surface-level candidates, not factual or semantic verdicts. Inspect every candidate against the source, fix real mismatches, and rerun once if the draft changed. Do not dismiss a real mismatch, but do not damage correct prose merely to satisfy a regex. Semantic comparison is always required. Skip the checker silently otherwise.
+For review-only requests, apply the relevant criteria to the supplied text and report findings; do not run a rewrite workflow.
+
+1. Identify hard constraints, genre, stance, and requested edit strength internally. Default to balanced editing; accuracy wins.
+2. Apply K1-K10 to Korean prose and load only the selected references. Default to one whole-passage rewrite, preserving facts, limitations, stance, and caution. A limiting negative such as `입증되지 않았다` is a claim, not filler.
+3. Compare the draft with the source, combining the Final Korean pass and any relevant reference checks. Correct actual mismatches, then recheck the affected content and its dependencies. Finish when no known editing error remains; do not repeat full rewrites or checks without a new issue. If source ambiguity prevents a faithful correction, preserve that wording and briefly identify the unresolved point rather than guess or loop.
 4. Return the result under the output contract. Do not narrate these steps.
+
+When source and draft are available and a comparison audit is requested, or the text is precision-sensitive and dense with numbers or technical tokens, `scripts/check-rewrite.py` may assist the source comparison. Resolve it relative to this file. It reports surface candidates, not semantic verdicts: inspect candidates, fix real mismatches, and rerun only when changes could affect its results. Do not damage correct prose to satisfy a regex. The checker is optional; comparing meaning is required for every rewrite.
 
 ## Source
 

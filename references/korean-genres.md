@@ -71,9 +71,9 @@ Korean politeness is not the same as chatbot residue.
 - Do not make a request harsher merely to shorten it.
 - Do not add courtesy that the source does not contain when the genre calls for a direct instruction.
 
-## Final genre check
+## Genre checks for the source comparison
 
-Before returning the draft, confirm that:
+Include these where relevant in the main source comparison, without a separate review pass:
 
 1. It still belongs to the same genre unless the user requested a conversion.
 2. The audience relationship and level of politeness are intact.

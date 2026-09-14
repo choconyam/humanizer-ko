@@ -32,10 +32,12 @@ Keep `SKILL.md` and `README.md` in sync.
 - **Version:** Keep the same version in `SKILL.md` under `metadata.version`, the first README version entry, `.claude-plugin/plugin.json`, and `.codex-plugin/plugin.json`. Do not add a top-level `version` field to the skill.
 - **Compatibility:** Keep install and use instructions neutral across agents. Names such as Claude Code, OpenCode, and Codex are examples, not limits.
 - **History:** Add a short README version note for any behavior change or non-obvious fix. Fold minor doc-only cleanups into the current version's note so the history stays complete instead of leaving them only in the commit log.
-- **Checks before prompt:** When a proposed rule is mechanically decidable (tokens, numbers, notation, residue scans, length), put it in `scripts/check-rewrite.py` and keep at most one summary line in the prompt. Add a full prompt rule only for judgment the script cannot make. Keep the prompt lean.
+- **Prompt and checker:** Keep essential preservation principles in `SKILL.md` even when a script can detect violations. Put repeated detection logic in the optional `scripts/check-rewrite.py`; skipping it must not weaken the editing contract. Add instructions only when they change a useful decision.
 - **Reference guides:** Keep every root reference and its plugin package mirror byte-for-byte identical.
 - **Upstream sync:** Update `.upstream-version` only after the corresponding upstream tag is merged. Port upstream pattern changes to `references/english-patterns.md` and keep the upstream `LICENSE` unchanged.
 - **Checks:** Before publishing, run `python3 scripts/validate-package.py`, `python3 scripts/validate-localization.py`, `python3 scripts/build-skill-zip.py /tmp/humanizer-ko-skill.zip`, `npx skills add . --list`, and `claude plugin validate .`.
+
+Read only files needed for the requested change. During development, verify affected behavior; use the full package checks before publishing. Fix failures and recheck the affected parts, then stop when required checks pass and known issues are resolved. Do not launch benchmarks or repeat unrelated checks for a wording-only change.
 
 ## Writing style
 
