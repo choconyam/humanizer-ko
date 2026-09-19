@@ -7,7 +7,7 @@ description: |
   presentation scripts; not for unrelated code review or fact-checking alone.
 license: MIT
 metadata:
-  version: "2.11.1-ko.13"
+  version: "ko-1.0.0"
 ---
 
 # humanizer-ko
@@ -138,7 +138,7 @@ The Korean checkpoints above are always active. Load extra references only when 
 
 - **Unresolved genre choices:** Read [the Korean genre guide](references/korean-genres.md) when boilerplate, deliberate voice, repetition, or an audience cue remains unclear, or for a substantial spoken, approved-marketing, or safety rewrite. A routine email or presentation with clear register and courtesy does not trigger it.
 - **Difficult or high-risk fidelity:** Read [the fidelity review guide](references/fidelity-review.md) when the text has several interacting facts, constraints, attributions, or status claims, or when an error would carry high stakes. One ordinary number or English token alone does not trigger the guide.
-- **Substantial English prose:** Read [upstream's 35 English patterns](references/english-patterns.md) once. English product names, code, identifiers, citations, and established technical terms inside Korean text do not trigger this reference; it is for text where English forms a substantial prose span.
+- **Substantial English prose:** Read [upstream's English patterns](references/english-patterns.md) once. English product names, code, identifiers, citations, and established technical terms inside Korean text do not trigger this reference; it is for text where English forms a substantial prose span.
 - **Unsettled specialist terminology:** Read [the terminology router](references/terminology/index.md) only when the task requires choosing, translating, correcting, or explaining a field-specific term. Stop when its quick map resolves the term; read a matching field guide only for unresolved detail. Do not load terminology guidance merely to preserve terms the source already uses consistently.
 
 Reuse unchanged references already present in context. Apply their relevant checks within the same source comparison, not as separate full review passes.
@@ -173,4 +173,4 @@ When source and draft are available and a comparison audit is requested, or the 
 
 ## Source
 
-This skill is based on [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), maintained by WikiProject AI Cleanup. The English reference preserves upstream Humanizer v2.11.1's 35 patterns. This fork adds the Korean checkpoints K1-K10 for Korean word order, subjects, particles, register, sentence endings, rhythm, and terminology.
+This skill is based on [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), maintained by WikiProject AI Cleanup. The English reference follows the upstream release recorded in `.upstream-version`. This fork adds the Korean checkpoints K1-K10 for Korean word order, subjects, particles, register, sentence endings, rhythm, and terminology.

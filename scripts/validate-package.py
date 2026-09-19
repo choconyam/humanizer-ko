@@ -61,12 +61,12 @@ skill_version = require_match(
     re.search(r'(?m)^\s+version:\s*["\']([^"\']+)["\']\s*$', yaml_metadata),
     "Add metadata.version to SKILL.md",
 ).group(1)
+if not re.fullmatch(r"ko-[0-9]+\.[0-9]+\.[0-9]+", skill_version):
+    raise SystemExit(f"Use the fork's own version such as ko-1.0.0: {skill_version}")
+
 readme_version = require_match(
-    re.search(
-        r"(?m)^- \*\*v?([0-9]+\.[0-9]+\.[0-9]+(?:-[0-9A-Za-z.-]+)?)\*\*",
-        README,
-    ),
-    "Add a version entry to README.md",
+    re.search(r"(?m)^- \*\*(ko-[0-9]+\.[0-9]+\.[0-9]+)\*\*", README),
+    "Add a version entry such as - **ko-1.0.0** to README.md",
 ).group(1)
 
 package_versions = {
@@ -152,21 +152,16 @@ pattern_numbers = [
     int(number)
     for number in re.findall(r"(?m)^### ([0-9]+)\. ", ENGLISH_PATTERNS)
 ]
-if pattern_numbers != list(range(1, 36)):
+# Upstream owns the English pattern count; only require an unbroken sequence.
+if not pattern_numbers or pattern_numbers != list(range(1, len(pattern_numbers) + 1)):
     raise SystemExit(
-        f"Number english-patterns.md patterns from 1 through 35: {pattern_numbers}"
+        f"Number english-patterns.md patterns from 1 without gaps: {pattern_numbers}"
     )
 
 if re.search(r"(?m)^### ([0-9]+)\. ", SKILL):
     raise SystemExit("Keep detailed English patterns out of the routing SKILL.md")
 
-readme_numbers = {
-    int(number) for number in re.findall(r"(?m)^\| ([0-9]+) \|", README)
-}
-if readme_numbers != set(range(1, 36)):
-    raise SystemExit("List patterns 1 through 35 in the README table")
-
 if len(SKILL.splitlines()) > 260:
     raise SystemExit("Keep SKILL.md (body with K1-K10) at 260 lines or fewer")
 
-print(f"humanizer-ko package v{skill_version} is valid")
+print(f"humanizer-ko package {skill_version} is valid")

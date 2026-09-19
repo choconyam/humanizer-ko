@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import re
 import subprocess
+import sys
 from pathlib import Path
 
 
@@ -147,11 +148,15 @@ if "blader/humanizer" not in README or "비공식" not in README:
 if "choconyam/humanizer-ko" not in README or "$humanizer-ko" not in README:
     fail("README.md must use the humanizer-ko repository and skill ID")
 
-korean_readme_numbers = {
-    int(number) for number in re.findall(r"(?m)^\| ([0-9]+) \|", README)
-}
-if korean_readme_numbers != set(range(1, 36)):
-    fail("README.md must list patterns 1 through 35")
+english_sync = subprocess.run(
+    [sys.executable, str(ROOT / "scripts" / "sync-english-patterns.py"), "--check"],
+    cwd=ROOT,
+    capture_output=True,
+    text=True,
+    check=False,
+)
+if english_sync.returncode:
+    fail(english_sync.stdout.strip() or english_sync.stderr.strip())
 
 readme_korean_points = {
     int(number) for number in re.findall(r"(?m)^\| K([0-9]+) \|", README)
