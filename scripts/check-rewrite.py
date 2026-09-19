@@ -28,6 +28,11 @@ RESIDUE_PATTERNS = (
     (r"되어[지진질졌짐]", "K3 double passive"),
     (r"보여[지진질졌짐]", "K3 double passive"),
     (r"에 있어", "K2 translation-like"),
+    # A short process-noun list avoids treating membership as a progressive.
+    # This is advisory and deliberately does not cover every possible noun.
+    (r"(?<![가-힣])(?:건립|증설|공사|검토|개발|진행) 중에 있", "K2 translation-like"),
+    (r"필요로 하", "K2 translation-like"),
+    (r"에 위치한", "K2 translation-like"),
     (r"결론적으로", "K5 empty closer"),
     (r"요약하자면", "K5 empty closer"),
     (r"과언이 아니", "K5 stock phrase"),

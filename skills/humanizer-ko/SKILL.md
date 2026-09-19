@@ -7,7 +7,7 @@ description: |
   presentation scripts; not for unrelated code review or fact-checking alone.
 license: MIT
 metadata:
-  version: "ko-1.0.0"
+  version: "ko-1.1.0"
 ---
 
 # humanizer-ko
@@ -42,6 +42,9 @@ Do not transfer English grammar, capitalization, dash, quote, or subject rules i
 - Strip repeated, empty frames such as `이는 ...를 의미합니다`, `~라는 점에서 의미가 있습니다`, and `~라고 할 수 있습니다`; state only the source-supported predicate. Keep real uncertainty or semantic explanation.
 - Break chains built from `~에 대한`, `~를 통해`, `~와 관련하여`, `~에 기반하여`, and `~에 있어`.
 - `의미를 가지다` often becomes `의미가 있다`; `문제가 존재하다` often becomes `문제가 있다`.
+- 뜻과 문장 성분이 유지될 때만 번역투 서술어를 다듬는다: `회의를 갖다` → `회의를 열다`, `현장에서 필요로 하는` → `현장에서 필요한`, `~에 위치한` → `~에 있는`, `바닥으로부터` → `바닥에서`.
+- `~ 중에 있다`는 행위 주체와 대상을 구분한다. `시는 센터를 건립 중에 있다.` → `시는 센터를 건립하고 있다.` 대상이 주어인 `센터는 건립 중에 있다.`는 그대로 두거나 `센터는 건립되고 있다.`로 다듬는다. `후보들 중에 있는 한 명을 고른다.`의 `중에`는 집합 표현이므로 진행형으로 고치지 않는다.
+- 불필요한 `-시키다`는 줄이되 실제 사동은 보존한다: `절차를 개선시키다` → `절차를 개선하다`; `아이를 의자에 앉히다`는 아이에게 동작을 시키는 뜻이므로 유지한다. `-고 있다`도 진행·지속 의미가 없을 때만 줄이며, `현재 센터를 운영하고 있다.`처럼 현재 상태를 밝히는 표현은 보존한다.
 - Remove a generic translated `당신` when Korean would omit the reader. Keep direct address in responsibility or safety instructions.
 - Avoid calqued concept nouns: use `말투` or `문체` for a writer's voice unless the field uses `목소리`.
 - Replace `~하는 데 도움이 됩니다` with the concrete effect only when the source states that effect.
@@ -51,6 +54,7 @@ Do not transfer English grammar, capitalization, dash, quote, or subject rules i
 
 - Omit a subject only when the actor remains clear. Repeat the relevant noun when two actors could be confused.
 - Do not add `그의`, `그녀의`, `그들의`, or plural `들` mechanically.
+- Do not make a thing or abstraction act like a person where Korean would not: `설문 결과는 만족도가 높다는 점을 말해 준다` → `설문 결과에서 만족도가 높다는 점을 알 수 있다`; `이 기술은 빠른 처리를 가능하게 한다` → `이 기술로 빠르게 처리할 수 있다`. Keep the claim's strength.
 - Preserve a deliberate subject when it marks contrast, responsibility, or accountability.
 - Passive voice is valid when the actor is unknown, unimportant, or not the focus.
 - Remove unnecessary translation-like passives: `보여지다` often becomes `보이다`, and `되어지다` becomes `되다`.
@@ -59,7 +63,10 @@ Do not transfer English grammar, capitalization, dash, quote, or subject rules i
 ### K4. Prefer verbs to abstract noun stacks
 
 - Prefer concrete verbs and predicates when meaning stays the same: `검토를 진행하다` → `검토하다`; revise repeated `가능성`, `중요성`, `필요성`, `효율성`, and `연관성` likewise.
+- 명사 위주 표현은 뜻이 같을 때 서술어로 푼다: `절감이 가능하다` → `줄일 수 있다`, `자체안의 경우` → `자체안은`, `불참한 관계로` → `불참해서`. `~ 시`는 시제·조건에 맞춘다: `향후 방한 시 협의할 예정이다.` → `향후 방한할 때 협의할 예정이다.` 과거 방문을 말할 때만 `방한했을 때`를 쓴다.
+- Thin a run of `의`: drop one (`기존의 교과 위주의 수업` → `기존의 교과 위주 수업`) or restore the subject or object particle (`급여의 지급을 위하여` → `급여를 지급하기 위하여`).
 - Treat cramped or repeated middle-dot noun chains, not the number of items, as a review signal. Preserve every distinct item; unfold the chain only when it improves readability.
+- Trim plain redundancy such as `약 30여 명` → `30여 명`, `매년마다` → `매년`, and `새로운 신제품` → `신제품`. Leave settled expressions that Korean norms accept, such as `피해를 입다`, `박수를 치다`, `결실을 맺다`, and `미리 예약하다`, and leave repetition the writer uses for emphasis.
 - Keep defined concepts and any distinct interpretation, instruction, or commitment.
 
 ### K5. Review Korean stock AI phrases in context
@@ -72,6 +79,7 @@ Treat these as review triggers, not banned words:
 - `앞으로의 귀추가 주목됩니다`, `밝은 미래가 기대됩니다`
 - `오늘날 빠르게 변화하는 환경에서`, `현대 사회에서 그 중요성이 커지고 있습니다`
 - Unsupported or repeated `해당`, `효과적으로`, `~를 자랑합니다`, `~에 자리 잡은`
+- Business loanwords piled up as decoration, such as `니즈`, `솔루션`, `시너지`, `로드맵`. Review them only when several stack up without content. Keep them when they are the writer's or the field's habitual vocabulary, a settled loanword (`서비스`, `플랫폼`), a product or policy name, or a defined term. Never replace a loanword for purity alone.
 - `다양한 X` with no named variety: name the actual kinds when the source gives them, and delete the modifier otherwise. Swapping in `여러` is the same laundering. Keep it only when variety itself is the claim.
 - Remove `성공적으로` when completion proves success (`복구를 성공적으로 완료했다` → `복구를 마쳤다`); keep it when success versus completion or attempt is a separate fact.
 - `단순한 X가 아니라 Y` used to inflate Y. Keep a sentence that really contrasts two options; drop the frame when X is a strawman no reader would assume.
@@ -93,7 +101,9 @@ Preserve the proposition and stance. If a trigger's function remains unclear, re
 - Remove repeated `또한`, `그리고`, `그러나`, and `한편` when the relation is already clear.
 - Break chains of `~하며`, `~하면서`, `~함으로써`, and `~하는 가운데` when they hide logic.
 - Keep connectors that carry cause, condition, concession, sequence, or contrast.
-- Keep `-지 않다` distinct from `-지 못하다`: `진행하지 않았다` ≠ `진행하지 못했다`. Do not turn nonoccurrence into failure or infer inability or cause.
+- 접속어가 원문의 논리와 맞는지 확인한다. `그러나`·`하지만`은 대조나 양보에, `따라서`는 원인·이유·근거에 따른 결론이나 논리적 귀결에 쓸 수 있다. `모든 정사각형은 직사각형이다. 이 도형은 정사각형이다. 따라서 이 도형은 직사각형이다.`의 `따라서`는 보존한다. 관계가 분명할 때만 고치며, 원문의 인과·추론 관계를 만들거나 지우지 않는다.
+- Give joined items the same grammatical shape, and give each listed object a verb it fits: `평화 수호와 인권을 보장하는 것` → `평화를 수호하고 인권을 보장하는 것`.
+- `-지 않다`와 `-지 못하다`를 구분한다. `검증을 진행하지 않았다.`는 실행하지 않았다는 뜻이며 `검증을 진행하지 못했다.`로 바꾸면 실행할 수 없었다는 뜻을 더할 수 있다. 원문에 없는 실패·능력·원인을 추정하지 않는다.
 - Avoid attaching every topic to `~은/는`; use the particle that matches its role.
 
 ### K7. Use field-appropriate terminology
@@ -108,10 +118,14 @@ When the task requires choosing, translating, correcting, or explaining an unset
 - Break long comma and connective-ending chains when doing so makes the relation clearer.
 - Merge clipped fragments that imitate English emphasis but sound abrupt in Korean.
 - Keep related information together when splitting would hide cause, scope, or contrast.
+- Put a modifier right before the word it modifies and resolve two-way readings: `일자리 기업의 홍보 기회` → `기업의 일자리 홍보 기회`. If the source itself is ambiguous, keep it and flag it instead of choosing a reading.
 - Rebuild paragraphs when several sentences repeat one topic plus abstract conclusions. State each source-supported predicate once; keep distinct explanation, contrast, or uncertainty.
 - Vary sentence length, structure, or endings only to clarify rhythm or logic, not for surface variety.
 - Remove a conclusion only when it adds no claim, stance, decision, or audience function.
 - Preserve Korean quotation and title marks such as `“ ”`, `‘ ’`, `「 」`, and `『 』`.
+- Do not normalize notation that Korean norms allow both ways: `3~5` and `3-5`, `2 m` and `2m`, six-dot and three-dot ellipses. Keep the final period in a date such as `2024. 5. 1.`.
+- A dash-set aside is valid Korean punctuation. Reduce only a pile-up, and never apply the English dash rule to Korean sentences.
+- Korean marks emphasis with single quotation marks; double marks are for speech and quotations. Change double marks to single only when the span is clearly emphasis, not a quotation or title. Rewrite an English-style colon inside a sentence (`핵심은 하나다: 속도다`) as a sentence; keep a label colon such as `일시: 5월 1일`.
 
 ### K9. Write for speaking when needed
 
@@ -149,6 +163,7 @@ For Korean prose, build natural Korean around source-supported predicates by rev
 
 - Remove unsupported hype, sweeping importance claims, unwanted sales framing, vague attribution, and generic conclusions. Keep an approved marketing voice, a sourced evaluation, or a personal reaction when the genre calls for it.
 - Cut repetitive openings, forced groups, fake contrasts, canned transitions, filler, stacked hedges, and chatbot greetings or closings.
+- In any language, remove decorative formatting the genre does not use: bold scattered over ordinary phrases, a bold label that restates the sentence after it (`**성능:** 성능이 향상됐다`), emoji on headings or bullets, and headings over a few short paragraphs. Keep structure the medium relies on, such as a README, slides, or a list of real parallel items, and keep the writer's own emoji in casual messages.
 - Prefer concrete subjects and verbs, but keep a passive, formal term, repetition, or unusual rhythm when it serves the meaning or the writer's voice.
 - Treat watched phrases as review triggers, not banned words. Do not treat one formal word, ordinary courtesy, an official commitment, a safety emphasis, or a personal metaphor as proof of AI writing. Judge the phrase in context.
 - Add personality only when the genre and source voice call for it. Keep technical, legal, medical, scientific, financial, policy, and reference text precise.

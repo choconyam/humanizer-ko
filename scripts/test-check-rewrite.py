@@ -43,6 +43,32 @@ class CheckerTests(unittest.TestCase):
         self.assertIn("protected items: no deterministic changes found", result.stdout)
         self.assertNotIn("source-only identifier", result.stdout)
 
+    def test_translated_predicates_are_advisory_review_items(self) -> None:
+        text = "성수동에 위치한 센터는 증설 중에 있으며 현장에서 필요로 하는 인력을 뽑는다."
+        result = self.run_checker(text, text)
+        self.assertEqual(result.returncode, 1, result.stdout)
+        for phrase in ("에 위치한", "증설 중에 있", "필요로 하"):
+            self.assertIn(f"K2 translation-like: {phrase}", result.stdout)
+
+    def test_membership_phrases_are_not_progressive_warnings(self) -> None:
+        for text in (
+            "이 중에 있는 하나를 고른다.",
+            "후보들 중에 있는 한 명을 고른다.",
+            "참석자 중에 있는 담당자에게 물었다.",
+            "검토 중인 안건 중에 있는 하나를 고른다.",
+        ):
+            with self.subTest(text=text):
+                result = self.run_checker(text, text)
+                self.assertEqual(result.returncode, 0, result.stdout)
+
+    def test_known_process_phrases_remain_advisory(self) -> None:
+        for text in ("센터는 건립 중에 있다.", "시는 센터를 건립 중에 있다.", "안건은 검토 중에 있다."):
+            with self.subTest(text=text):
+                result = self.run_checker(text, text)
+                self.assertEqual(result.returncode, 1, result.stdout)
+                self.assertIn("K2 translation-like", result.stdout)
+                self.assertIn("protected items: no deterministic changes found", result.stdout)
+
     def test_sign_and_unit_changes_need_source_review(self) -> None:
         for source, rewrite in (("증가율은 +5%다.", "증가율은 -5다."), ("온도는 5℃다.", "온도는 5℉다.")):
             with self.subTest(source=source, rewrite=rewrite):
