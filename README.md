@@ -1,61 +1,135 @@
+# humanizer-ko — AI 티 나는 글을 사람이 다듬은 글로
+
+[![version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fchoconyam%2Fhumanizer-ko%2Fmain%2F.claude-plugin%2Fplugin.json&query=%24.version&prefix=v&label=version&color=blue)](.claude-plugin/plugin.json)
+[![license MIT](https://img.shields.io/badge/license-MIT-orange)](LICENSE)
+[![Codex supported](https://img.shields.io/badge/Codex-supported-black)](#설치)
+[![Claude Code supported](https://img.shields.io/badge/Claude_Code-supported-D97757)](#설치)
+[![upstream blader/humanizer 2.11.1](https://img.shields.io/badge/upstream-blader%2Fhumanizer_2.11.1-lightgrey)](https://github.com/blader/humanizer)
+
 <p align="center">
-  <img src="assets/humanizer-ko-banner.jpg" alt="humanizer-ko" width="100%">
+  <img src="assets/humanizer-ko-banner.jpg" alt="humanizer-ko 마스코트" width="640">
 </p>
 
-# humanizer-ko
+<p align="center">
+  <b>AI로 쓴 초안 → 사람이 다듬은 듯한 한국어</b><br>
+  사실과 수치, 글쓴이의 말투는 그대로 두고 어색한 표현만 고칩니다.
+</p>
 
-`humanizer-ko`는 AI가 쓴 듯한 한국어·영어 문장을 자연스럽게 다듬되, 원문의 사실과 의미, 글쓴이의 말투와 관점을 유지하는 편집 스킬입니다. [blader/humanizer](https://github.com/blader/humanizer)를 바탕으로 한국어 편집 지침을 더한 비공식 포크입니다.
+`humanizer-ko`는 AI가 쓴 듯한 한국어와 영어 문장을 자연스럽게 다듬는 편집 스킬입니다. [blader/humanizer](https://github.com/blader/humanizer)를 바탕으로 한국어 편집 지침을 더한 비공식 포크입니다.
 
-원본은 영어 문장을 기준으로 만들어졌습니다. 대시·따옴표·주어 규칙을 한국어에 그대로 적용하면 오히려 어색해질 수 있습니다. 이 한국어판은 번역투 어순, 이중 피동, 조사와 연결어미, 문체와 높임말, 한국어 챗봇 상투 문구를 K1~K10에서 따로 점검합니다.
+원본은 영어 문장을 기준으로 만들어져서, 대시나 따옴표 규칙을 한국어에 그대로 적용하면 오히려 어색해집니다. 이 한국어판은 번역투 어순, 이중 피동, 조사와 연결어미, 높임말, 한국어 챗봇 상투 문구를 K1~K10에서 따로 점검합니다.
 
-블로그 글, 보고서, 이메일, 공지, 발표 대본 등 AI로 작성한 초안을 다듬을 때 사용합니다. 사실과 기술 정보는 그대로 두고 글쓴이의 관점과 의도한 말투도 지킵니다. AI 탐지기 우회 도구가 아니라 문장 교정 도구입니다.
+## 무엇이 달라지나
 
-기준으로 삼은 upstream 버전은 [`.upstream-version`](.upstream-version)에 기록합니다. 원저작자 표기와 한국어판의 변경 범위는 [`NOTICE.md`](NOTICE.md)에서 확인할 수 있습니다.
+아래는 설명을 위해 지어낸 예시입니다.
 
-## 빠른 이동
+**수정 전**
 
-- [한국어판의 차이](#한국어판의-차이)
-- [설치](#설치)
-- [사용법](#사용법)
-- [작동 방식](#작동-방식)
-- [35개 패턴과 예시](#upstream의-35개-패턴과-예시)
-- [버전 기록](#버전-기록)
-- [라이선스](#라이선스)
+> 이번 프로젝트는 팀의 협업 역량을 보여주는 중요한 이정표가 되었으며, 이해관계자들에 의해 긍정적으로 평가되어졌습니다. 이를 통해 응답 시간을 30% 단축할 수 있었습니다. 도움이 되셨기를 바랍니다!
 
-## 한국어판의 차이
+**수정 후**
 
-영어 문서와 한영 혼합 문서도 다루기 때문에 upstream의 35개 패턴은 [`references/english-patterns.md`](references/english-patterns.md)에 그대로 유지합니다. 다만 상세 규칙은 영어 문장 구간이 충분히 있을 때만 불러옵니다. 한국어를 다듬을 때는 언어와 무관하게 유효한 원칙만 함께 사용하고, 영어의 문법·어순·대문자·대시·따옴표·하이픈 규칙을 한국어에 기계적으로 적용하지 않습니다.
+> 이번 프로젝트로 응답 시간을 30% 줄였고, 이해관계자들도 결과를 긍정적으로 평가했습니다.
 
-한국어 점검 항목 K1~K10은 스킬 본문(`SKILL.md`)에 들어 있어 한국어 글에는 항상 적용됩니다.
+| 바뀐 곳 | 이유 |
+|---|---|
+| `중요한 이정표가 되었으며` 삭제 | 근거 없이 의미를 부풀린 표현 |
+| `평가되어졌습니다` → `평가했습니다` | 이중 피동(K3) |
+| `이를 통해 ~할 수 있었습니다` → `~로 줄였고` | 번역투 틀(K2) |
+| `도움이 되셨기를 바랍니다!` 삭제 | 챗봇 잔여 문구(K5) |
+| `30%`, `긍정적으로 평가` 유지 | 사실과 평가는 건드리지 않음 |
+
+원문에 없는 사실이나 예시, 성과는 새로 만들지 않습니다. 예정된 일을 끝난 일처럼 바꾸거나, 부정문을 빼거나, `WS2`를 `WS₂`로 바꾸는 것처럼 표기를 고치는 것도 하지 않습니다.
+
+## 이럴 때 씁니다
+
+- **AI로 쓴 보고서나 이메일이 어색할 때** — 번역투와 상투 문구를 걷어내고 원래 내용은 남깁니다.
+- **발표 대본을 다듬을 때** — 소리 내어 읽기 편한 문장으로 고칩니다(K9).
+- **숫자와 기술 용어가 많은 글을 고칠 때** — 수치와 단위, 표기, 제한 조건을 그대로 두고, 필요하면 검사 스크립트로 원문과 대조합니다.
+- **내 문체를 유지하고 싶을 때** — 직접 쓴 글을 예시로 주면 그 리듬과 단어 선택을 따릅니다.
+- **한영 혼합 문서를 다룰 때** — 영어 문장이 충분히 있으면 upstream의 영어 35개 패턴도 함께 봅니다.
+
+AI 탐지기 우회 도구가 아니라 문장 교정 도구입니다.
+
+## 3단계로 시작하기
+
+**1. 설치** — 쓰는 에이전트에 맞춰 한 줄이면 됩니다. 설치한 뒤에는 새 세션을 여세요.
+
+```bash
+# Codex
+npx skills add choconyam/humanizer-ko --global --agent codex
+
+# Claude Code
+npx skills add choconyam/humanizer-ko --global --agent claude-code
+```
+
+Claude Desktop, 플러그인, 수동 설치는 아래 [설치](#설치)에 있습니다.
+
+**2. 요청하기** — 스킬을 부르고 글을 붙여 넣습니다. 자연어로 요청해도 됩니다.
+
+```text
+/humanizer-ko
+
+[다듬을 글]
+```
+
+Codex에서는 `$humanizer-ko`로 부릅니다.
+
+**3. 조건 붙이기(선택)** — 지킬 것을 한 문장으로 덧붙이면 그대로 따릅니다.
+
+```text
+이 발표 대본을 자연스럽게 다듬되 수치와 의학적 제한은 그대로 유지해줘.
+이 문장을 번역투 없이 다듬고, -합니다 말투를 유지해줘.
+docs/launch-post.md의 문장을 자연스럽게 다듬어줘.
+```
+
+## 동작 흐름
+
+```mermaid
+flowchart LR
+    S["원문"] --> K["지킬 내용 확인<br>(사실, 수치, 말투)"]
+    K --> R["K1~K10으로 다듬기<br>(영어가 많으면 35개 패턴도)"]
+    R --> C["원문과 대조"]
+    C --> V["검사 스크립트<br>(선택)"]
+    V --> O["최종 문장"]
+```
+
+어떻게 고칠지는 에이전트가 판단합니다. 숫자와 영문 표기가 바뀌었는지처럼 기계로 확인할 수 있는 일은 `scripts/check-rewrite.py`가 맡습니다. 검사 스크립트는 수치와 기술 표기가 많은 글이나 비교 검토를 요청했을 때만 씁니다.
+
+일반 교정에서는 설명 없이 최종 문장만 보여줍니다. 검토나 비교만 요청하면 그 범위에서 답하고, 교정본을 억지로 덧붙이지 않습니다.
+
+## 한국어 점검 항목 K1~K10
+
+K1~K10은 스킬 본문([`SKILL.md`](SKILL.md))에 들어 있어서 한국어 글에는 항상 적용됩니다.
 
 | 항목 | 한국어 전용 점검 사항 |
 |---|---|
 | K1 | 전체 예의 수준을 지키며 관습적 문체 차이와 무작위 혼용을 구분 |
 | K2 | 번역투 어순과 빈 틀을 걷어내고 원문 내용을 자연스러운 한국어 문장으로 표현 |
-| K3 | 주어·대명사·피동·복수 표현을 문맥에 맞게 사용 |
+| K3 | 주어, 대명사, 피동, 복수 표현을 문맥에 맞게 사용 |
 | K4 | 같은 내용의 반복과 빽빽한 명사 나열을 풀되 필요한 항목은 모두 보존 |
 | K5 | 한국어 AI 상투 표현과 챗봇 잔여 문구를 문맥에 따라 검토 |
-| K6 | 조사·연결어미와 `-지 않다`·`-지 못하다`의 차이를 뜻에 맞게 유지 |
+| K6 | 조사와 연결어미, `-지 않다`와 `-지 못하다`의 차이를 뜻에 맞게 유지 |
 | K7 | 분야에서 실제로 쓰는 용어를 사용하고 기술 토큰을 보호 |
-| K8 | 반복되는 문장·문단을 한국어에 맞는 경계·인용부호·리듬으로 조정 |
-| K9 | 발표·강의·영상 대본을 말하기 편하게 수정 |
-| K10 | 의료·법률·과학·금융·정책 문구의 정확성과 제한 조건을 보존 |
+| K8 | 반복되는 문장과 문단을 한국어에 맞는 경계, 인용부호, 리듬으로 조정 |
+| K9 | 발표, 강의, 영상 대본을 말하기 편하게 수정 |
+| K10 | 의료, 법률, 과학, 금융, 정책 문구의 정확성과 제한 조건을 보존 |
 
-영어 문장이 충분한 문서에는 upstream의 35개 패턴 참조 문서를 불러옵니다. 한국어 문서에는 축약한 K1~K10 가이드를 적용하며, 영어 제품명·코드·인용·정착된 기술용어가 섞였다는 이유만으로 영어 상세 규칙까지 불러오지 않습니다. 전문용어를 실제로 선택·번역·교정·설명해야 할 때만 작은 용어 라우터를 읽습니다. 흔한 중의어는 라우터에서 해결하고, 세부 판단이 남을 때만 해당 분야 파일을 불러옵니다.
+필요할 때만 읽는 참조 문서도 있습니다.
 
-조건부로 필요한 긴 지침은 목적별로 나눴습니다. [`references/korean-genres.md`](references/korean-genres.md)는 K1~K10만으로 상투 표현인지, 의도한 말투인지, 반복이 필요한지 판단하기 어렵거나 긴 말하기 대본 등을 다룰 때만 읽습니다. [`references/fidelity-review.md`](references/fidelity-review.md)는 기술 표기를 그대로 지키고, 예정·완료 여부와 부정·범위·말한 주체·제한·평가·약속이 달라지지 않았는지 확인합니다.
-
-일반적인 채팅형 교정에서는 스킬 적용 안내나 작업 설명 없이 최종 문장만 보여줍니다. 검토·비교·설명을 요청하면 그 범위에만 답합니다. 교정본이나 파일 수정을 요청하지 않았다면 억지로 덧붙이지 않습니다.
-
-일반 교정은 글 전체를 한 번 고친 뒤 원문과 대조하고, 오류가 있으면 관련 부분을 수정·재확인합니다. `check-rewrite.py`는 원문과 수정본의 비교 검토를 요청했거나 정확성이 중요한 수치·기술 표기가 많은 글에서 필요할 때만 쓰는 보조 도구입니다. 숫자와 표기가 달라졌는지 보여 줄 뿐 의미가 보존됐는지는 판단하지 못하므로, 결과는 반드시 원문과 비교합니다.
+| 문서 | 언제 읽나 |
+|---|---|
+| [`korean-genres.md`](references/korean-genres.md) | 상투 표현인지 의도한 말투인지 판단이 어렵거나 긴 말하기 대본을 다룰 때 |
+| [`fidelity-review.md`](references/fidelity-review.md) | 수치, 조건, 예정과 완료 여부처럼 얽힌 사실이 많아 원문과 꼼꼼히 대조해야 할 때 |
+| [`terminology/`](references/terminology/index.md) | 전문용어를 고르거나 번역해야 할 때. 과학, 소프트웨어, 의학, 법률, 금융 분야별로 나뉨 |
+| [`english-patterns.md`](references/english-patterns.md) | 영어 문장이 충분히 있을 때. upstream의 35개 패턴 |
 
 ## 설치
 
-원본 스킬과 한국어판은 이름이 달라 함께 설치할 수 있습니다. upstream 원본은 `humanizer`, 이 버전은 `humanizer-ko`라는 이름을 사용합니다. Windows에서는 아래 경로의 `~`를 `%USERPROFILE%`로 바꿔 읽으세요. 설치한 뒤에는 새 에이전트 세션을 시작하거나 스킬을 다시 불러오세요.
+원본 `humanizer`와 이름이 달라서 함께 설치할 수 있습니다. Windows에서는 `~`를 `%USERPROFILE%`로 바꿔 읽으세요.
 
-### Codex
-
-Skills CLI로 전역 설치합니다. 스킬은 `~/.codex/skills/humanizer-ko`에 들어갑니다.
+<details>
+<summary><b>Codex</b> — Skills CLI 또는 수동 복제</summary>
 
 ```bash
 npx skills add choconyam/humanizer-ko --global --agent codex
@@ -69,15 +143,23 @@ git clone https://github.com/choconyam/humanizer-ko.git ~/.codex/skills/humanize
 
 Codex에서는 `$humanizer-ko`로 호출하거나 자연어로 요청합니다.
 
-### Claude Code
+</details>
 
-Skills CLI로 전역 설치합니다. 스킬은 `~/.claude/skills/humanizer-ko`에 들어갑니다.
+<details>
+<summary><b>Claude Code</b> — Skills CLI, 플러그인, 수동 복사</summary>
 
 ```bash
 npx skills add choconyam/humanizer-ko --global --agent claude-code
 ```
 
-수동으로 설치하려면 `SKILL.md`, 참조 문서, 선택형 검증 스크립트를 복사합니다.
+플러그인으로도 설치할 수 있습니다. 이때는 `/humanizer-ko:humanizer-ko`로 실행합니다.
+
+```text
+/plugin marketplace add choconyam/humanizer-ko
+/plugin install humanizer-ko@humanizer-ko
+```
+
+수동으로 설치하려면 스킬 파일과 참조 문서, 검사 스크립트를 복사합니다.
 
 ```bash
 mkdir -p ~/.claude/skills/humanizer-ko/scripts
@@ -86,28 +168,23 @@ cp -R references ~/.claude/skills/humanizer-ko/
 cp scripts/check-rewrite.py ~/.claude/skills/humanizer-ko/scripts/
 ```
 
-Claude Code에서는 `/humanizer-ko`로 호출하거나 자연어로 요청합니다.
+`skills/humanizer-ko/SKILL.md`는 루트의 `SKILL.md`와 같은 내용이며, 패키지 검사가 두 파일의 일치를 확인합니다.
 
-플러그인으로도 설치할 수 있습니다.
+</details>
 
-```text
-/plugin marketplace add choconyam/humanizer-ko
-/plugin install humanizer-ko@humanizer-ko
-```
+<details>
+<summary><b>Claude Desktop</b> — 릴리스 ZIP 업로드</summary>
 
-플러그인으로 설치한 스킬은 `/humanizer-ko:humanizer-ko`로 실행합니다. `skills/humanizer-ko/SKILL.md`는 루트의 `SKILL.md`와 같은 내용을 담으며, 패키지 검사가 두 파일의 일치를 확인합니다.
+최신 릴리스의 [`humanizer-ko-skill.zip`](https://github.com/choconyam/humanizer-ko/releases/latest/download/humanizer-ko-skill.zip)을 받아 업로드하세요. GitHub의 **Code > Download ZIP**은 업로드용 구조가 아니니 쓰지 마세요.
 
-### Claude Desktop 업로드
+릴리스 ZIP의 버전은 `main`의 소스 버전과 다를 수 있습니다. 받기 전에 릴리스 태그를 확인하세요.
 
-Claude Desktop GUI에서 이 버전을 설치하거나 교체할 때는 최신 릴리스의 [`humanizer-ko-skill.zip`](https://github.com/choconyam/humanizer-ko/releases/latest/download/humanizer-ko-skill.zip)을 받으세요.
+</details>
 
-GitHub의 **Code > Download ZIP** 대신 릴리스 파일을 사용하세요. 릴리스 패키지는 스킬, 모든 참조 문서, 라이선스 고지를 Claude Desktop 업로드용 구조로 담습니다.
+<details>
+<summary><b>다른 에이전트와 업데이트</b></summary>
 
-릴리스 ZIP의 버전은 `main`의 소스 버전과 다를 수 있습니다. 다운로드 전에 릴리스 태그를 확인하세요.
-
-### 다른 에이전트와 업데이트
-
-Skills CLI는 Codex와 Claude Code 외에도 여러 에이전트를 지원합니다. 지원되는 모든 에이전트에 한 번에 설치합니다.
+지원되는 모든 에이전트에 한 번에 설치합니다.
 
 ```bash
 npx skills add choconyam/humanizer-ko --global --agent '*'
@@ -119,39 +196,13 @@ npx skills add choconyam/humanizer-ko --global --agent '*'
 npx skills update humanizer-ko --global
 ```
 
-현재 프로젝트에만 설치하려면 `--global`을 빼면 됩니다. Skills CLI가 지원하지 않는 에이전트라도 스킬 폴더에 `SKILL.md`와 `references/` 폴더를 함께 두면 작동합니다.
+현재 프로젝트에만 설치하려면 `--global`을 빼세요. Skills CLI가 지원하지 않는 에이전트라도 스킬 폴더에 `SKILL.md`와 `references/`를 함께 두면 작동합니다.
 
-## 사용법
+</details>
 
-슬래시 명령을 사용하거나 에이전트에게 직접 요청합니다.
+## 내 문체에 맞추기
 
-```text
-/humanizer-ko
-
-[다듬을 글을 여기에 붙여 넣기]
-```
-
-```text
-이 글을 자연스럽게 다듬어줘: [다듬을 글]
-```
-
-한국어로 다음과 같이 요청할 수 있습니다.
-
-```text
-이 발표 대본을 자연스럽게 다듬되 수치와 의학적 제한은 그대로 유지해줘.
-이 문장을 번역투 없이 다듬고, -합니다 말투를 유지해줘.
-이 보고서를 덜 AI스럽게 고치되 기술용어와 인용은 바꾸지 마.
-```
-
-파일을 직접 다듬도록 요청할 수도 있습니다.
-
-```text
-docs/launch-post.md의 문장을 자연스럽게 다듬어줘.
-```
-
-### 내 문체에 맞추기
-
-자신의 문체를 유지하고 싶다면 작성한 글의 예시를 함께 제공합니다.
+직접 쓴 글을 예시로 함께 주면 그 문장 리듬과 단어 선택, 문장부호 습관을 따릅니다. 예시가 일반 규칙보다 우선합니다.
 
 ```text
 /humanizer-ko
@@ -163,13 +214,24 @@ docs/launch-post.md의 문장을 자연스럽게 다듬어줘.
 [다듬을 글]
 ```
 
-`humanizer-ko`는 예시의 문장 리듬, 단어 선택, 문장부호, 의도적인 표현 습관을 따릅니다.
+## 자주 묻는 것
 
-## 작동 방식
+**AI 탐지기를 피하는 도구인가요?** 아니요. 읽는 사람이 어색하게 느끼는 표현을 고치는 교정 도구입니다. 탐지기 점수를 목표로 삼지 않습니다.
+
+**원문에 없는 내용을 넣나요?** 넣지 않습니다. 그럴듯한 장비명이나 원인, 성과를 덧붙이는 것도 창작으로 봅니다. 오타로 보이는 부분은 고치지 않고 표시만 합니다.
+
+**영어 글도 되나요?** 됩니다. 영어 문장이 충분히 있으면 upstream의 35개 패턴을 함께 적용합니다.
+
+**돈이 드나요?** 스킬은 무료(MIT)입니다. 에이전트 사용량은 본인 계정에서 나갑니다.
+
+## 더 보기
+
+<details>
+<summary><b>자세한 동작 원리</b></summary>
 
 `humanizer-ko`는 WikiProject AI Cleanup이 관리하는 위키백과의 ["Signs of AI writing"](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing)에 정리된 패턴을 사용합니다.
 
-### 기본 흐름
+> LLM은 통계 알고리즘으로 다음에 올 말을 추정합니다. 그 결과는 가장 넓은 상황에 적용될 수 있는, 통계적으로 가장 가능성 높은 표현에 가까워지는 경향이 있습니다.
 
 교정을 요청했을 때의 흐름입니다. 검토만 요청하면 관련 기준으로 문제를 설명하고, 전체 교정본을 만들거나 파일을 수정하지 않습니다.
 
@@ -178,21 +240,16 @@ docs/launch-post.md의 문장을 자연스럽게 다듬어줘.
 3. 글 전체를 한 번 다듬은 뒤 원문과 최종안을 대조합니다.
 4. 실제 오류가 있으면 바로잡고, 영향을 받은 부분만 다시 확인합니다. 새 근거가 없는데 검사를 되풀이하지 않습니다.
 
-사실, 이름, 날짜, 인용문, 출처를 새로 만들어내지 않습니다. 세부 정보를 추가하려면 반드시 원문이나 작성자가 제공한 근거가 있어야 합니다. 시제, 가능성, 예정·완료 상태도 보존해 계획을 이미 끝난 일처럼 바꾸지 않습니다.
+영어 전용 규칙을 한국어에 그대로 옮기지 않고 문장과 문단 전체를 다시 구성합니다. K5 표현은 금칙어나 개수 규칙이 아닙니다. 원문에 있는 불확실성이나 설명, 필요한 나열과 성공했다는 사실, 관습적인 인사말과 본문의 문체 차이, 인사와 감사와 부탁처럼 역할이 다른 표현, 3인칭이나 인용된 화자의 말투는 보존합니다.
 
-### 지침과 선택형 검사
+영어 제품명이나 코드, 인용, 정착된 기술용어가 섞였다는 이유만으로 영어 상세 규칙을 불러오지 않습니다. 충실도 참조 문서는 분야 이름만 보고 여는 것이 아니라, 서로 얽힌 조건이 얼마나 많고 오류가 어떤 영향을 주는지를 보고 선택합니다. 내용이 바뀌지 않은 지침이 이미 문맥에 있으면 다시 읽지 않습니다.
 
-사실과 의미를 지키는 핵심 원칙과 한국어 점검 항목 K1~K10은 스킬 본문에 있어 항상 적용됩니다. 충실도 참조 문서는 분야 이름만 보고 여는 것이 아니라, 서로 얽힌 조건이 얼마나 많고 오류가 어떤 영향을 주는지를 보고 선택합니다. 내용이 바뀌지 않은 지침이 이미 문맥에 있으면 다시 읽지 않습니다.
+검사 스크립트는 단어와 수치, 표기처럼 기계적으로 찾을 수 있는 변화만 보여 줍니다. 결과가 사실이나 의미의 오류를 확정하지는 않으며, 최종 판단은 원문과 직접 비교해서 내립니다.
 
-영어 전용 규칙을 한국어에 그대로 옮기지 않고 문장과 문단 전체를 다시 구성합니다. K5 표현은 금칙어나 개수 규칙이 아닙니다. 원문에 있는 불확실성이나 설명, 필요한 나열과 성공했다는 사실, 관습적인 인사말과 본문의 문체 차이, 인사·감사·부탁처럼 역할이 다른 표현, 3인칭이나 인용된 화자의 말투는 보존합니다. 장르 지침은 이런 판단이 남거나 긴 구어 대본 등을 다룰 때만 읽습니다. 용어 작업은 [`references/terminology/index.md`](references/terminology/index.md)에서 시작해 흔한 중의어를 먼저 해결하고, 세부 판단이 남을 때만 해당 분야 파일을 불러옵니다.
+</details>
 
-선택형 검사기는 단어·수치·표기처럼 기계적으로 찾을 수 있는 변화만 보여 줍니다. 검사 결과가 사실이나 의미의 오류를 확정하지는 않으며, 최종 판단은 원문과 직접 비교해서 내립니다.
-
-### 위키백과 글의 핵심
-
-> LLM은 통계 알고리즘으로 다음에 올 말을 추정합니다. 그 결과는 가장 넓은 상황에 적용될 수 있는, 통계적으로 가장 가능성 높은 표현에 가까워지는 경향이 있습니다.
-
-## Upstream의 35개 패턴과 예시
+<details>
+<summary><b>Upstream의 35개 패턴과 예시</b></summary>
 
 ### 내용 패턴
 
@@ -254,7 +311,10 @@ docs/launch-post.md의 문장을 자연스럽게 다듬어줘.
 | 24 | **한정 표현을 여러 번 겹침** | "잠재적으로 가능할 수도 있다" | "가능할 수 있다" 또는 "가능하다" |
 | 25 | **내용 없는 긍정적 결론** | "앞으로의 전망은 밝다" | 사실이나 출처가 있는 계획으로 끝맺음 |
 
-## 전체 예시
+</details>
+
+<details>
+<summary><b>긴 글 전체 예시 (리스본 여행기)</b></summary>
 
 **수정 전(AI 문체):**
 
@@ -284,26 +344,22 @@ docs/launch-post.md의 문장을 자연스럽게 다듬어줘.
 >
 > 다시 갈 생각은 분명히 있습니다. 리스본은 한 번으로 끝내기보다 몇 번이고 다시 찾고 싶은 도시입니다.
 
-## 출처
+</details>
 
-- [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) — 주요 출처
-- [WikiProject AI Cleanup](https://en.wikipedia.org/wiki/Wikipedia:WikiProject_AI_Cleanup) — 출처 문서 관리
-- 위키백과 문서 본문은 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.ko)을 따릅니다.
-- [국립국어원 한국어 어문 규범](https://korean.go.kr/kornorms) — 맞춤법·문장부호·외래어 표기의 기본 기준
-- [국립국어원 표준국어대사전](https://stdict.korean.go.kr/) — 표준어형과 뜻풀이 확인
-- 분야별 용어를 확인할 때 참고하는 출처(TTA 정보통신용어사전, 국가법령정보센터 등)는 [`references/terminology/`](references/terminology/index.md)에 정리되어 있습니다.
+<details>
+<summary><b>Upstream 동기화</b></summary>
 
-## Upstream 유지보수
+기준으로 삼은 upstream 버전은 [`.upstream-version`](.upstream-version)에 기록합니다. 원저작자 표기와 한국어판의 변경 범위는 [`NOTICE.md`](NOTICE.md)에 있습니다.
 
-예약된 GitHub Actions 워크플로는 매주 `blader/humanizer`의 최신 안정 버전 태그를 확인합니다. 새 버전이 있으면 봇 브랜치에 해당 태그를 병합하고 패키지·현지화 검사를 실행한 뒤 초안 PR을 만듭니다. PR을 `main`에 자동으로 병합하지는 않습니다.
+예약된 GitHub Actions 워크플로가 매주 `blader/humanizer`의 최신 안정 버전 태그를 확인합니다. 새 버전이 있으면 봇 브랜치에 병합하고 패키지와 현지화 검사를 돌린 뒤 초안 PR을 만듭니다. `main`에 자동으로 병합하지는 않습니다.
 
-Git 충돌이 발생하면 워크플로가 중단되고 이슈가 생성됩니다. 충돌을 직접 해결하면서 한국어 가이드와 출처 파일을 보존하고, 검증기를 다시 실행한 뒤 한국어 교정 예시를 몇 개 검토해야 합니다.
+Git 충돌이 나면 워크플로가 멈추고 이슈를 만듭니다. 충돌을 직접 풀 때는 한국어 가이드와 출처 파일을 보존하고, 검증기를 다시 돌린 뒤 한국어 교정 예시를 몇 개 검토하세요.
 
-포크를 만든 뒤 이 자동화를 사용하려면 GitHub Actions를 활성화하고 워크플로가 PR을 만들 수 있도록 허용해야 합니다.
+포크해서 이 자동화를 쓰려면 GitHub Actions를 켜고 워크플로가 PR을 만들 수 있도록 허용해야 합니다.
+
+</details>
 
 ## 버전 기록
-
-### 최신 패치
 
 - **v2.11.1-ko.13** — 요청한 범위에서 정확히 끝내고, 필요한 검토만 수행하도록 작업 흐름과 지침 배치를 정리했습니다.
   - **수정 — 요청 범위:** 검토·비교·설명만 요청했을 때 전체 교정본을 붙이거나 파일을 수정하지 않도록 했습니다.
@@ -314,9 +370,7 @@ Git 충돌이 발생하면 워크플로가 중단되고 이슈가 생성됩니�
   - **유지:** K1~K10의 구성과 한국어 편집·사실 보존 원칙, upstream 영어 35개 패턴을 유지합니다. 품질·비용 변화는 이번 업데이트에서 측정하지 않았습니다.
 
 <details>
-<summary><strong>이전 포크 릴리스 보기</strong></summary>
-
-### 이전 포크 릴리스
+<summary><b>이전 포크 릴리스 보기</b></summary>
 
 - **v2.11.1-ko.12** — 한국어는 단어를 기계적으로 지우기보다 문장·문단 전체를 다듬고, 이미 자연스러운 표현과 필요한 나열·인사·화자 말투·성공 여부를 보존하며 `-지 않다`와 `-지 못하다`를 구분합니다. 일반 교정은 한 번의 전체 수정과 원문 대조로 끝내고, 추가 안내는 판단이 어려울 때만 읽으며 검증 도구는 요청된 검토나 수치·기술 정보가 많은 글에서만 선택적으로 씁니다. 일반 영어 단어를 기술용어로 잘못 경고하던 문제를 줄이고, 부호·단위·코드 변경 감지를 보강했습니다. 원본·패키지 복사본과 라이선스·고지 파일의 누락이나 불일치를 검사하고, 문서 예시는 원문에 없는 내용을 만들지 않도록 바로잡았습니다.
 - **v2.11.1-ko.11** — 구조를 뒤집었습니다. 한국어 점검 항목 K1~K10을 조건부로 읽던 참조 파일에서 스킬 본문(`SKILL.md`)으로 옮겨 한국어 글에는 항상 적용되게 했고, upstream 영어 35개 패턴만 영어 문장이 충분할 때 읽는 참조로 남겼습니다. 조건부 로딩이 건너뛰어져 규칙 없이 교정되던 실패 경로를 없앴습니다. Codex용 `.codex-plugin/plugin.json`과 Windows 호환 패키지 복사본을 추가했습니다.
@@ -334,9 +388,7 @@ Git 충돌이 발생하면 워크플로가 중단되고 이슈가 생성됩니�
 </details>
 
 <details>
-<summary><strong>Upstream 릴리스 보기</strong></summary>
-
-### Upstream 릴리스
+<summary><b>Upstream 릴리스 보기</b></summary>
 
 - **2.11.1** — 일반 파일로 된 `humanizer/SKILL.md` 하나를 포함하는 Claude Desktop용 릴리스 패키지를 추가했습니다. GitHub 소스 압축 파일에는 플러그인 심볼릭 링크가 그대로 남습니다(#224 해결). 35개 패턴은 바뀌지 않았습니다.
 - **2.11.0** — 저장소 지침, 설명, 검사, 스킬 지침을 모두 쉬운 영어 원칙으로 다시 작성했습니다. 35개 패턴과 동작은 유지했습니다.
@@ -364,6 +416,19 @@ Git 충돌이 발생하면 워크플로가 중단되고 이슈가 생성됩니�
 
 </details>
 
+## 출처
+
+- [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) — 주요 출처
+- [WikiProject AI Cleanup](https://en.wikipedia.org/wiki/Wikipedia:WikiProject_AI_Cleanup) — 출처 문서 관리
+- 위키백과 문서 본문은 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.ko)을 따릅니다.
+- [국립국어원 한국어 어문 규범](https://korean.go.kr/kornorms) — 맞춤법, 문장부호, 외래어 표기의 기본 기준
+- [국립국어원 표준국어대사전](https://stdict.korean.go.kr/) — 표준어형과 뜻풀이 확인
+- 분야별 용어를 확인할 때 참고하는 출처(TTA 정보통신용어사전, 국가법령정보센터 등)는 [`references/terminology/`](references/terminology/index.md)에 정리되어 있습니다.
+
 ## 라이선스
 
-MIT 라이선스를 사용합니다. Upstream의 저작권과 허가 고지는 [`LICENSE`](LICENSE)에 그대로 유지되어 있습니다. 원저작자 표기, 기준 버전, 현지화 변경 사항은 [`NOTICE.md`](NOTICE.md)에서 확인하세요.
+MIT 라이선스를 사용합니다. Upstream의 저작권과 허가 고지는 [`LICENSE`](LICENSE)에 그대로 유지되어 있습니다. 원저작자 표기와 기준 버전, 현지화 변경 사항은 [`NOTICE.md`](NOTICE.md)에서 확인하세요.
+
+---
+
+> 이 README는 GitHub 방문자를 위한 안내입니다. 에이전트가 실제로 읽는 규칙은 [`SKILL.md`](SKILL.md)와 [`references/`](references/)에 있습니다.
