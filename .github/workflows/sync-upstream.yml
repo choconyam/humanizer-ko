@@ -82,8 +82,8 @@ jobs:
             skills/humanizer-ko/references/english-patterns.md
           git commit -m "chore: follow upstream $latest English patterns"
 
-          # The validators read files from the upstream tag, so CI needs it too.
-          git push origin "refs/tags/$latest"
+          # Do not push the upstream tag: its tree holds workflow files, which
+          # the bot token may not push. validate.yml fetches upstream tags itself.
           git push --force-with-lease --set-upstream origin "$branch"
 
           gh pr create \

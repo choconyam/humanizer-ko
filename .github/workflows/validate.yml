@@ -15,6 +15,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      # The validators read files from the tracked upstream tag. Fetch it from
+      # upstream directly; its tree holds workflow files, so it must not be
+      # pushed to this repo by the bot token.
+      - name: Fetch upstream tags
+        run: git fetch https://github.com/blader/humanizer.git '+refs/tags/v*:refs/tags/v*'
       - uses: actions/setup-node@v4
         with:
           node-version: 22
