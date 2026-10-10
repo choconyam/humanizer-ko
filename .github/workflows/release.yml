@@ -1,11 +1,22 @@
 name: Publish Claude Desktop package
 
+# Build the Claude Desktop zip and attach it to the latest release.
+# Runs when a release is published and on every push to main, so the zip
+# follows main (for example an upstream English pattern update) without
+# a new fork release.
+
 on:
   release:
     types: [published]
+  push:
+    branches: [main]
 
 permissions:
   contents: write
+
+concurrency:
+  group: desktop-package
+  cancel-in-progress: false
 
 jobs:
   publish:
@@ -13,14 +24,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.release.tag_name }}
+          ref: ${{ github.event.release.tag_name || github.sha }}
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - name: Build Claude Desktop archive
         run: python3 scripts/build-skill-zip.py dist/humanizer-ko-skill.zip
-      - name: Attach archive to release
+      - name: Attach archive to the latest release
         env:
           GH_TOKEN: ${{ github.token }}
-          RELEASE_TAG: ${{ github.event.release.tag_name }}
-        run: gh release upload "$RELEASE_TAG" dist/humanizer-ko-skill.zip --clobber
+        run: |
+          tag="${{ github.event.release.tag_name }}"
+          if [[ -z "$tag" ]]; then
+            tag=$(gh release view --json tagName --jq .tagName)
+          fi
+          gh release upload "$tag" dist/humanizer-ko-skill.zip --clobber
+          echo "Attached dist/humanizer-ko-skill.zip to $tag"

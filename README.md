@@ -182,7 +182,7 @@ cp scripts/check-rewrite.py ~/.claude/skills/humanizer-ko/scripts/
 
 최신 릴리스의 [`humanizer-ko-skill.zip`](https://github.com/choconyam/humanizer-ko/releases/latest/download/humanizer-ko-skill.zip)을 받아 업로드하세요. GitHub의 **Code > Download ZIP**은 업로드용 구조가 아니니 쓰지 마세요.
 
-릴리스 ZIP의 버전은 `main`의 소스 버전과 다를 수 있습니다. 받기 전에 릴리스 태그를 확인하세요.
+ZIP은 `main`이 바뀔 때마다 다시 만들어 최신 릴리스에 붙입니다. 그래서 원본 영어 패턴만 바뀐 경우에도 ZIP은 `main`과 같고, 릴리스 태그의 소스보다 새로울 수 있습니다.
 
 </details>
 

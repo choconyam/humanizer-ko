@@ -21,7 +21,7 @@ Keep the skill portable. Do not write instructions that limit it to one or two a
 - `.codex-plugin/plugin.json` describes the Codex skills-only plugin.
 - `scripts/check-rewrite.py` is the optional deterministic rewrite check that ships with the skill. It must stay dependency-free and safe to skip.
 - `scripts/sync-english-patterns.py` rebuilds `references/english-patterns.md` from an upstream tag. It keeps pattern sections and drops upstream's own workflow, output, and source sections.
-- `scripts/build-skill-zip.py` builds the symlink-free archive for Claude Desktop uploads.
+- `scripts/build-skill-zip.py` builds the symlink-free archive for Claude Desktop uploads. `release.yml` rebuilds it on every push to `main` and attaches it to the latest release.
 - `scripts/validate-package.py` checks package files and shared values.
 - `scripts/validate-localization.py` checks the Korean guide, attribution, tracked upstream release, and package mirror.
 
