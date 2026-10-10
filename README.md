@@ -4,7 +4,7 @@
 [![license MIT](https://img.shields.io/badge/license-MIT-orange)](LICENSE)
 [![Codex supported](https://img.shields.io/badge/Codex-supported-black)](#설치)
 [![Claude Code supported](https://img.shields.io/badge/Claude_Code-supported-D97757)](#설치)
-[![upstream blader/humanizer 3.0.0](https://img.shields.io/badge/upstream-blader%2Fhumanizer_3.0.0-lightgrey)](https://github.com/blader/humanizer/releases/tag/v3.0.0)
+[![upstream blader/humanizer 3.1.0](https://img.shields.io/badge/upstream-blader%2Fhumanizer_3.1.0-lightgrey)](https://github.com/blader/humanizer/releases/tag/v3.1.0)
 
 <p align="center">
   <img src="assets/humanizer-ko-banner.jpg" alt="humanizer-ko 마스코트" width="640">

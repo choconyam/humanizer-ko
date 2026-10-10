@@ -1,6 +1,6 @@
 # English pattern reference
 
-Read this reference only when editing substantial English prose. It is extracted from upstream Humanizer v3.0.0 by `scripts/sync-english-patterns.py`. Do not edit it by hand.
+Read this reference only when editing substantial English prose. It is extracted from upstream Humanizer v3.1.0 by `scripts/sync-english-patterns.py`. Do not edit it by hand.
 
 The patterns below apply to English sentences only. For Korean prose, apply the K1-K10 checkpoints in `SKILL.md`; do not carry English dash, quotation mark, capitalization, or hyphen rules into Korean sentences. Isolated English product names, code, identifiers, and established technical terms inside Korean text do not require this reference.
 
@@ -15,10 +15,11 @@ A language model writes whatever is most likely to come next, so by default it m
 - **Inflation.** Ordinary facts dressed as pivotal or expert-backed.
 - **Formatting by rule.** Bold and title case applied to every item.
 - **Leftovers.** Chat wrappers and drafting moves that were never meant for the reader.
+- **Wrong reader.** A reply re-explains background the other person already has, so the decision arrives last.
 
 Word habits change with every model release. The structural habits above persist, so they lead the list below.
 
-Two rules follow from this. Every sentence you keep must add something the reader did not already have. A tell counts in proportion to how rarely a careful writer would make it on purpose. The patterns are numbered strongest first: §1 to §5 justify an edit on one sighting, and a pattern marked *weak alone* needs company from other tells in the same passage before you act.
+Two rules follow from this. Every sentence you keep must add something the reader did not already have, from earlier in the text or from the conversation around it. A tell counts in proportion to how rarely a careful writer would make it on purpose. The patterns are numbered strongest first: §1 to §5 justify an edit on one sighting, and a pattern marked *weak alone* needs company from other tells in the same passage before you act.
 
 ## A. Staging instead of stating
 
@@ -43,8 +44,8 @@ These are the strongest and most frequent tells in current model prose. Act on o
 
 ### 2. One-line closers and dramatic fragments
 
-**Watch for:** a one-sentence paragraph that restates the paragraph before it; "That is the real win."; "Read that again."; "Let that sink in."; the same closer after several sections; a row of fragments ("No aesthetic prior. No nostalgia."); one word in ALL CAPS or with periods between words (every. single. day.).
-**Problem:** The line asks the reader to pause on a claim instead of adding to it. One short sentence can carry emphasis when it carries a new fact. Cut a closer that repeats. Merge a row of fragments into a sentence with a specific claim.
+**Watch for:** a one-sentence paragraph that restates the paragraph before it; "That is the real win."; "That distinction matters."; "Read that again."; "Let that sink in."; the same closer after several sections; a sentence after an example, scene, or number that names what it showed ("This shows the importance of...", "The message was clear:", "It was a lesson in patience."); a row of fragments ("No aesthetic prior. No nostalgia."); one word in ALL CAPS or with periods between words (every. single. day.).
+**Problem:** The line asks the reader to pause on a claim instead of adding to it. One short sentence can carry emphasis when it carries a new fact. Cut a closer that repeats, including one that explains an example the reader just saw. Keep it when it adds a fact or consequence the example does not show. Merge a row of fragments into a sentence with a specific claim.
 **Before:**
 > Then AlphaEvolve arrived. It had no preference for symmetry. No aesthetic prior. No nostalgia for human taste. The old rules were gone.
 **After:**
@@ -103,7 +104,7 @@ These are the strongest and most frequent tells in current model prose. Act on o
 
 ## B. Rhythm by rule
 
-A person may do any one of these on purpose, so the weaker ones need company from other tells.
+Shapes and punctuation applied everywhere, whether or not the meaning asks for them.
 
 ### 6. Forced triads
 
@@ -145,12 +146,12 @@ A person may do any one of these on purpose, so the weaker ones need company fro
 
 ### 10. Hyphenated pairs everywhere
 
-**Watch for:** third-party, cross-functional, client-facing, data-driven, decision-making, well-known, high-quality, real-time, long-term, end-to-end
-**Problem:** These pairs are hyphenated in every position. Keep the hyphen before a noun when grammar needs it, as in `a high-quality report`, and drop it after the noun, as in `the report is high quality`. *Weak alone.*
+**Watch for:** high-quality, well-known, well-documented, long-term, real-time, client-facing after the noun they describe
+**Problem:** Compound modifiers keep their hyphen in every position. Keep the hyphen before a noun, as in `a high-quality report`, and drop it after the noun, as in `the report is high quality`. Words the dictionary always spells with a hyphen, such as third-party and cross-functional, keep it everywhere. *Weak alone.*
 **Before:**
-> The team is cross-functional, the report is high-quality, and the methodology is data-driven.
+> The report is high-quality, the process is well-documented, and the plan is long-term.
 **After:**
-> The team is cross functional, the report is high quality, and the methodology is data driven.
+> The report is high quality, the process is well documented, and the plan is long term.
 
 ### 11. Passive voice and missing subjects
 
@@ -166,8 +167,8 @@ The fact underneath is usually sound. Keep it and remove the dressing.
 
 ### 12. Overused AI words
 
-**Watch for:** Actually, additionally, align with, bolstered, crucial, deep dive, delve, emphasizing, enduring, enhance, fostering, garner, gate/gated/gating (figurative; keep technical uses), highlight (verb), interplay, intricate/intricacies, key (adjective), landscape (abstract noun), meticulous/meticulously, pivotal, quietly, robust (figurative; keep technical uses), showcase, tapestry (abstract noun), testament, underscore (verb), valuable, vibrant
-**Problem:** Models use these words far more often than people do, especially in groups. This is the only vocabulary list in the skill. A formal word outside it is not a tell by itself.
+**Watch for:** Actually, additionally, align with, bolstered, crucial, deep dive, delve, enduring, enhance, garner, gate/gated/gating (figurative; keep technical uses), highlight (verb), interplay, intricate/intricacies, key (adjective), landscape (abstract noun), meticulous/meticulously, pivotal, quietly, robust (figurative; keep technical uses), showcase, tapestry (abstract noun), testament, underscore (verb), valuable, vibrant
+**Problem:** Models use these words far more often than people do, especially in groups. The watch lists in §13 to §18 hold phrases that are tells because of how they are used; this list holds words that are tells wherever they appear. A formal word outside these lists is not a tell by itself.
 **Before:**
 > Additionally, a distinctive feature of Somali cuisine is the incorporation of camel meat. An enduring testament to Italian colonial influence is the widespread adoption of pasta in the local culinary landscape, showcasing how these dishes have integrated into the traditional diet.
 **After:**
@@ -210,7 +211,7 @@ The fact underneath is usually sound. Keep it and remove the dressing.
 
 ### 16. Sales language
 
-**Watch for:** boasts, vibrant, rich (figurative), profound, enhancing, exemplifies, commitment to, natural beauty, nestled, in the heart of, groundbreaking (figurative), renowned, featuring, diverse array, breathtaking, must-visit, stunning
+**Watch for:** rich (figurative), profound, exemplifies, commitment to, natural beauty, nestled, in the heart of, groundbreaking (figurative), renowned, featuring, diverse array, breathtaking, must-visit, stunning
 **Problem:** The text reads like an advertisement, especially for places, culture, products, or organizations. State what the thing is.
 **Before:**
 > Nestled within the breathtaking region of Gonder in Ethiopia, Alamata Raya Kobo stands as a vibrant town with a rich cultural heritage and stunning natural beauty.
@@ -220,7 +221,7 @@ The fact underneath is usually sound. Keep it and remove the dressing.
 ### 17. Borrowed authority
 
 **Watch for:** experts argue, observers have cited, industry reports, some critics, several publications; cited, featured, or profiled in [a list of outlets], trade publications, independent coverage; active social media presence, over N followers
-**Problem:** A name or an unnamed authority stands in for what was said. Unnamed experts prop up a claim; a list of prestige outlets props up a person. When the source text names the real source and what it said, use that. Otherwise cut the unsupported claim or the list. Never invent a source. A missing citation alone is not a tell; most writing is unsourced.
+**Problem:** A name or an unnamed authority stands in for what was said. Unnamed experts prop up a claim; a list of prestige outlets props up a person. When the source text names the real source and what it said, use that. Otherwise cut the unsupported claim or the list. A missing citation alone is not a tell; most writing is unsourced.
 **Before (unnamed authority):**
 > Due to its unique characteristics, the Haolai River is of interest to researchers and conservationists. Experts believe it plays a crucial role in the regional ecosystem.
 **After:**
@@ -259,7 +260,7 @@ Templates and visual editors also produce clean formatting. The tell is decorati
 
 ### 20. Decorative headings
 
-**Problem:** Headings capitalize every main word, and headings or list items carry emojis or arrows (→) as decoration. A horizontal rule sits between every section, or the document opens with a top-level heading that repeats its own title. Use sentence case, remove the decoration and the rules, and let the title stand once.
+**Problem:** Headings capitalize every main word, and headings or list items carry emojis or arrows (→) as decoration. A horizontal rule sits between every section, or the document opens with a top-level heading that repeats its own title. A heading written for effect ("The decision, on one screen") should name what the section holds ("How the six options compare"). Use sentence case, remove the decoration and the rules, and let the title stand once.
 **Before:**
 > ## Strategic Negotiations And Global Partnerships
 **After:**
@@ -294,7 +295,7 @@ Remove these outright. Nothing here needs rewriting.
 ### 23. Knowledge-limit disclaimers and guesses
 
 **Watch for:** as of [date], up to my last training update, while specific details are limited, based on available information, not publicly available, not widely documented or disclosed, in the provided or available sources, maintains a low profile, keeps personal details private, likely [grew up, studied, began], it is believed that
-**Problem:** The text mentions where the model's knowledge ends, or admits it found no source and then fills the gap with a plausible guess. State what the source does not show, or remove the sentence. Never present a guess as a fact.
+**Problem:** The text mentions where the model's knowledge ends, or admits it found no source and then fills the gap with a plausible guess. State what the source does not show, or remove the sentence.
 **Before (cutoff disclaimer):**
 > While specific details about the company's founding are not extensively documented in readily available sources, it appears to have been established sometime in the 1990s.
 **After:**
@@ -318,17 +319,39 @@ Remove these outright. Nothing here needs rewriting.
 >
 > When users hit a slow page, they leave.
 
-### 25. Writing about the previous version
+### 25. Writing about the document instead of its subject
 
-**Problem:** Documentation and comments describe what the text replaced instead of the current behavior. Mention the previous version only in change logs, release notes, migration guides, and other documents about change.
+**Watch for:** what the text replaced ("was added to replace"); how it was assembled or sourced ("generated from", "compiled from", "anything unconfirmed is flagged rather than guessed"); a legend, layout, or order the reader can already see ("the table below compares", "this section is organized by owner").
+**Problem:** The text describes itself instead of its subject. Mention a previous version only in change logs, release notes, migration guides, and other documents about change. Keep a source credit the reader can follow; cut the account of how you worked. Keep a caveat that changes what the reader should do. State a convention only when the reader cannot infer it, and state it once. A single description of the page is *weak alone*.
 **Before:**
 > This function was added to replace the previous approach of iterating through all items, which caused O(n²) performance.
 **After:**
 > This function uses a hash map for O(1) lookups, avoiding the O(n²) cost of naive iteration.
+**Before (method narration):**
+> The figures below are drawn from each vendor's published pricing; anything we could not confirm is flagged rather than guessed.
+**After:**
+> Prices are each vendor's published rate. Two vendors publish nothing; call them.
+
+## F. Writing for the wrong reader
+
+A model writes for a reader who shares no context, because that fits the widest range of cases. A reply in a thread has a reader who already knows the background. Act on this pattern when you can see the surrounding conversation, or when the text plainly is a reply. If you cannot tell, ask or leave the text alone.
+
+### 26. Re-explaining what the reader knows
+
+**Watch for:** a short reply that restates the problem, walks through the diagnosis, and lays out the evidence before it reaches the decision; a query, command, or set of numbers included to prove a plan will work; background the other person wrote or already agreed to; the answer itself sitting in the last line.
+**Problem:** In a reply the reader already has the context, so rebuilding it adds nothing and buries the point. Each sentence can read fine on its own, so this survives sentence-level cleanup. Lead with the decision and keep only the reasoning that would change whether the reader agrees: usually one fact they lack and any link they need to act. The diagnosis and the proof that a plan will work belong in the ticket or document that follows; a reviewer raising a topic is not a request for the full write-up.
+**Before:**
+> Yeah, you're right, this works around the issue rather than fixing it. The real fix is in `MergeService`: when we move a child under a new parent, it should update `pipeline_id` along with `parent_id`. We can backfill the bad rows from the audit log with `Change.where(field: "pipeline_id", source: "merge")`. I checked QA: 123 past merges, only 6 rows wrong now, so the cleanup is small.
+>
+> Since `MergeService` is shared and not specific to this account, I'd rather open a separate ticket than widen this PR. The fallback here is fine to keep until then.
+**After:**
+> Agreed, this is a workaround. Fixing it properly in `MergeService` would widen this ticket well past its scope: it is shared code, so it means checking the merge flow for every account, plus a backfill for the rows that are already wrong.
+>
+> I'd rather keep this PR account specific and open a separate ticket for the `MergeService` fix and the backfill. Let me know if that works.
 
 ## When not to act
 
-Each pattern describes a default choice, and a person can make any one of them on purpose. Act on a *weak alone* tell only when several tells share a passage. Leave a watched phrase alone inside a quotation, a title, a proper name, or a passage that discusses the phrase rather than uses it. Salutations and sign-offs on a letter or comment predate chatbots. Text written before November 30, 2022 is not AI-written. People who judge by feel do little better than chance, and human writing keeps absorbing AI habits. Several tells together are the safeguard.
+Each pattern describes a default choice, and a person can make any one of them on purpose. Leave a watched phrase alone inside a quotation, a title, a proper name, or a passage that discusses the phrase rather than uses it. Salutations and sign-offs on a letter or comment predate chatbots. Text written before November 30, 2022 is not AI-written. People who judge by feel do little better than chance, and human writing keeps absorbing AI habits, so several tells together are the safeguard.
 
 Keep the details that carry the writer's voice unless they hurt the meaning:
 
