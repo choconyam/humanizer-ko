@@ -7,7 +7,7 @@ description: |
   presentation scripts; not for unrelated code review or fact-checking alone.
 license: MIT
 metadata:
-  version: "ko-1.1.0"
+  version: "ko-1.2.0"
 ---
 
 # humanizer-ko
@@ -25,7 +25,7 @@ Read this file fully if only its description is available. Reuse instructions al
 3. Preserve the source's viewpoint, evaluation, emotion, commitment, and degree of certainty. Lower unsupported intensity without deleting the underlying proposition or making the writer sound indifferent. This protects propositions, not decoration: when an unsupported evaluative modifier adds no claim the text needs, delete the modifier instead of swapping in a softer synonym.
 4. Do not invent support, examples, opinions, experiences, or specifics. Adding a plausible domain detail the source does not state — an instrument, a mechanism, a failure mode, an achieved result or structure — is invention, not naturalness. Fiction is exempt because invention is the task.
 5. Match the source's genre, register, and writing sample. A supplied sample overrides general style preferences unless it conflicts with accuracy or the user's explicit request.
-6. Keep code blocks, commands, paths, schema fields, link targets, product names, approved copy, and established technical tokens unchanged unless the user asks to edit them. Keep their notation as written (`WS2` stays `WS2`, not `WS₂`), and do not swap a Korean transliteration for its English word or the reverse. Never reword text that may be claim or contract language. If a token looks like a typo, keep it and flag it instead of fixing it silently.
+6. Keep code blocks, commands, paths, schema fields, link targets, product names, approved copy, and established technical tokens unchanged unless the user asks to edit them. Keep their notation as written (`WS2` stays `WS2`, not `WS₂`). Do not swap a Korean transliteration for its English word or the reverse unless the user explicitly requests that conversion: `드롭릿` → `Droplet` is a spelling-form change, not a K7 terminology correction. K7 permits evidence-based correction of literal translations or uncertainty labeling in ordinary prose; it does not override this transliteration rule or protection of code, direct quotes, names, approved wording, or an explicit user glossary. Never reword text that may be claim or contract language. If a protected token looks like a typo, keep it and flag it instead of fixing it silently.
 
 ## Korean checkpoints K1-K10
 
@@ -108,9 +108,11 @@ Preserve the proposition and stance. If a trigger's function remains unclear, re
 
 ### K7. Use field-appropriate terminology
 
-Keep a correct and consistent Korean or English term. Do not translate it merely because it is English or replace it for variety.
+- 올바른 한국어·영어 전문용어는 보존한다. 단어별 직역으로 개념이 흐려지거나 분야 용례와 어긋나는 표현은 반복되어도 검토한다. `시간 창` 같은 낯선 말 자체가 오역의 증거는 아니며, 정의·문맥·독자를 먼저 본다.
+- 오역 의심 표현을 발견하거나 전문용어를 선택·번역·설명해야 할 때는 [용어 안내](references/terminology/index.md)를 읽는다. 개념과 통용 용어가 확인되면 일반 본문의 용어를 고치고 문서 안에서 일관되게 쓴다. 정확한 원어가 확인됐지만 한국어 대응어가 불확실하면 첫 등장에 `English term(한국어 설명·용어 확인 필요)`로 병기한다. 원어까지 불확실하면 만들어 붙이지 말고 원문 표현과 짧은 확인 표시를 남긴다.
+- 같은 개념이 한 글에서 한국어 표기와 영어 표기로 섞여 있으면(`드롭릿`과 `Droplet`) 각자 쓴 그대로 둔다. 섞인 쌍이 있으면 최종 글 뒤에 메모 한 줄로 모두 모아 묻는다: `표기가 섞인 용어: 드롭릿/Droplet, 기판/substrate — 통일할 표기를 알려 주시면 맞추겠습니다.` 용어마다 따로 묻지 않고, 한 가지 표기로만 쓰인 용어는 넣지 않는다. 사용자가 표기 방식을 미리 정했으면 그대로 맞추고 묻지 않는다. `영어로 통일`, `한국어로 통일` 같은 요청은 섞인 쌍에만 적용하고, 한 가지 표기로만 쓰인 용어는 그대로 둔다. 사용자가 `모든 전문용어`처럼 범위를 넓혀 말할 때만 전부 바꾼다. 한국어 문장 안의 영어 일반명사는 문장 첫머리여도 소문자로 둔다(`substrate 온도`). 고유명사와 약어는 원래 표기를 따른다.
 
-When the task requires choosing, translating, correcting, or explaining an unsettled specialist term, read [the terminology router](references/terminology/index.md). Stop when its quick map resolves the choice; read a matching field guide only for unresolved detail. Never translate code, model names, product names, API fields, paths, commands, standards identifiers, or citation keys.
+Stop when the router settles the choice; read a matching field guide only for unresolved detail. Never translate code, model names, product names, API fields, paths, commands, standards identifiers, or citation keys.
 
 ### K8. Set Korean sentence boundaries and rhythm
 
@@ -153,7 +155,7 @@ The Korean checkpoints above are always active. Load extra references only when 
 - **Unresolved genre choices:** Read [the Korean genre guide](references/korean-genres.md) when boilerplate, deliberate voice, repetition, or an audience cue remains unclear, or for a substantial spoken, approved-marketing, or safety rewrite. A routine email or presentation with clear register and courtesy does not trigger it.
 - **Difficult or high-risk fidelity:** Read [the fidelity review guide](references/fidelity-review.md) when the text has several interacting facts, constraints, attributions, or status claims, or when an error would carry high stakes. One ordinary number or English token alone does not trigger the guide.
 - **Substantial English prose:** Read [upstream's English patterns](references/english-patterns.md) once. English product names, code, identifiers, citations, and established technical terms inside Korean text do not trigger this reference; it is for text where English forms a substantial prose span.
-- **Unsettled specialist terminology:** Read [the terminology router](references/terminology/index.md) only when the task requires choosing, translating, correcting, or explaining a field-specific term. Stop when its quick map resolves the term; read a matching field guide only for unresolved detail. Do not load terminology guidance merely to preserve terms the source already uses consistently.
+- **Unsettled specialist terminology:** Read [the terminology router](references/terminology/index.md) for a suspected literal mistranslation, even if repeated consistently, or when choosing, translating, correcting, or explaining a field-specific term. Stop when its quick map resolves the term; read a matching field guide only for unresolved detail. Known-correct terms alone do not trigger it.
 
 Reuse unchanged references already present in context. Apply their relevant checks within the same source comparison, not as separate full review passes.
 
@@ -174,6 +176,8 @@ For Korean prose, build natural Korean around source-supported predicates by rev
 - **Review, comparison, or explanation only:** Return the requested findings or explanation. Do not add a full rewrite or modify files unless requested.
 - **File editing requested:** Edit prose only, preserve non-prose structure, then give a short summary. Naming a file alone is not an editing request.
 - **Embedded use:** Return only the finished text required by the parent task.
+
+K7 uncertainty markers are part of the finished text, not a routine commentary section. The K7 mixed-form note is the only line allowed after a rewrite. If a marker would alter a protected quote or identifier, leave that span intact and give one short term note outside it. Do not annotate settled terms.
 
 ## Fast rewrite process
 

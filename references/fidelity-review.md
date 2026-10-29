@@ -17,6 +17,7 @@ Do not treat every ordinary phrase as an exact token. Korean particles, honorifi
 ## Preserve exact material
 
 - Keep technical tokens internally unchanged: `F1 score`, `SEC-219`, `/v2/predict`, `USD/KRW`, `OD 6+`, model names, product names and standards identifiers.
+- A suspected mistranslation in ordinary technical prose is not an immutable identifier. Apply K7's supported correction or uncertainty form while preserving the concept; direct quotes, code, names, approved wording, and explicit user glossaries stay protected.
 - A Korean particle may follow a token when grammar requires it. `F1 score는 0.84` still contains the token `F1 score`; do not change it to `F1-score` merely for style.
 - Keep direct quotations and approved slogans verbatim unless the user explicitly asks to edit them.
 - Keep URLs, commands, paths, link targets, citation keys and code untouched. Do not localize their spelling or punctuation.
