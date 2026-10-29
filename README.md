@@ -1,6 +1,6 @@
 # humanizer-ko — AI 티 나는 글을 사람이 다듬은 글로
 
-[![version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fchoconyam%2Fhumanizer-ko%2Fmain%2F.claude-plugin%2Fplugin.json&query=%24.version&label=version&color=blue)](.claude-plugin/plugin.json)
+[![version ko-1.2.0](https://img.shields.io/badge/version-ko--1.2.0-blue)](.claude-plugin/plugin.json)
 [![license MIT](https://img.shields.io/badge/license-MIT-orange)](LICENSE)
 [![Codex supported](https://img.shields.io/badge/Codex-supported-black)](#설치)
 [![Claude Code supported](https://img.shields.io/badge/Claude_Code-supported-D97757)](#설치)
@@ -322,6 +322,7 @@ python scripts/sync-english-patterns.py --tag vX.Y.Z
   - **보존:** 올바른 전문용어, 코드·식별자, 직접 인용, 승인 문구와 사용자 지정 용어집을 보호합니다. `드롭릿`↔`Droplet`처럼 같은 개념의 음차·영어 전환은 사용자가 명시적으로 요청한 경우에만 허용하며, K7 교정이나 병기를 이유로 우회하지 않습니다. `시간 창` 같은 표현도 문맥 없이 일괄 삭제하지 않습니다.
   - **섞인 표기:** 같은 개념이 한국어와 영어 표기로 섞여 있으면 그대로 두고, 글 뒤에 한 줄로 모두 모아 통일할 표기를 묻습니다. 용어마다 따로 묻지 않으며, 표기 방식을 미리 정하면 묻지 않고 맞춥니다. `영어로 통일` 같은 요청은 섞인 쌍에만 적용하고, 모든 전문용어를 바꾸려면 그렇게 말하면 됩니다.
   - **비용:** 의심 용어에만 필요한 안내·용례를 확인하고 같은 용어에는 판단을 재사용합니다. 품질·비용 변화는 측정하지 않았습니다.
+  - **문서:** 버전 배지가 이전 값을 표시하던 자동 조회 방식을 고정 버전 배지로 바꾸고, 배지·패키지 버전이 일치하는지 검증합니다.
 - **ko-1.1.0** — 국립국어원과 법제처의 공공언어 기준에서 문장 규칙을 보강했습니다.
   - **번역투(K2, K3):** `회의를 갖다`, `~ 중에 있다`, `~을 필요로 하다`, `~에 위치한`, `~로부터`, 필요 없는 `-시키다`와 `-고 있다`를 검토합니다. 사물이나 추상어가 사람처럼 행동하는 문장(`결과는 ~를 말해 준다`, `~를 가능하게 한다`)도 한국어식으로 다시 씁니다. 진짜 진행형과 시제, 주장의 세기는 그대로 둡니다.
   - **명사 구문(K4):** `절감이 가능하다`, `~의 경우`, `방한 시` 같은 한문 투를 서술어로 풀고, 잇따르는 `의`를 줄입니다. `약 30여 명` 같은 뚜렷한 겹말만 줄이고, `피해를 입다`나 `박수를 치다`처럼 국립국어원이 틀리지 않다고 본 표현은 그대로 둡니다.

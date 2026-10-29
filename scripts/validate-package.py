@@ -69,9 +69,20 @@ readme_version = require_match(
     "Add a version entry such as - **ko-1.0.0** to README.md",
 ).group(1)
 
+version_badge = require_match(
+    re.search(
+        r"\[!\[version (ko-[0-9]+\.[0-9]+\.[0-9]+)\]"
+        r"\(https://img\.shields\.io/badge/version-(ko--[0-9]+\.[0-9]+\.[0-9]+)-blue\)\]",
+        README,
+    ),
+    "Add a static README version badge with matching alt text and URL",
+)
+
 package_versions = {
     skill_version,
     readme_version,
+    version_badge.group(1),
+    version_badge.group(2).replace("--", "-"),
     str(PLUGIN.get("version", "")),
     str(CODEX_PLUGIN.get("version", "")),
 }
