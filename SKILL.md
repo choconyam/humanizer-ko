@@ -1,195 +1,195 @@
 ---
 name: humanizer-ko
 description: |
-  Review or rewrite supplied Korean or English prose for AI-like phrasing,
-  translation-like syntax, inflated claims, filler, or chatbot artifacts while
-  preserving facts, meaning, and voice. Use for prose naturalization, including
-  presentation scripts; not for unrelated code review or fact-checking alone.
+  주어진 한국어나 영어 글에서 AI가 쓴 듯한 표현, 번역투 문장, 부풀린 주장,
+  군더더기, 챗봇 잔재를 검토하거나 고쳐 쓴다. 사실과 뜻, 글쓴이의 말투는
+  지킨다. 발표 원고를 포함해 글을 자연스럽게 다듬을 때 쓴다. 글 다듬기와
+  상관없는 코드 리뷰나 사실 확인만 하는 일에는 쓰지 않는다.
 license: MIT
 metadata:
-  version: "ko-1.2.0"
+  version: "ko-1.3.0"
 ---
 
 # humanizer-ko
 
-Rewrite AI-like prose so it sounds like the writer. Keep the meaning, facts, and voice. Use this as an editing aid, not as a promise to bypass AI detectors.
+AI가 쓴 듯한 글을 글쓴이가 직접 쓴 글처럼 고친다. 뜻과 사실, 말투는 그대로 둔다. 이 스킬은 편집을 돕는 도구이며, AI 탐지기를 통과시켜 준다는 약속이 아니다.
 
-Korean is this skill's primary target: the K1-K10 checkpoints below apply to any Korean source or output. The upstream English patterns live in a reference and load only when the text has substantial English prose.
+이 스킬의 주 대상은 한국어다. 원문이나 결과물이 한국어이면 아래 K1-K10 점검 항목을 언제나 적용한다. 원본 humanizer의 영어 패턴은 참고 문서에 따로 있으며, 글에 영어 문장이 많을 때만 읽는다.
 
-Read this file fully if only its description is available. Reuse instructions already present in context and unchanged; reread only when content changed or is no longer available.
+설명(`description`)만 보이는 상태라면 이 파일을 끝까지 읽는다. 이미 읽어 두었고 바뀌지 않은 지침은 다시 읽지 않고 그대로 쓴다. 내용이 바뀌었거나 더는 볼 수 없을 때만 다시 읽는다.
 
-## Non-negotiable constraints
+## 반드시 지킬 원칙
 
-1. Preserve every fact, number, unit, date, name, quote, citation, URL, identifier, and technical limitation.
-2. Preserve tense, modality, negation, scope, attribution, and completion status. Do not turn *planned* into *completed*, *may* into *does*, correlation into causation, a prototype into a product, or a preliminary result into a verified claim.
-3. Preserve the source's viewpoint, evaluation, emotion, commitment, and degree of certainty. Lower unsupported intensity without deleting the underlying proposition or making the writer sound indifferent. This protects propositions, not decoration: when an unsupported evaluative modifier adds no claim the text needs, delete the modifier instead of swapping in a softer synonym.
-4. Do not invent support, examples, opinions, experiences, or specifics. Adding a plausible domain detail the source does not state — an instrument, a mechanism, a failure mode, an achieved result or structure — is invention, not naturalness. Fiction is exempt because invention is the task.
-5. Match the source's genre, register, and writing sample. A supplied sample overrides general style preferences unless it conflicts with accuracy or the user's explicit request.
-6. Keep code blocks, commands, paths, schema fields, link targets, product names, approved copy, and established technical tokens unchanged unless the user asks to edit them. Keep their notation as written (`WS2` stays `WS2`, not `WS₂`). Do not swap a Korean transliteration for its English word or the reverse unless the user explicitly requests that conversion: `드롭릿` → `Droplet` is a spelling-form change, not a K7 terminology correction. K7 permits evidence-based correction of literal translations or uncertainty labeling in ordinary prose; it does not override this transliteration rule or protection of code, direct quotes, names, approved wording, or an explicit user glossary. Never reword text that may be claim or contract language. If a protected token looks like a typo, keep it and flag it instead of fixing it silently.
+1. 사실, 숫자, 단위, 날짜, 이름, 인용문, 참고문헌 표기, URL, 식별자, 기술적 한계는 하나도 빠뜨리거나 바꾸지 않는다.
+2. 시제, 양태(가능·추측·의무 등), 부정, 범위, 출처(누구의 말이나 판단인지), 완료 여부를 지킨다. *예정*을 *완료*로, *~할 수 있다*를 *~한다*로, 상관관계를 인과관계로, 시제품을 제품으로, 예비 결과를 검증된 주장으로 바꾸지 않는다.
+3. 원문의 관점, 평가, 감정, 약속, 확신의 정도를 지킨다. 근거 없이 센 표현은 세기를 낮추되, 그 밑의 명제를 지우거나 글쓴이가 무관심해 보이게 만들지 않는다. 지키는 대상은 명제이지 꾸밈이 아니다. 근거 없는 평가 수식어가 글에 필요한 주장을 더하지 않으면, 더 순한 동의어로 바꾸지 말고 수식어를 지운다. 약속하는 사람도 바꾸지 않는다. `함께 노력해 나가겠습니다`(글쓴이가 약속함)를 `함께 노력해 주시기 바랍니다`(독자에게 요청함)로 바꾸지 않는다.
+4. 근거, 예시, 의견, 경험, 세부 내용을 지어내지 않는다. 원문에 없는 그럴듯한 분야 세부 내용(장비, 작동 원리, 실패 양상, 이미 얻은 결과나 구조)을 덧붙이는 것도 자연스럽게 다듬기가 아니라 지어내기다. 소설 같은 허구 창작물은 지어내는 것이 할 일이므로 예외다.
+5. 원문의 장르, 문체, 사용자가 준 글 견본에 맞춘다. 견본은 일반적인 문체 선호보다 우선한다. 다만 견본이 정확성이나 사용자의 분명한 요청과 부딪치는 부분에서는 정확성과 요청을 따른다.
+6. 코드 블록, 명령어, 경로, 스키마 필드, 링크 주소, 제품명, 승인된 문구, 자리 잡은 기술 토큰은 사용자가 고쳐 달라고 하지 않는 한 바꾸지 않는다. 표기도 쓴 그대로 둔다(`WS2`는 `WS₂`로 바꾸지 않는다). 사용자가 분명히 요청하지 않으면 한국어 음차를 영어 단어로, 영어 단어를 음차로 바꾸지 않는다. `드롭릿` → `Droplet`은 표기 형태를 바꾸는 일이지 K7의 용어 교정이 아니다. K7은 일반 본문에서 근거 있는 직역 교정과 불확실성 표시를 허용할 뿐이며, 이 음차 규칙과 코드, 직접 인용, 이름, 승인된 문구, 사용자가 정한 용어집의 보호를 넘어서지 않는다. 청구항이나 계약 문언일 수 있는 글은 절대 고쳐 쓰지 않는다. 보호 대상 토큰이 오타로 보여도 몰래 고치지 말고 그대로 둔 채 오타일 수 있다고 짧게 밝힌다.
 
-## Korean checkpoints K1-K10
+## 한국어 점검 항목 K1-K10
 
-Do not transfer English grammar, capitalization, dash, quote, or subject rules into Korean mechanically. Rebuild translation-like clauses as Korean sentences instead of swapping watched words. If the source says `센터는 다음 달 문을 열 예정입니다`, do not strengthen it to a completed or guaranteed event. Leave already-natural Korean unchanged unless coherence requires revision; never edit just to show the skill was used.
+영어의 문법, 대문자, 줄표, 따옴표, 주어 규칙을 한국어에 기계적으로 옮기지 않는다. 번역투 절은 검토 신호 단어만 갈아 끼우지 말고 한국어 문장으로 다시 짠다. 원문이 `센터는 다음 달 문을 열 예정입니다`라고 하면 이미 끝난 일이나 확정된 일로 세게 바꾸지 않는다. 이미 자연스러운 한국어는 글의 흐름을 맞추는 데 꼭 필요할 때가 아니면 그대로 둔다. 스킬을 썼다는 티를 내려고 절대 고치지 않는다.
 
-### K1. Keep one register and honorific level
+### K1. 문체와 높임 수준을 하나로 맞춘다
 
-- Match the source and audience, and keep overall politeness consistent. A conventional `안녕하세요` greeting with a `-합니다` body is natural; fix unexplained drift among `-다`, `-해요`, and `-합니다`.
-- Preserve titles, role names, and respect for people, but do not honorify objects: `자료가 준비되셨습니다` → `자료가 준비됐습니다`.
-- Formal repetition is acceptable when changing endings would make the text less precise.
+- 원문과 독자에 맞추고, 글 전체의 공손함 수준을 일관되게 지킨다. 관례적인 `안녕하세요` 인사와 `-합니다` 본문을 함께 쓰는 것은 자연스럽다. 이유 없이 `-다`, `-해요`, `-합니다` 사이를 오가면 고친다.
+- 직함, 역할명, 사람에 대한 존중은 지키되 사물은 높이지 않는다: `자료가 준비되셨습니다` → `자료가 준비됐습니다`.
+- 어미를 바꾸면 글이 덜 정확해질 때는 격식 있는 표현이 되풀이돼도 그대로 둔다.
 
-### K2. Rebuild translation-like word order
+### K2. 번역투 어순을 다시 짠다
 
-- Strip repeated, empty frames such as `이는 ...를 의미합니다`, `~라는 점에서 의미가 있습니다`, and `~라고 할 수 있습니다`; state only the source-supported predicate. Keep real uncertainty or semantic explanation.
-- Break chains built from `~에 대한`, `~를 통해`, `~와 관련하여`, `~에 기반하여`, and `~에 있어`.
-- `의미를 가지다` often becomes `의미가 있다`; `문제가 존재하다` often becomes `문제가 있다`.
+- `이는 ...를 의미합니다`, `~라는 점에서 의미가 있습니다`, `~라고 할 수 있습니다`처럼 되풀이되는 빈 틀은 걷어 내고, 원문이 뒷받침하는 서술어만 쓴다. 실제 불확실성이나 뜻풀이는 남긴다. 그 틀이 누구의 평가인지, 예상인지, 가능성인지를 나타내면 그 표시는 더 쉬운 형태로 남긴다: `의미 있는 분기였다고 평가할 수 있습니다` → `의미 있는 분기였다고 평가합니다`. `의미 있는 분기였습니다`로 바꾸지 않는다.
+- `~에 대한`, `~를 통해`, `~와 관련하여`, `~에 기반하여`, `~에 있어`가 사슬처럼 이어지면 끊는다.
+- `의미를 가지다`는 흔히 `의미가 있다`로, `문제가 존재하다`는 흔히 `문제가 있다`로 고친다.
 - 뜻과 문장 성분이 유지될 때만 번역투 서술어를 다듬는다: `회의를 갖다` → `회의를 열다`, `현장에서 필요로 하는` → `현장에서 필요한`, `~에 위치한` → `~에 있는`, `바닥으로부터` → `바닥에서`.
 - `~ 중에 있다`는 행위 주체와 대상을 구분한다. `시는 센터를 건립 중에 있다.` → `시는 센터를 건립하고 있다.` 대상이 주어인 `센터는 건립 중에 있다.`는 그대로 두거나 `센터는 건립되고 있다.`로 다듬는다. `후보들 중에 있는 한 명을 고른다.`의 `중에`는 집합 표현이므로 진행형으로 고치지 않는다.
 - 불필요한 `-시키다`는 줄이되 실제 사동은 보존한다: `절차를 개선시키다` → `절차를 개선하다`; `아이를 의자에 앉히다`는 아이에게 동작을 시키는 뜻이므로 유지한다. `-고 있다`도 진행·지속 의미가 없을 때만 줄이며, `현재 센터를 운영하고 있다.`처럼 현재 상태를 밝히는 표현은 보존한다.
-- Remove a generic translated `당신` when Korean would omit the reader. Keep direct address in responsibility or safety instructions.
-- Avoid calqued concept nouns: use `말투` or `문체` for a writer's voice unless the field uses `목소리`.
-- Replace `~하는 데 도움이 됩니다` with the concrete effect only when the source states that effect.
-- Move the main claim forward or split a dense modifier. Do not copy English sentence boundaries mechanically.
+- 한국어라면 독자를 생략할 자리에 직역한 `당신`이 있으면 지운다. 책임이나 안전에 관한 지시에서는 독자를 직접 부르는 말을 남긴다.
+- 직역한 개념 명사를 피한다. 예를 들어 글쓴이 특유의 표현 방식은 `목소리` 대신 `말투`나 `문체`로 쓰되, 그 분야에서 `목소리`를 쓰면 따른다.
+- `~하는 데 도움이 됩니다`는 원문이 그 효과를 밝혔을 때만 구체적인 효과로 바꾼다.
+- 핵심 주장을 앞으로 옮기거나 빽빽한 수식어를 나눈다. 영어의 문장 경계를 기계적으로 따르지 않는다.
 
-### K3. Handle subjects, pronouns, passives, and plurality naturally
+### K3. 주어, 대명사, 피동, 복수를 자연스럽게 다룬다
 
-- Omit a subject only when the actor remains clear. Repeat the relevant noun when two actors could be confused.
-- Do not add `그의`, `그녀의`, `그들의`, or plural `들` mechanically.
-- Do not make a thing or abstraction act like a person where Korean would not: `설문 결과는 만족도가 높다는 점을 말해 준다` → `설문 결과에서 만족도가 높다는 점을 알 수 있다`; `이 기술은 빠른 처리를 가능하게 한다` → `이 기술로 빠르게 처리할 수 있다`. Keep the claim's strength.
-- Preserve a deliberate subject when it marks contrast, responsibility, or accountability.
-- Passive voice is valid when the actor is unknown, unimportant, or not the focus.
-- Remove unnecessary translation-like passives: `보여지다` often becomes `보이다`, and `되어지다` becomes `되다`.
-- Consider changing `A에 의해 B가 ...되었다` to `A가 B를 ...했다` only when it preserves emphasis.
+- 행위자가 분명할 때만 주어를 생략한다. 두 행위자가 헷갈릴 수 있으면 해당 명사를 다시 쓴다.
+- `그의`, `그녀의`, `그들의`나 복수 `들`을 기계적으로 붙이지 않는다.
+- 한국어에서 어색한 자리에서 사물이나 추상 개념을 사람처럼 행동하게 쓰지 않는다: `설문 결과는 만족도가 높다는 점을 말해 준다` → `설문 결과에서 만족도가 높다는 점을 알 수 있다`; `이 기술은 빠른 처리를 가능하게 한다` → `이 기술로 빠르게 처리할 수 있다`. 주장의 세기는 그대로 둔다.
+- 대조, 책임, 책임 소재를 드러내려고 일부러 쓴 주어는 남긴다.
+- 행위자를 모르거나, 중요하지 않거나, 초점이 아닐 때는 피동문도 괜찮다.
+- 불필요한 번역투 피동은 고친다: `보여지다`는 흔히 `보이다`로, `되어지다`는 `되다`로 바꾼다.
+- `A에 의해 B가 ...되었다`를 `A가 B를 ...했다`로 바꾸는 것은 강조점이 그대로일 때만 고려한다.
 
-### K4. Prefer verbs to abstract noun stacks
+### K4. 추상 명사를 쌓기보다 동사로 푼다
 
-- Prefer concrete verbs and predicates when meaning stays the same: `검토를 진행하다` → `검토하다`; revise repeated `가능성`, `중요성`, `필요성`, `효율성`, and `연관성` likewise.
+- 뜻이 같다면 구체적인 동사와 서술어를 쓴다: `검토를 진행하다` → `검토하다`. 되풀이되는 `가능성`, `중요성`, `필요성`, `효율성`, `연관성`도 같은 방식으로 고친다.
 - 명사 위주 표현은 뜻이 같을 때 서술어로 푼다: `절감이 가능하다` → `줄일 수 있다`, `자체안의 경우` → `자체안은`, `불참한 관계로` → `불참해서`. `~ 시`는 시제·조건에 맞춘다: `향후 방한 시 협의할 예정이다.` → `향후 방한할 때 협의할 예정이다.` 과거 방문을 말할 때만 `방한했을 때`를 쓴다.
-- Thin a run of `의`: drop one (`기존의 교과 위주의 수업` → `기존의 교과 위주 수업`) or restore the subject or object particle (`급여의 지급을 위하여` → `급여를 지급하기 위하여`).
-- Treat cramped or repeated middle-dot noun chains, not the number of items, as a review signal. Preserve every distinct item; unfold the chain only when it improves readability.
-- Trim plain redundancy such as `약 30여 명` → `30여 명`, `매년마다` → `매년`, and `새로운 신제품` → `신제품`. Leave settled expressions that Korean norms accept, such as `피해를 입다`, `박수를 치다`, `결실을 맺다`, and `미리 예약하다`, and leave repetition the writer uses for emphasis.
-- Keep defined concepts and any distinct interpretation, instruction, or commitment.
+- `의`가 잇달아 나오면 줄인다. 하나를 빼거나(`기존의 교과 위주의 수업` → `기존의 교과 위주 수업`) 주격 조사나 목적격 조사를 되살린다(`급여의 지급을 위하여` → `급여를 지급하기 위하여`).
+- 항목 수가 아니라 비좁거나 되풀이되는 가운뎃점 명사 나열을 검토 신호로 삼는다. 서로 다른 항목은 모두 남기고, 읽기 쉬워질 때만 나열을 풀어 쓴다.
+- `약 30여 명` → `30여 명`, `매년마다` → `매년`, `새로운 신제품` → `신제품`처럼 뻔한 중복은 줄인다. `피해를 입다`, `박수를 치다`, `결실을 맺다`, `미리 예약하다`처럼 한국어 규범이 받아들이는 굳은 표현과, 글쓴이가 강조하려고 쓴 반복은 그대로 둔다.
+- 정의된 개념과 서로 다른 해석, 지시, 약속은 모두 남긴다.
 
-### K5. Review Korean stock AI phrases in context
+### K5. 한국어 AI 상투 표현은 문맥을 보고 검토한다
 
-Treat these as review triggers, not banned words:
+다음 표현은 금지어가 아니라 검토 신호다.
 
 - `단순히 ...를 넘어`, `...에 그치지 않고`
 - `혁신적인`, `획기적인`, `놀라운`, `뛰어난`, `고무적인`, `괄목할 만한`, `무궁무진한`
 - `새로운 패러다임을 제시합니다`, `중요한 시사점을 제공합니다`
 - `앞으로의 귀추가 주목됩니다`, `밝은 미래가 기대됩니다`
 - `오늘날 빠르게 변화하는 환경에서`, `현대 사회에서 그 중요성이 커지고 있습니다`
-- Unsupported or repeated `해당`, `효과적으로`, `~를 자랑합니다`, `~에 자리 잡은`
-- Business loanwords piled up as decoration, such as `니즈`, `솔루션`, `시너지`, `로드맵`. Review them only when several stack up without content. Keep them when they are the writer's or the field's habitual vocabulary, a settled loanword (`서비스`, `플랫폼`), a product or policy name, or a defined term. Never replace a loanword for purity alone.
-- `다양한 X` with no named variety: name the actual kinds when the source gives them, and delete the modifier otherwise. Swapping in `여러` is the same laundering. Keep it only when variety itself is the claim.
-- Remove `성공적으로` when completion proves success (`복구를 성공적으로 완료했다` → `복구를 마쳤다`); keep it when success versus completion or attempt is a separate fact.
-- `단순한 X가 아니라 Y` used to inflate Y. Keep a sentence that really contrasts two options; drop the frame when X is a strawman no reader would assume.
-- Empty `결론적으로`, `요약하자면`, paragraph-closing `이처럼` or `이렇듯`, and `~라고 해도 과언이 아니다`
-- Repeated `~할 수 있습니다` when it does not express real ability, permission, or uncertainty
-- Chatbot residue such as `물론입니다!`, `좋은 질문입니다`, `도움이 되셨기를 바랍니다`, `궁금한 점이 있으시면 언제든지`, `오늘은 ~ 결과를 말씀드리겠습니다`
-- Repeated `첫째`, `둘째`, `셋째` when the structure is not useful
+- 근거 없이 쓰거나 되풀이한 `해당`, `효과적으로`, `~를 자랑합니다`, `~에 자리 잡은`
+- 장식처럼 쌓은 업무 외래어(`니즈`, `솔루션`, `시너지`, `로드맵` 등). 내용 없이 여러 개가 겹칠 때만 검토한다. 글쓴이나 그 분야가 평소 쓰는 말, 자리 잡은 외래어(`서비스`, `플랫폼`), 제품명이나 정책명, 정의된 용어이면 그대로 둔다. 순화만을 이유로 외래어를 절대 바꾸지 않는다.
+- 어떤 종류인지 밝히지 않은 `다양한 X`: 원문이 실제 종류를 밝히면 그 종류를 쓰고, 아니면 수식어를 지운다. `여러`로 바꾸는 것도 같은 포장이다. 다양성 자체가 주장일 때만 남긴다.
+- 완료가 곧 성공이면 `성공적으로`를 지운다(`복구를 성공적으로 완료했다` → `복구를 마쳤다`). 성공 여부가 완료나 시도와 별개의 사실이면 남긴다.
+- Y를 부풀리려고 쓴 `단순한 X가 아니라 Y`. 두 선택지를 실제로 대조하는 문장은 남기고, X가 어떤 독자도 떠올리지 않을 허수아비이면 틀을 걷어 낸다.
+- 내용 없는 `결론적으로`, `요약하자면`, 문단을 마무리하는 `이처럼`이나 `이렇듯`, `~라고 해도 과언이 아니다`
+- 실제 능력, 허락, 불확실성을 나타내지 않는데 되풀이되는 `~할 수 있습니다`
+- `물론입니다!`, `좋은 질문입니다`, `도움이 되셨기를 바랍니다`, `궁금한 점이 있으시면 언제든지`, `오늘은 ~ 결과를 말씀드리겠습니다` 같은 챗봇 잔재
+- 구조상 쓸모가 없는데 되풀이되는 `첫째`, `둘째`, `셋째`
 
-Judge triggers internally, not as banned words or an audit checklist. Rewrite generic, unsupported, redundant, or mismatched wording; keep content-bearing quotes, evaluations, terms, courtesy, accountability, safety emphasis, and deliberate narrator or attributed-speaker voice. Institutional authorship neither proves nor excuses hype. Keep a formulaic pledge only for needed reassurance or a source-stated action; otherwise cut it, never inventing a measure.
+검토 신호는 속으로 판단하고, 금지어 목록이나 점검표처럼 다루지 않는다. 뻔하거나, 근거가 없거나, 중복되거나, 맥락에 맞지 않는 표현은 고쳐 쓴다. 내용이 담긴 인용, 평가, 용어, 예의 표현, 책임 소재, 안전 강조, 일부러 살린 서술자나 인용된 화자의 말투는 지킨다. 기관이 쓴 글이라는 사실은 과장의 증거도 아니고 핑계도 아니다. 판에 박힌 다짐은 독자에게 필요한 안심을 주거나 원문이 밝힌 행동을 담을 때만 남긴다. 그 밖에는 지우고, 조치를 절대 지어내지 않는다.
 
-Delete a flagged evaluation if no verifiable information or needed stance is lost. Do not launder a cliché with a softer synonym: `놀라운 잠재력` → `주목할 만한 잠재력` has the same problem.
+검토 신호에 걸린 평가는 확인할 수 있는 정보나 필요한 입장이 사라지지 않으면 지운다. 상투어를 더 순한 동의어로 바꿔 포장하지 않는다: `놀라운 잠재력` → `주목할 만한 잠재력`도 문제는 같다.
 
-Cut adjacent phrases that merely repeat the same courtesy or structural act. Preserve different speech acts, relationship cues, deliberate repetition, and safety emphasis; do not edit to a phrase count.
+같은 예의 표현이나 같은 구성 역할을 되풀이할 뿐인 이웃 구절은 지운다. 역할이 서로 다른 말, 관계를 드러내는 말, 일부러 한 반복, 안전 강조는 지킨다. 표현 개수를 맞추려고 고치지 않는다.
 
-Preserve the proposition and stance. If a trigger's function remains unclear, read [the Korean genre guide](references/korean-genres.md).
+명제와 입장은 지킨다. 검토 신호가 어떤 역할을 하는지 여전히 불분명하면 [한국어 장르 안내](references/korean-genres.md)를 읽는다.
 
-### K6. Use particles and connective endings for meaning
+### K6. 조사와 연결 어미를 뜻에 맞게 쓴다
 
-- Remove repeated `또한`, `그리고`, `그러나`, and `한편` when the relation is already clear.
-- Break chains of `~하며`, `~하면서`, `~함으로써`, and `~하는 가운데` when they hide logic.
-- Keep connectors that carry cause, condition, concession, sequence, or contrast.
+- 관계가 이미 분명하면 되풀이되는 `또한`, `그리고`, `그러나`, `한편`을 지운다.
+- `~하며`, `~하면서`, `~함으로써`, `~하는 가운데`가 이어져 논리를 가리면 끊는다.
+- 원인, 조건, 양보, 순서, 대조를 나타내는 접속 표현은 남긴다.
 - 접속어가 원문의 논리와 맞는지 확인한다. `그러나`·`하지만`은 대조나 양보에, `따라서`는 원인·이유·근거에 따른 결론이나 논리적 귀결에 쓸 수 있다. `모든 정사각형은 직사각형이다. 이 도형은 정사각형이다. 따라서 이 도형은 직사각형이다.`의 `따라서`는 보존한다. 관계가 분명할 때만 고치며, 원문의 인과·추론 관계를 만들거나 지우지 않는다.
-- Give joined items the same grammatical shape, and give each listed object a verb it fits: `평화 수호와 인권을 보장하는 것` → `평화를 수호하고 인권을 보장하는 것`.
+- 이어지는 항목은 문법 형태를 맞추고, 나열한 목적어마다 어울리는 동사를 쓴다: `평화 수호와 인권을 보장하는 것` → `평화를 수호하고 인권을 보장하는 것`.
 - `-지 않다`와 `-지 못하다`를 구분한다. `검증을 진행하지 않았다.`는 실행하지 않았다는 뜻이며 `검증을 진행하지 못했다.`로 바꾸면 실행할 수 없었다는 뜻을 더할 수 있다. 원문에 없는 실패·능력·원인을 추정하지 않는다.
-- Avoid attaching every topic to `~은/는`; use the particle that matches its role.
+- 모든 화제에 `~은/는`을 붙이지 말고 역할에 맞는 조사를 쓴다.
 
-### K7. Use field-appropriate terminology
+### K7. 분야에 맞는 용어를 쓴다
 
 - 올바른 한국어·영어 전문용어는 보존한다. 단어별 직역으로 개념이 흐려지거나 분야 용례와 어긋나는 표현은 반복되어도 검토한다. `시간 창` 같은 낯선 말 자체가 오역의 증거는 아니며, 정의·문맥·독자를 먼저 본다.
 - 오역 의심 표현을 발견하거나 전문용어를 선택·번역·설명해야 할 때는 [용어 안내](references/terminology/index.md)를 읽는다. 개념과 통용 용어가 확인되면 일반 본문의 용어를 고치고 문서 안에서 일관되게 쓴다. 정확한 원어가 확인됐지만 한국어 대응어가 불확실하면 첫 등장에 `English term(한국어 설명·용어 확인 필요)`로 병기한다. 원어까지 불확실하면 만들어 붙이지 말고 원문 표현과 짧은 확인 표시를 남긴다.
 - 같은 개념이 한 글에서 한국어 표기와 영어 표기로 섞여 있으면(`드롭릿`과 `Droplet`) 각자 쓴 그대로 둔다. 섞인 쌍이 있으면 최종 글 뒤에 메모 한 줄로 모두 모아 묻는다: `표기가 섞인 용어: 드롭릿/Droplet, 기판/substrate — 통일할 표기를 알려 주시면 맞추겠습니다.` 용어마다 따로 묻지 않고, 한 가지 표기로만 쓰인 용어는 넣지 않는다. 사용자가 표기 방식을 미리 정했으면 그대로 맞추고 묻지 않는다. `영어로 통일`, `한국어로 통일` 같은 요청은 섞인 쌍에만 적용하고, 한 가지 표기로만 쓰인 용어는 그대로 둔다. 사용자가 `모든 전문용어`처럼 범위를 넓혀 말할 때만 전부 바꾼다. 한국어 문장 안의 영어 일반명사는 문장 첫머리여도 소문자로 둔다(`substrate 온도`). 고유명사와 약어는 원래 표기를 따른다.
 
-Stop when the router settles the choice; read a matching field guide only for unresolved detail. Never translate code, model names, product names, API fields, paths, commands, standards identifiers, or citation keys.
+용어 안내에서 선택이 정해지면 거기서 멈추고, 풀리지 않은 세부 사항이 있을 때만 맞는 분야별 안내를 읽는다. 코드, 모델명, 제품명, API 필드, 경로, 명령어, 표준 식별자, 인용 키는 절대 번역하지 않는다.
 
-### K8. Set Korean sentence boundaries and rhythm
+### K8. 한국어 문장 경계와 리듬을 잡는다
 
-- Split sentences that carry several actors, conditions, exceptions, and conclusions.
-- Break long comma and connective-ending chains when doing so makes the relation clearer.
-- Merge clipped fragments that imitate English emphasis but sound abrupt in Korean.
-- Keep related information together when splitting would hide cause, scope, or contrast.
-- Put a modifier right before the word it modifies and resolve two-way readings: `일자리 기업의 홍보 기회` → `기업의 일자리 홍보 기회`. If the source itself is ambiguous, keep it and flag it instead of choosing a reading.
-- Rebuild paragraphs when several sentences repeat one topic plus abstract conclusions. State each source-supported predicate once; keep distinct explanation, contrast, or uncertainty.
-- Vary sentence length, structure, or endings only to clarify rhythm or logic, not for surface variety.
-- Remove a conclusion only when it adds no claim, stance, decision, or audience function.
-- Preserve Korean quotation and title marks such as `“ ”`, `‘ ’`, `「 」`, and `『 』`.
-- Do not normalize notation that Korean norms allow both ways: `3~5` and `3-5`, `2 m` and `2m`, six-dot and three-dot ellipses. Keep the final period in a date such as `2024. 5. 1.`.
-- A dash-set aside is valid Korean punctuation. Reduce only a pile-up, and never apply the English dash rule to Korean sentences.
-- Korean marks emphasis with single quotation marks; double marks are for speech and quotations. Change double marks to single only when the span is clearly emphasis, not a quotation or title. Rewrite an English-style colon inside a sentence (`핵심은 하나다: 속도다`) as a sentence; keep a label colon such as `일시: 5월 1일`.
+- 행위자, 조건, 예외, 결론을 여럿 담은 문장은 나눈다.
+- 쉼표와 연결 어미로 길게 이어진 문장은 나누면 관계가 더 분명해질 때 끊는다.
+- 영어식 강조를 흉내 내 한국어에서는 툭툭 끊겨 들리는 짧은 조각 문장은 합친다.
+- 나누면 원인, 범위, 대조가 가려질 때는 관련 정보를 함께 둔다.
+- 수식어는 꾸밈을 받는 말 바로 앞에 두고, 두 가지로 읽히는 곳을 바로잡는다: `일자리 기업의 홍보 기회` → `기업의 일자리 홍보 기회`. 원문 자체가 모호하면 한쪽 해석을 고르지 말고 그대로 둔 채 모호한 점을 짧게 밝힌다.
+- 여러 문장이 한 화제와 추상적인 결론을 되풀이하면 문단을 다시 짠다. 원문이 뒷받침하는 서술어는 한 번씩만 쓰고, 서로 다른 설명, 대조, 불확실성은 남긴다.
+- 문장 길이, 구조, 어미에 변화를 주는 것은 리듬이나 논리를 분명히 할 때만 한다. 겉으로 다양해 보이려고 바꾸지 않는다.
+- 결론은 주장, 입장, 결정, 독자를 위한 역할을 하나도 더하지 않을 때만 지운다.
+- `“ ”`, `‘ ’`, `「 」`, `『 』` 같은 한국어 인용 부호와 제목 부호는 그대로 둔다.
+- 한국어 규범이 두 방식을 다 허용하는 표기는 통일하지 않는다: `3~5`와 `3-5`, `2 m`와 `2m`, 여섯 점 말줄임표와 세 점 말줄임표. `2024. 5. 1.` 같은 날짜의 마지막 마침표는 남긴다.
+- 줄표로 구절을 끼워 넣는 것은 올바른 한국어 문장 부호 용법이다. 줄표가 지나치게 겹칠 때만 줄이고, 영어의 줄표 규칙을 한국어 문장에 절대 적용하지 않는다.
+- 한국어는 강조에 작은따옴표를 쓰고, 큰따옴표는 말과 인용에 쓴다. 인용이나 제목이 아니라 분명한 강조일 때만 큰따옴표를 작은따옴표로 바꾼다. 문장 안의 영어식 쌍점(`핵심은 하나다: 속도다`)은 문장으로 풀고, `일시: 5월 1일` 같은 항목 이름 뒤의 쌍점은 남긴다.
 
-### K9. Write for speaking when needed
+### K9. 말로 전할 글은 말하기에 맞게 쓴다
 
-For a substantial spoken rewrite, or when a spoken cue's audience function is unclear, read [the Korean genre guide](references/korean-genres.md). Keep useful navigation and audience cues, but remove empty staging. Keep `오늘은` when it marks a real date or contrast.
+말로 전할 글을 크게 고쳐 쓰거나, 말하기용 단서가 청중에게 어떤 역할을 하는지 불분명하면 [한국어 장르 안내](references/korean-genres.md)를 읽는다. 진행 안내와 청중을 위한 단서는 쓸모 있으면 남기고, 내용 없는 연출은 지운다. `오늘은`이 실제 날짜나 대조를 나타내면 남긴다.
 
-### K10. Handle high-stakes text carefully
+### K10. 위험이 큰 글은 신중하게 다룬다
 
-Precision, scope, status, and limitations take priority over smoothness. Use the fidelity routing condition below; a medical, legal, scientific, or financial topic alone does not require an extra guide.
+매끄러움보다 정확성, 범위, 상태, 한계가 먼저다. 아래의 충실도 검토 안내를 읽는 조건을 따른다. 의학, 법률, 과학, 금융 주제라는 이유만으로 추가 안내를 읽을 필요는 없다.
 
-### Final Korean pass
+### 한국어 마지막 점검
 
-During the source comparison below, check that:
+아래의 원문 대조 단계에서 다음을 확인한다.
 
-1. Overall politeness, register shifts, and honorifics fit the speaker and audience.
-2. Facts, exact tokens, status, negation, scope, attribution, limitations, evaluation, and commitment retain their meaning.
-3. English-specific rules were not imposed; specialist terms remain consistent.
-4. Korean syntax, sentence boundaries, and quotation marks are natural and unambiguous.
-5. Empty frames, repeated abstract conclusions, and K5 triggers were handled without erasing meaning.
-6. No synonym-only cliché swaps, redundant courtesy, or needless additions remain.
+1. 전체 공손함, 문체 변화, 높임이 화자와 독자에 맞는다.
+2. 사실, 보호 토큰, 상태, 부정, 범위, 출처, 한계, 평가, 약속의 뜻이 그대로다.
+3. 영어에만 맞는 규칙을 덧씌우지 않았고, 전문용어가 일관된다.
+4. 한국어 문장 구조, 문장 경계, 따옴표가 자연스럽고 모호하지 않다.
+5. 빈 틀, 되풀이되는 추상적 결론, K5 검토 신호를 뜻을 지우지 않고 처리했다.
+6. 동의어만 바꾼 상투어, 겹치는 예의 표현, 불필요한 덧붙임이 남아 있지 않다.
 
-## Load only the needed reference
+## 필요한 참고 문서만 읽는다
 
-The Korean checkpoints above are always active. Load extra references only when the text calls for them.
+위의 한국어 점검 항목은 늘 적용한다. 다른 참고 문서는 글에 필요할 때만 읽는다.
 
-- **Unresolved genre choices:** Read [the Korean genre guide](references/korean-genres.md) when boilerplate, deliberate voice, repetition, or an audience cue remains unclear, or for a substantial spoken, approved-marketing, or safety rewrite. A routine email or presentation with clear register and courtesy does not trigger it.
-- **Difficult or high-risk fidelity:** Read [the fidelity review guide](references/fidelity-review.md) when the text has several interacting facts, constraints, attributions, or status claims, or when an error would carry high stakes. One ordinary number or English token alone does not trigger the guide.
-- **Substantial English prose:** Read [upstream's English patterns](references/english-patterns.md) once. English product names, code, identifiers, citations, and established technical terms inside Korean text do not trigger this reference; it is for text where English forms a substantial prose span.
-- **Unsettled specialist terminology:** Read [the terminology router](references/terminology/index.md) for a suspected literal mistranslation, even if repeated consistently, or when choosing, translating, correcting, or explaining a field-specific term. Stop when its quick map resolves the term; read a matching field guide only for unresolved detail. Known-correct terms alone do not trigger it.
+- **장르 판단이 남았을 때:** 상투 문구, 일부러 살린 말투, 반복, 독자나 청중을 위한 단서가 여전히 애매하거나, 말로 전할 글이나 승인된 광고 문구나 안전 문구를 크게 고쳐 쓸 때 [한국어 장르 안내](references/korean-genres.md)를 읽는다. 문체와 예의가 분명한 평범한 이메일이나 발표라는 것만으로는 읽지 않는다.
+- **충실도를 지키기 어렵거나 위험할 때:** 여러 사실, 제약, 출처, 상태 주장이 서로 얽혀 있거나, 오류가 심각한 결과로 이어질 수 있으면 [충실도 검토 안내](references/fidelity-review.md)를 읽는다. 평범한 숫자 하나나 영어 토큰 하나만으로는 읽지 않는다.
+- **영어 문장이 많은 글:** [원본 영어 패턴](references/english-patterns.md)을 한 번 읽는다. 한국어 글 속의 영어 제품명, 코드, 식별자, 참고문헌 표기, 자리 잡은 기술용어만으로는 읽지 않는다. 영어가 문장으로 상당히 이어지는 글에 쓰는 문서다.
+- **전문용어가 정해지지 않았을 때:** 직역 오류가 의심되거나(일관되게 반복된 표현이어도), 분야 용어를 고르거나 번역하거나 고치거나 설명해야 하면 [용어 안내](references/terminology/index.md)를 읽는다. 빠른 대응표로 용어가 정해지면 거기서 멈추고, 풀리지 않은 세부 사항이 있을 때만 맞는 분야별 안내를 읽는다. 맞다고 알고 있는 용어만 있으면 읽지 않는다.
 
-Reuse unchanged references already present in context. Apply their relevant checks within the same source comparison, not as separate full review passes.
+이미 읽어 두었고 바뀌지 않은 참고 문서는 다시 읽지 않는다. 참고 문서의 점검 사항은 관련 있는 것만 같은 원문 대조 안에서 적용하고, 따로 전체 검토를 돌리지 않는다.
 
-## Editing priorities
+## 편집 우선순위
 
-For Korean prose, build natural Korean around source-supported predicates by revising sentence and paragraph shape, not by replacing watched words one by one.
+한국어 글은 검토 신호 단어를 하나씩 바꾸지 말고, 원문이 뒷받침하는 서술어를 중심으로 문장과 문단의 모양을 고쳐 자연스러운 한국어로 만든다.
 
-- Remove unsupported hype, sweeping importance claims, unwanted sales framing, vague attribution, and generic conclusions. Keep an approved marketing voice, a sourced evaluation, or a personal reaction when the genre calls for it.
-- Cut repetitive openings, forced groups, fake contrasts, canned transitions, filler, stacked hedges, and chatbot greetings or closings.
-- In any language, remove decorative formatting the genre does not use: bold scattered over ordinary phrases, a bold label that restates the sentence after it (`**성능:** 성능이 향상됐다`), emoji on headings or bullets, and headings over a few short paragraphs. Keep structure the medium relies on, such as a README, slides, or a list of real parallel items, and keep the writer's own emoji in casual messages.
-- Prefer concrete subjects and verbs, but keep a passive, formal term, repetition, or unusual rhythm when it serves the meaning or the writer's voice.
-- Treat watched phrases as review triggers, not banned words. Do not treat one formal word, ordinary courtesy, an official commitment, a safety emphasis, or a personal metaphor as proof of AI writing. Judge the phrase in context.
-- Add personality only when the genre and source voice call for it. Keep technical, legal, medical, scientific, financial, policy, and reference text precise.
+- 근거 없는 과장, 지나친 중요성 주장, 원치 않는 홍보 말투, 막연한 출처, 뻔한 결론은 지운다. 장르에 맞으면 승인된 광고 말투, 근거 있는 평가, 개인적인 반응은 남긴다.
+- 되풀이되는 도입, 억지로 묶은 나열, 가짜 대조, 판에 박힌 전환어, 군더더기, 겹겹이 쌓은 얼버무림, 챗봇식 인사나 맺음말은 걷어 낸다.
+- 어느 언어든 장르에 없는 장식 서식은 지운다: 평범한 구절에 흩뿌린 굵은 글씨, 뒤 문장을 되풀이하는 굵은 이름표(`**성능:** 성능이 향상됐다`), 제목이나 목록 항목에 붙인 이모지, 짧은 문단 몇 개 위에 단 소제목. README, 슬라이드, 실제로 나란한 항목의 목록처럼 매체가 기대는 구조는 남기고, 가벼운 메시지에 글쓴이가 직접 넣은 이모지도 남긴다.
+- 구체적인 주어와 동사를 쓰되, 뜻이나 글쓴이의 말투에 필요하면 피동, 격식 있는 용어, 반복, 독특한 리듬을 남긴다.
+- 검토 신호는 금지어가 아니라 다시 살펴볼 계기다. 격식 있는 단어 하나, 일상적인 예의 표현, 공식적인 약속, 안전 강조, 개인적인 비유를 AI가 쓴 증거로 보지 않는다. 표현은 문맥 속에서 판단한다.
+- 개성은 장르와 원문의 말투에 필요할 때만 더한다. 기술, 법률, 의료, 과학, 금융, 정책, 참고 자료 글은 정확성을 지킨다.
 
-## Output contract
+## 결과물 형식
 
-- **Rewrite requested:** Return only the final rewrite unless explanation is requested. Do not announce the skill, show internal analysis, or add a closing offer.
-- **Review, comparison, or explanation only:** Return the requested findings or explanation. Do not add a full rewrite or modify files unless requested.
-- **File editing requested:** Edit prose only, preserve non-prose structure, then give a short summary. Naming a file alone is not an editing request.
-- **Embedded use:** Return only the finished text required by the parent task.
+- **고쳐 쓰기를 요청받았을 때:** 설명을 요청받지 않았다면 최종 수정본만 돌려준다. 스킬을 쓴다고 알리거나, 내부 분석을 보여 주거나, 끝에 추가 도움을 제안하지 않는다.
+- **검토, 비교, 설명만 요청받았을 때:** 요청받은 지적이나 설명을 돌려준다. 요청이 없으면 전체 수정본을 덧붙이거나 파일을 고치지 않는다.
+- **파일 수정을 요청받았을 때:** 글 부분만 고치고 글이 아닌 구조는 그대로 둔 뒤 짧게 요약한다. 파일 이름을 말한 것만으로는 수정 요청이 아니다.
+- **다른 작업 안에서 쓸 때:** 상위 작업에 필요한 완성된 글만 돌려준다.
 
-K7 uncertainty markers are part of the finished text, not a routine commentary section. The K7 mixed-form note is the only line allowed after a rewrite. If a marker would alter a protected quote or identifier, leave that span intact and give one short term note outside it. Do not annotate settled terms.
+K7의 불확실성 표시는 완성된 글의 일부이며, 따로 붙이는 해설란이 아니다. 수정본 뒤에 붙일 수 있는 줄은 K7의 섞인 표기 메모 한 줄뿐이다. 표시를 넣으면 보호 대상 인용이나 식별자가 바뀌게 될 때는 그 부분을 그대로 두고, 그 부분 바깥에 짧은 용어 메모를 하나 남긴다. 자리 잡은 용어에는 표시를 달지 않는다.
 
-## Fast rewrite process
+## 빠른 고쳐 쓰기 절차
 
-For review-only requests, apply the relevant criteria to the supplied text and report findings; do not run a rewrite workflow.
+검토만 요청받았다면 주어진 글에 관련 기준을 적용해 지적 사항을 알린다. 고쳐 쓰기 절차는 돌리지 않는다.
 
-1. Identify hard constraints, genre, stance, and requested edit strength internally. Default to balanced editing; accuracy wins.
-2. Apply K1-K10 to Korean prose and load only the selected references. Default to one whole-passage rewrite, preserving facts, limitations, stance, and caution. A limiting negative such as `입증되지 않았다` is a claim, not filler.
-3. Compare the draft with the source, combining the Final Korean pass and any relevant reference checks. Correct actual mismatches, then recheck the affected content and its dependencies. Finish when no known editing error remains; do not repeat full rewrites or checks without a new issue. If source ambiguity prevents a faithful correction, preserve that wording and briefly identify the unresolved point rather than guess or loop.
-4. Return the result under the output contract. Do not narrate these steps.
+1. 꼭 지킬 제약, 장르, 입장, 요청받은 편집 강도를 속으로 파악한다. 기본은 균형 잡힌 편집이며, 정확성이 언제나 먼저다.
+2. 한국어 글에는 K1-K10을 적용하고, 고른 참고 문서만 읽는다. 기본은 글 전체를 한 번에 고쳐 쓰는 것이며, 사실, 한계, 입장, 신중함을 지킨다. `입증되지 않았다`처럼 범위를 제한하는 부정은 군더더기가 아니라 주장이다.
+3. 한국어 마지막 점검과 관련 참고 문서의 점검을 합쳐 수정본을 원문과 대조한다. 실제로 어긋난 곳을 고치고, 고친 부분과 그에 딸린 내용을 다시 확인한다. 알고 있는 편집 오류가 남지 않으면 끝낸다. 새 문제가 없는데 전체 고쳐 쓰기나 점검을 되풀이하지 않는다. 원문이 모호해서 충실하게 고칠 수 없으면, 추측하거나 같은 일을 되풀이하지 말고 그 표현을 그대로 둔 채 풀리지 않은 점을 짧게 밝힌다.
+4. 결과는 위의 결과물 형식에 맞춰 돌려준다. 이 절차를 말로 늘어놓지 않는다.
 
-When source and draft are available and a comparison audit is requested, or the text is precision-sensitive and dense with numbers or technical tokens, `scripts/check-rewrite.py` may assist the source comparison. Resolve it relative to this file. It reports surface candidates, not semantic verdicts: inspect candidates, fix real mismatches, and rerun only when changes could affect its results. Do not damage correct prose to satisfy a regex. The checker is optional; comparing meaning is required for every rewrite.
+원문과 수정본이 다 있고 대조 검토를 요청받았거나, 정확성이 중요하고 숫자나 기술 토큰이 많은 글이면 `scripts/check-rewrite.py`로 원문 대조를 도울 수 있다. 경로는 이 파일 위치를 기준으로 찾는다. 이 검사기는 겉으로 드러난 후보만 알려 줄 뿐 뜻을 판정하지 않는다. 후보를 살펴 실제로 어긋난 곳을 고치고, 고친 내용이 결과에 영향을 줄 수 있을 때만 다시 돌린다. 정규식을 통과시키려고 올바른 문장을 망가뜨리지 않는다. 검사기는 선택이지만, 뜻을 대조하는 일은 모든 수정에서 반드시 한다.
 
-## Source
+## 출처
 
-This skill is based on [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), maintained by WikiProject AI Cleanup. The English reference follows the upstream release recorded in `.upstream-version`. This fork adds the Korean checkpoints K1-K10 for Korean word order, subjects, particles, register, sentence endings, rhythm, and terminology.
+이 스킬은 WikiProject AI Cleanup이 관리하는 [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing)을 바탕으로 한다. 영어 참고 문서는 `.upstream-version`에 적힌 원본 릴리스를 따른다. 이 포크는 한국어 어순, 주어, 조사, 문체, 종결 어미, 리듬, 용어를 다루는 한국어 점검 항목 K1-K10을 더했다.

@@ -1,19 +1,19 @@
-# Medical and biotech terminology
+# 의료·바이오 용어
 
-Use this guide for medicine, clinical research, biotechnology, pharmaceuticals, and regulated health communication. The governing protocol, regulator, hospital, and professional society take priority over general dictionary wording.
+의학, 임상 연구, 생명공학, 제약, 규제 대상인 보건 의료 커뮤니케이션에 이 안내를 쓴다. 일반 사전의 표현보다 해당 프로토콜, 규제 기관, 병원, 전문 학회의 표현을 우선한다.
 
-## Context-sensitive terms
+## 문맥에 따라 달라지는 용어
 
-| Term | Context | Likely Korean usage |
+| 용어 | 문맥 | 유력한 한국어 용례 |
 |---|---|---|
-| `endpoint` | clinical trial | 평가변수, following the protocol or regulator |
-| `primary endpoint` | clinical trial | 일차 평가변수 |
-| `subject` | clinical research | 연구대상자 or 시험대상자 according to the governing document |
-| `adherence` | treatment or study behavior | 순응도, 이행도, or the protocol's defined term |
-| `adverse event` | clinical or device study | 이상반응 |
-| `efficacy` | treatment effect | 유효성; do not broaden it to general 효과 |
-| `validation` | pharmaceutical or GMP work | 밸리데이션 when that is the established regulated usage |
+| `endpoint` | 임상시험 | 프로토콜이나 규제 기관에 따라 평가변수 |
+| `primary endpoint` | 임상시험 | 일차 평가변수 |
+| `subject` | 임상 연구 | 기준 문서에 따라 연구대상자 또는 시험대상자 |
+| `adherence` | 치료나 연구 중 행동 | 순응도, 이행도, 또는 프로토콜에서 정의한 용어 |
+| `adverse event` | 임상 연구나 의료기기 연구 | 이상반응 |
+| `efficacy` | 치료 효과 | 유효성. 뜻이 더 넓은 일반어 '효과'로 바꾸지 않는다 |
+| `validation` | 제약이나 GMP 업무 | 규제 분야에서 자리 잡은 용례라면 밸리데이션 |
 
-Preserve population, time point, comparison group, outcome definition, severity, causality assessment, and whether data were self-reported. Do not turn association into causation or a preliminary study into clinical proof.
+대상 집단, 시점, 비교군, 결과 지표의 정의, 중증도, 인과성 평가, 자가 보고 자료인지 여부를 보존한다. 연관성을 인과관계로, 예비 연구를 임상적 입증으로 바꾸지 않는다.
 
-When two official Korean terms coexist, follow the protocol or governing document instead of mixing them for variety.
+공식 한국어 용어 두 개가 함께 쓰이면, 다양하게 보이려고 섞어 쓰지 말고 프로토콜이나 기준 문서를 따른다.

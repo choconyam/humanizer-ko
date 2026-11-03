@@ -1,20 +1,20 @@
-# Finance and accounting terminology
+# 금융·회계 용어
 
-Use this guide for finance, accounting, investment, corporate reporting, and insurance. Follow the reporting standard, regulator, organization glossary, and intended professional audience.
+금융, 회계, 투자, 기업 보고, 보험에 이 안내를 쓴다. 보고 기준, 규제 기관, 조직의 용어집을 따르고, 염두에 둔 전문가 독자에게 맞춘다.
 
-## Context-sensitive terms
+## 문맥에 따라 달라지는 용어
 
-| Term | Context | Likely Korean usage |
+| 용어 | 문맥 | 유력한 한국어 용례 |
 |---|---|---|
-| `interest` | lending or deposits | 이자 |
-| `interest` | ownership | 지분 |
-| `interest` | conflict or related party | 이해관계 |
-| `forecast` | internal planning | 전망, 예측, or the established `forecast` |
-| `guidance` | company outlook | 가이던스 or 전망 according to established disclosure usage |
-| `revenue` | corporate reporting | 매출 or 수익 according to the accounting context |
-| `operating margin` | corporate reporting | 영업이익률 |
-| `claim` | insurance | 청구 or 보험금 청구 |
+| `interest` | 대출이나 예금 | 이자 |
+| `interest` | 소유 | 지분 |
+| `interest` | 이해 충돌이나 특수관계자 | 이해관계 |
+| `forecast` | 내부 계획 | 전망, 예측, 또는 자리 잡은 `forecast` |
+| `guidance` | 회사 전망 | 자리 잡은 공시 용례에 따라 가이던스 또는 전망 |
+| `revenue` | 기업 보고 | 회계 문맥에 따라 매출 또는 수익 |
+| `operating margin` | 기업 보고 | 영업이익률 |
+| `claim` | 보험 | 청구 또는 보험금 청구 |
 
-Keep currencies, exchange-rate pairs such as `USD/KRW`, periods, ranges, percentages, units, and accounting labels exact. Preserve whether a number is actual, forecast, unaudited, unapproved, preliminary, or external guidance.
+통화, `USD/KRW` 같은 환율 쌍, 기간, 수치 범위, 백분율, 단위, 회계 항목명은 정확히 그대로 둔다. 숫자가 실적치인지, 전망치인지, 감사받지 않은 수치인지, 승인받지 않은 수치인지, 잠정치인지, 외부 가이던스인지 보존한다.
 
-Do not turn an internal estimate into public guidance, a scenario into a commitment, or a year-over-year comparison into an absolute change.
+내부 추정치를 공개 가이던스로, 시나리오를 약속으로, 전년 대비 비교를 비교 기준이 빠진 절대 변화로 바꾸지 않는다.

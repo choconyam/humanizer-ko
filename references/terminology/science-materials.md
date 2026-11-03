@@ -1,20 +1,20 @@
-# Science and materials terminology
+# 과학·재료 용어
 
-Use this guide for materials science, chemistry, deposition, electronics, batteries, and related engineering. Follow the source glossary and the terminology used by the target lab, journal, standard, or organization.
+재료과학, 화학, 증착, 전자공학, 배터리, 그리고 이와 관련된 공학 분야에 이 안내를 쓴다. 원문의 용어집을 따르고, 대상 연구실이나 학술지, 표준, 기관이 쓰는 용어를 따른다.
 
-## Context-sensitive terms
+## 문맥에 따라 달라지는 용어
 
-| Term | Context | Likely Korean usage |
+| 용어 | 문맥 | 유력한 한국어 용례 |
 |---|---|---|
-| `substrate` | electronics, coatings, deposition | 기판 |
-| `substrate` | biochemistry | 기질; use the medical guide if that context dominates |
-| `film` | deposited material layer | 박막 when thickness and material layer are the point |
-| `deposition` | thin-film process | 증착 |
-| `precursor` | deposition or synthesis | 전구체 |
-| `sheet resistance` | electronic material property | 면저항, or keep the established source term |
-| `cell` | battery industry | 셀 or 전지 according to the project glossary and audience |
-| `cell` | biology | 세포; use the medical guide if that context dominates |
+| `substrate` | 전자공학, 코팅, 증착 | 기판 |
+| `substrate` | 생화학 | 기질. 이 문맥이 중심이면 의료·바이오 안내를 따른다 |
+| `film` | 증착한 재료 층 | 두께와 재료 층이 요점일 때 박막 |
+| `deposition` | 박막 공정 | 증착 |
+| `precursor` | 증착이나 합성 | 전구체 |
+| `sheet resistance` | 전자 재료의 물성 | 면저항, 또는 원문에 자리 잡은 용어를 그대로 둔다 |
+| `cell` | 배터리 산업 | 프로젝트 용어집과 독자에 따라 셀 또는 전지 |
+| `cell` | 생물학 | 세포. 이 문맥이 중심이면 의료·바이오 안내를 따른다 |
 
-Keep established process names and abbreviations such as `PEDOT`, `oCVD`, `iCVD`, `ALD`, `MLD`, and chemical formulas unchanged. Do not expand an abbreviation unless the source or user requires it.
+`PEDOT`, `oCVD`, `iCVD`, `ALD`, `MLD`처럼 자리 잡은 공정 이름과 약어, 그리고 화학식은 바꾸지 않는다. 원문이나 사용자가 요구하지 않으면 약어를 풀어 쓰지 않는다.
 
-Distinguish a demonstrated sample, process window, prototype, and production process. Terminology cleanup must not strengthen validation or deployment status.
+실험으로 구현한 시료, 공정 윈도우, 시제품, 양산 공정을 구분한다. 용어를 다듬다가 검증 상태나 적용 상태를 부풀려서는 안 된다.

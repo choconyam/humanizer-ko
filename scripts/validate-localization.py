@@ -115,16 +115,16 @@ if missing_korean_coverage:
 # Structural coverage only; prose wording and stopping behavior need review,
 # not exact-string assertions that freeze obsolete instructions.
 skill_routing_rules = (
-    "Load only the needed reference",
+    "필요한 참고 문서만 읽는다",
     "K1-K10",
     "references/english-patterns.md",
-    "substantial prose span",
+    "영어가 문장으로 상당히 이어지는",
     "references/korean-genres.md",
     "references/fidelity-review.md",
     "references/terminology/index.md",
-    "matching field guide",
-    "Preserve tense, modality, negation, scope, attribution, and completion status",
-    "Return only the final rewrite",
+    "분야별 안내",
+    "완료 여부를 지킨다",
+    "최종 수정본만 돌려준다",
 )
 if any(rule not in SKILL for rule in skill_routing_rules):
     fail("SKILL.md must route references, preserve status, and return concise output")

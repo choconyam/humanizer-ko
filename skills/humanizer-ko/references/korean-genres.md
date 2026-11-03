@@ -1,82 +1,82 @@
-# Korean genre and edit strength
+# 한국어 장르와 편집 강도
 
-Read only when K1-K10 leave boilerplate, voice, repetition, or audience function unresolved, or for a substantial spoken, approved-marketing, or safety rewrite. A routine email or presentation with clear register needs no guide.
+K1-K10을 적용하고도 상투 문구, 말투, 반복, 독자나 청중을 위한 역할을 판단하지 못할 때, 또는 말로 전할 글이나 승인된 광고 문구, 안전 문구를 크게 고쳐 쓸 때만 이 안내를 읽는다. 문체가 분명한 평범한 이메일이나 발표문에는 안내가 필요 없다.
 
-## Choose edit strength from the request and risk
+## 요청과 위험도를 보고 편집 강도를 정한다
 
-Use the user's explicit instruction when provided. Otherwise choose without asking when the context is clear.
+사용자가 명시적으로 지시했으면 그대로 따른다. 지시가 없고 맥락이 분명하면 묻지 않고 고른다.
 
-- **Conservative:** High-stakes, approved, quoted, regulated, contractual, safety-critical, or strongly personal text. Fix clear AI residue and awkward Korean while preserving structure and tone.
-- **Balanced:** Default for ordinary reports, posts, emails, and explanations. Remove obvious boilerplate and repair sentence structure without flattening the voice.
-- **Strong:** Use only when the user asks for a substantial rewrite or the draft is dominated by generic filler. The fidelity contract still applies.
+- **보수적:** 위험이 큰 글, 승인된 문구, 인용문, 규제 대상 글, 계약 문서, 안전과 직결되는 글, 개인적인 성격이 강한 글에 쓴다. 구조와 어조는 그대로 두고, 분명한 AI 잔재와 어색한 한국어를 고친다.
+- **균형:** 평범한 보고서, 게시글, 이메일, 설명문에 기본으로 쓴다. 말투를 밋밋하게 만들지 않으면서 눈에 띄는 상투 문구를 없애고 문장 구조를 바로잡는다.
+- **강함:** 사용자가 크게 고쳐 써 달라고 하거나 원문 대부분이 뻔한 군더더기일 때만 쓴다. 이때도 충실도 원칙은 그대로 적용한다.
 
-Edit strength controls how much prose changes, not how carefully facts are preserved.
+편집 강도에 따라 달라지는 것은 문장을 바꾸는 폭이다. 사실을 꼼꼼히 지키는 정도는 달라지지 않는다.
 
-## Route by genre
+## 장르에 따라 다르게 다룬다
 
-| Genre | Preserve | Usually revise |
+| 장르 | 보존할 것 | 대개 고칠 것 |
 |---|---|---|
-| Report or research text | Findings, uncertainty, limitations, interpretation, defined terms | Unsupported importance claims, causal overstatement, vague conclusions |
-| Email | Greeting, honorifics, request strength, relationship cues, ordinary closing | Excessive praise, repeated thanks, pressure disguised as politeness |
-| Public notice or support text | Instructions, commitments, contact details, reassurance needed by the audience | Chatbot preambles, inflated service claims, indirect action steps |
-| Presentation or narration | Spoken rhythm, navigation cues that help delivery, audience-appropriate closing | Throat-clearing, forced `첫째·둘째·셋째`, report-like clause chains |
-| Personal essay, diary, or review | First-person reactions, humor, uncertainty, memorable imagery, deliberate repetition | Generic travel-copy superlatives and conclusions that do not sound personal |
-| Approved marketing copy | Authorized slogan, campaign voice, qualified claims, required disclaimer | Unapproved promises, unsupported superlatives, claims that exceed the brief |
-| Safety or compliance text | Repetition that emphasizes danger, prohibitions, steps, escalation routes | Decorative framing that delays the instruction |
+| 보고서나 연구 글 | 밝혀낸 결과, 불확실성, 한계, 해석, 정의된 용어 | 근거 없이 중요하다고 내세우는 말, 인과관계를 부풀린 표현, 모호한 결론 |
+| 이메일 | 인사, 높임 표현, 요청의 세기, 관계를 보여 주는 표현, 평범한 맺음말 | 지나친 칭찬, 거듭되는 감사 인사, 공손함으로 포장한 압박 |
+| 공지나 고객 지원 글 | 따라야 할 안내, 약속, 연락처, 독자를 안심시키는 데 필요한 말 | 챗봇 같은 서두, 서비스를 부풀린 주장, 에둘러 쓴 행동 안내 |
+| 발표나 내레이션 | 말의 리듬, 전달을 돕는 진행 안내, 청중에 맞는 맺음말 | 본론 전에 늘어놓는 군말, 억지스러운 `첫째·둘째·셋째`, 보고서처럼 길게 이어지는 절 |
+| 개인 에세이, 일기, 후기 | 1인칭으로 쓴 반응, 유머, 불확실성, 기억에 남는 묘사, 일부러 한 반복 | 여행 광고 같은 뻔한 최상급 표현, 개인의 말로 들리지 않는 결론 |
+| 승인된 광고 문구 | 승인된 슬로건, 캠페인의 말투, 단서를 붙인 주장, 필수 고지 문구 | 승인받지 않은 약속, 근거 없는 최상급 표현, 브리프 범위를 넘는 주장 |
+| 안전이나 규정 준수 문서 | 위험을 강조하는 반복, 금지 사항, 절차, 상위 보고 경로 | 지시를 뒤로 미루는 꾸밈 문구 |
 
-## Distinguish boilerplate from audience function
+## 상투 문구와 독자나 청중을 위한 역할을 구분한다
 
-A watched phrase is not automatically residue. Ask what it does in this document.
+검토 신호인 표현이라고 해서 곧 잔재인 것은 아니다. 그 표현이 이 문서에서 어떤 역할을 하는지 따져 본다.
 
-- `좋은 하루 보내시기 바랍니다` can be a normal email closing. Remove it only when the requested style is terse or the surrounding message already closes naturally.
-- `최선을 다하겠습니다` can carry requested accountability or needed reassurance in a public notice. Keep it then; cut it when it only repeats resolve, and never invent a measure to make it concrete.
-- `궁금한 점이 있으시면 말씀해 주세요` can be a useful contact invitation in an email. Remove it when there is no response channel or it is merely a chatbot afterthought.
-- `가장 중요한 것은` can be justified safety emphasis. Do not weaken a warning to avoid a watched construction.
-- `오늘은` can mark an actual date or spoken contrast. Remove it only when it is empty presentation staging.
+- `좋은 하루 보내시기 바랍니다`는 이메일의 평범한 맺음말일 수 있다. 사용자가 아주 짧고 건조한 문체를 요청했거나 나머지 글이 이미 자연스럽게 끝맺을 때만 지운다.
+- `최선을 다하겠습니다`는 공지에서 요구받은 책임을 밝히거나 독자에게 필요한 안심을 주는 말일 수 있다. 그럴 때는 남긴다. 다짐을 되풀이하기만 하면 지우고, 구체적으로 보이려고 조치를 지어내는 일은 절대 하지 않는다.
+- `궁금한 점이 있으시면 말씀해 주세요`는 이메일에서 연락을 권하는 쓸모 있는 말일 수 있다. 응답할 창구가 없거나 챗봇처럼 습관적으로 덧붙인 말일 뿐이면 지운다.
+- `가장 중요한 것은`은 타당한 안전 강조일 수 있다. 검토 신호인 구문을 피하려고 경고를 약하게 만들지 않는다.
+- `오늘은`은 실제 날짜를 가리키거나 말하는 흐름에서 대조를 나타낼 수 있다. 내용 없는 발표용 연출일 때만 지운다.
 
-Judge clusters and function, not a single token. Several generic phrases surrounding thin content are stronger evidence than one phrase serving a clear purpose.
+표현 하나만 보지 말고, 뻔한 표현이 얼마나 몰려 있는지와 각 표현이 어떤 역할을 하는지 보고 판단한다. 빈약한 내용을 뻔한 표현 여러 개가 둘러싸고 있으면, 분명한 목적이 있는 표현 하나보다 더 강한 증거가 된다.
 
-## Preserve deliberate voice
+## 일부러 살린 말투는 보존한다
 
-Voice may belong to a first-person writer, third-person narrator, or attributed speaker. Keep source-grounded reactions, imagery, humor, fragments, and repetition. Institutional authorship neither proves nor excuses hype; remove `깊은 울림을 줍니다` or `다채로운 영감` when it carries no supported stance, evidence, or audience function.
+말투는 1인칭 글쓴이의 것일 수도, 3인칭 서술자나 인용된 화자의 것일 수도 있다. 원문에 근거한 반응, 묘사, 유머, 토막 문장, 반복은 남긴다. 기관이 쓴 글이라는 사실은 과장의 증거도 아니고 핑계도 아니다. `깊은 울림을 줍니다`나 `다채로운 영감`이 근거 있는 입장, 증거, 독자를 위한 역할 가운데 아무것도 담고 있지 않으면 지운다.
 
 > 바다는 보석처럼 빛났고, 돌아오는 50분은 멀미 때문에 꽤 힘들었다.
 
-The concrete inconvenience makes this a personal observation rather than generic destination copy. Remove stacked tourism clichés around it if needed, but do not force the passage into a neutral report.
+구체적인 불편함이 담겨 있어서 이 문장은 흔한 관광지 홍보 문구가 아니라 개인의 관찰로 읽힌다. 필요하면 그 주변에 쌓인 관광 상투어는 지우되, 글을 중립적인 보고서로 억지로 바꾸지 않는다.
 
-Do not add a tidy lesson, moral, or interpretation that the writer did not state. Do not turn mixed feelings into uniformly positive or negative prose.
+글쓴이가 말하지 않은 깔끔한 교훈, 도덕적 메시지, 해석을 덧붙이지 않는다. 엇갈린 감정을 한결같이 긍정적이거나 부정적인 글로 바꾸지 않는다.
 
-## Preserve evaluation and commitment
+## 평가와 약속을 보존한다
 
-When a source contains a real evaluation, keep its direction and strength while removing unsupported ornament.
+원문에 실제 평가가 있으면 근거 없는 꾸밈은 지우고, 평가의 방향과 세기는 그대로 둔다.
 
 > 이 고무적인 결과는 현장 적용의 무궁무진한 가능성을 보여줍니다.
 
-Possible balanced rewrite:
+균형 강도로 고치면 이렇게 쓸 수 있다.
 
 > 이 결과는 현장 적용 가능성을 보여줍니다.
 
-If the source also states who holds the view, preserve that attribution. If the evaluation is approved copy, retain the approved wording. If it is unsupported but central to the writer's stance, lower its certainty instead of deleting the proposition. If it is unsupported and merely decorative, delete the evaluation itself; replacing it with a milder synonym keeps the same problem.
+원문에 누구의 평가인지도 나와 있으면 그 출처를 보존한다. 평가가 승인된 문구라면 그 문구를 그대로 둔다. 근거는 없지만 글쓴이 입장의 핵심이라면 명제를 지우지 말고 확신의 정도를 낮춘다. 근거도 없고 꾸밈에 그친다면 평가 자체를 지운다. 더 순한 동의어로 바꾸면 같은 문제가 그대로 남는다.
 
-A commitment is the action it promises, not the emotion around it. When a closing only reaffirms determination or paints a brighter future, replace it with the concrete measure the source states, or end on the last fact.
+약속은 약속한 행동이지, 그것을 둘러싼 감정이 아니다. 맺음말이 각오를 다시 다지거나 더 밝은 미래를 그리는 데 그치면, 그 맺음말을 원문에 나온 구체적인 조치로 바꾸거나 마지막 사실에서 글을 끝낸다.
 
-## Keep useful politeness
+## 쓸모 있는 공손함은 남긴다
 
-Korean politeness is not the same as chatbot residue.
+한국어의 공손함은 챗봇 잔재와 다르다.
 
-- Keep overall politeness appropriate to the relationship. A conventional polite greeting with a formal body can be natural; remove unexplained register drift.
-- Preserve a greeting or closing when it performs a normal social function.
-- Cut adjacent expressions only when they repeat the same courtesy act. Preserve different speech acts, relationship cues, deliberate repetition, and safety emphasis.
-- Remove ceremonial praise that buries the request.
-- Do not make a request harsher merely to shorten it.
-- Do not add courtesy that the source does not contain when the genre calls for a direct instruction.
+- 글 전체의 공손함을 관계에 맞게 유지한다. 관례적인 공손한 인사 뒤에 격식체 본문이 이어져도 자연스러울 수 있다. 이유 없이 문체가 흔들리면 바로잡는다.
+- 인사말이나 맺음말이 평범한 사교적 역할을 하면 보존한다.
+- 나란히 놓인 표현이 같은 예의 표현을 되풀이할 때만 겹치는 쪽을 지운다. 역할이 다른 말, 관계를 보여 주는 표현, 일부러 한 반복, 안전 강조는 보존한다.
+- 요청이 의례적인 칭찬에 묻히면 그 칭찬을 지운다.
+- 짧게 줄이려는 이유만으로 요청을 더 거칠게 만들지 않는다.
+- 장르상 직접적인 지시가 필요하면 원문에 없는 예의 표현을 덧붙이지 않는다.
 
-## Genre checks for the source comparison
+## 원문 대조 때 장르도 확인한다
 
-Include these where relevant in the main source comparison, without a separate review pass:
+검토를 따로 한 번 더 하지 말고, 주된 원문 대조에서 아래 항목 가운데 해당하는 것을 함께 확인한다.
 
-1. It still belongs to the same genre unless the user requested a conversion.
-2. The audience relationship and level of politeness are intact.
-3. The writer's evaluation, emotion, commitment, and approved voice remain.
-4. Safety emphasis, required repetition, slogans, quotations, and disclaimers were not mistaken for AI residue.
-5. The rewrite did not become uniformly flat merely because it became shorter.
+1. 사용자가 장르를 바꿔 달라고 하지 않았다면 수정본은 여전히 같은 장르다.
+2. 독자와의 관계와 공손함의 정도가 그대로다.
+3. 글쓴이의 평가, 감정, 약속, 승인된 말투가 남아 있다.
+4. 안전 강조, 꼭 필요한 반복, 슬로건, 인용, 고지 문구를 AI 잔재로 착각하지 않았다.
+5. 수정본이 짧아졌다고 해서 한결같이 밋밋해지지 않았다.

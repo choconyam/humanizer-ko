@@ -1,65 +1,65 @@
-# Fidelity review
+# 충실도 검토
 
-Read this guide when several facts, constraints, attributions, or status claims interact, or an editing error would have serious consequences. A field label, ordinary number, or technical token alone does not trigger it. It separates exact preservation from semantic preservation.
+여러 사실, 제약, 출처(누구의 말이나 판단인지), 상태를 밝힌 주장이 서로 얽혀 있거나, 편집 실수가 심각한 결과로 이어질 수 있을 때 이 안내를 읽는다. 글이 의학이나 법률 같은 특정 분야라는 점, 평범한 숫자, 기술 토큰 하나만으로는 이 안내를 읽지 않는다. 이 안내는 표기를 정확히 지키는 일과 뜻을 지키는 일을 구분한다.
 
-## Build a compact source map
+## 원문에서 지킬 것을 간단히 정리한다
 
-Before rewriting, identify three kinds of constraints. Keep the map internal unless the user asks for an audit.
+고쳐 쓰기 전에 세 가지 제약을 찾는다. 사용자가 점검 내역을 요청하지 않으면 이 정리는 겉으로 드러내지 않는다.
 
-| Constraint | What to preserve | How to check |
+| 제약 | 보존할 것 | 확인 방법 |
 |---|---|---|
-| Exact surface | Names, numbers, units, dates, URLs, paths, commands, identifiers, citations, direct quotes, approved slogans, code and schema fields | Compare the source and draft directly |
-| Semantic claim | Negation, modality, tense, scope, attribution, causality, comparison, status, uncertainty, limitations and responsibilities | Compare each proposition, not one regex or word |
-| Voice and stance | Evaluation, emotion, commitment, criticism, expectation and degree of confidence | Confirm that the writer still takes the same position with similar strength |
+| 정확한 표기 | 이름, 숫자, 단위, 날짜, URL, 경로, 명령어, 식별자, 참고문헌 표기, 직접 인용, 승인된 슬로건, 코드와 스키마 필드 | 원문과 수정본을 직접 비교한다 |
+| 주장의 의미 | 부정, 양태, 시제, 범위, 출처, 인과관계, 비교, 상태, 불확실성, 한계와 책임 | 정규식 하나나 단어 하나로 보지 말고 명제마다 비교한다 |
+| 말투와 입장 | 평가, 감정, 약속, 비판, 기대, 확신의 정도 | 글쓴이가 여전히 같은 입장을 비슷한 세기로 취하는지 확인한다 |
 
-Do not treat every ordinary phrase as an exact token. Korean particles, honorifics, spacing around prose, and natural word order may change without changing the protected item.
+평범한 표현까지 모두 정확히 지켜야 할 토큰으로 다루지 않는다. 보호 대상 항목은 그대로 두고, 한국어 조사, 높임 표현, 주변 본문의 띄어쓰기, 자연스러운 어순은 바꿀 수 있다.
 
-## Preserve exact material
+## 정확한 표기를 보존한다
 
-- Keep technical tokens internally unchanged: `F1 score`, `SEC-219`, `/v2/predict`, `USD/KRW`, `OD 6+`, model names, product names and standards identifiers.
-- A suspected mistranslation in ordinary technical prose is not an immutable identifier. Apply K7's supported correction or uncertainty form while preserving the concept; direct quotes, code, names, approved wording, and explicit user glossaries stay protected.
-- A Korean particle may follow a token when grammar requires it. `F1 score는 0.84` still contains the token `F1 score`; do not change it to `F1-score` merely for style.
-- Keep direct quotations and approved slogans verbatim unless the user explicitly asks to edit them.
-- Keep URLs, commands, paths, link targets, citation keys and code untouched. Do not localize their spelling or punctuation.
-- Keep numbers with their units and comparison basis. Do not round, normalize, or convert units unless requested.
+- 기술 토큰은 내부를 바꾸지 않는다. `F1 score`, `SEC-219`, `/v2/predict`, `USD/KRW`, `OD 6+`, 모델명, 제품명, 표준 식별자가 이에 해당한다.
+- 기술 글의 일반 본문에 있는 오역 의심 표현은 바꿀 수 없는 식별자가 아니다. 개념은 보존하면서 K7에 따른 근거 있는 교정이나 불확실성 표시 형식을 적용한다. 직접 인용, 코드, 이름, 승인된 문구, 사용자가 명시한 용어집은 계속 보호 대상이다.
+- 문법상 필요하면 토큰 뒤에 한국어 조사를 붙여도 된다. `F1 score는 0.84`에도 토큰 `F1 score`가 그대로 들어 있다. 스타일만을 이유로 `F1-score`로 바꾸지 않는다.
+- 사용자가 고쳐 달라고 명시적으로 요청하지 않는 한, 직접 인용과 승인된 슬로건은 글자 그대로 둔다.
+- URL, 명령어, 경로, 링크 주소, 인용 키, 코드는 손대지 않는다. 이런 항목의 철자나 문장 부호도 한국어식으로 바꾸지 않는다.
+- 숫자는 단위, 비교 기준과 함께 지킨다. 요청이 없으면 반올림하거나, 표기를 통일하거나, 단위를 바꾸지 않는다.
 
-## Preserve semantic constraints
+## 의미 제약을 보존한다
 
-Check meaning rather than requiring one surface form.
+한 가지 표기만 요구하지 말고 뜻을 확인한다.
 
-- `문을 열 예정입니다` and `개관할 예정입니다` can carry the same planned status.
-- `권고할 수 없습니다` and `권고할 수는 없습니다` can carry the same negation.
-- `사용할 수 없습니다` and `사용하실 수 없습니다` can carry the same prohibition with different honorific marking.
+- `문을 열 예정입니다`와 `개관할 예정입니다`는 같은 예정 상태를 나타낼 수 있다.
+- `권고할 수 없습니다`와 `권고할 수는 없습니다`는 같은 부정을 나타낼 수 있다.
+- `사용할 수 없습니다`와 `사용하실 수 없습니다`는 높임 표시는 달라도 같은 금지를 나타낼 수 있다.
 
-These variations are acceptable only when scope and force stay the same. Watch for small words that do change meaning: `만`, `도`, `약`, `최대`, `최소`, `이상`, `이하`, `아직`, `직접`, `일부`, `모든`, and negative expressions.
+이런 차이는 범위와 세기가 같을 때만 허용한다. 실제로 뜻을 바꾸는 작은 말에 주의한다. `만`, `도`, `약`, `최대`, `최소`, `이상`, `이하`, `아직`, `직접`, `일부`, `모든`, 부정 표현이 그런 말이다.
 
-Preserve the type of proposition as well as its topic. Do not turn an observation into a recommendation, an evaluation into a requirement, an aspiration into a promise, a possibility into a plan, or a commitment into a prediction. For example, `솔직한 대화가 방향을 잡는 데 도움이 된다` must not become `솔직한 대화가 필요하다` unless the source makes that recommendation.
+명제는 주제뿐 아니라 종류도 보존한다. 관찰을 권고로, 평가를 요구 사항으로, 바람을 약속으로, 가능성을 계획으로, 약속을 예측으로 바꾸지 않는다. 예를 들어 원문에 그런 권고가 없다면 `솔직한 대화가 방향을 잡는 데 도움이 된다`를 `솔직한 대화가 필요하다`로 바꾸면 안 된다.
 
-Within the main source comparison, verify relevant points:
+주된 원문 대조에서 다음 가운데 해당하는 점을 확인한다.
 
-1. Who did or will do the action.
-2. What happened, is planned, is allowed, or is prohibited.
-3. When and under what conditions it applies.
-4. Whether the source states evidence, possibility, expectation, correlation, or causation.
-5. Which limitations, exceptions, unresolved points, and approval states remain.
+1. 누가 그 행동을 했거나 할 것인지.
+2. 일어난 일, 계획된 일, 허용된 일, 금지된 일이 무엇인지.
+3. 언제, 어떤 조건에서 적용되는지.
+4. 원문에 나온 것이 증거인지, 가능성인지, 기대인지, 상관관계인지, 인과관계인지.
+5. 어떤 한계, 예외, 풀리지 않은 점, 승인 상태가 남아 있는지.
 
-## Preserve stance without preserving empty intensity
+## 입장은 보존하되 내용 없는 강조는 보존하지 않는다
 
-An evaluative phrase is not always a hard fact, but the writer's position is still part of the meaning.
+평가하는 표현이 늘 확고한 사실인 것은 아니다. 그래도 글쓴이의 입장은 뜻의 일부다.
 
 > 이번 결과는 시장 기회가 무궁무진하다는 점을 보여줍니다.
 
-If the evidence does not support `무궁무진`, lower the intensity while keeping the positive assessment, for example `이번 결과는 시장 기회가 있다는 점을 보여줍니다`. Do not delete the assessment solely to remove the watched word. Keep attribution when the source supplies it; do not invent attribution when it does not.
+근거가 `무궁무진`을 뒷받침하지 않으면 긍정적인 평가는 유지하면서 세기를 낮춘다. 예를 들어 `이번 결과는 시장 기회가 있다는 점을 보여줍니다`처럼 쓴다. 검토 신호인 단어를 없애려는 이유만으로 평가를 지우지 않는다. 원문에 출처가 있으면 남기고, 없으면 지어내지 않는다.
 
-In personal writing, preserve first-person reactions and deliberate imagery. In reports, preserve conclusions and recommendations at their original confidence level. In notices, preserve commitments. In approved marketing copy, preserve the authorized promise and tone within the stated limits.
+개인적인 글에서는 1인칭으로 쓴 반응과 일부러 살린 묘사를 보존한다. 보고서에서는 결론과 권고를 원래의 확신 정도 그대로 보존한다. 공지에서는 약속을 보존한다. 승인된 광고 문구에서는 승인된 약속과 어조를 명시된 한도 안에서 보존한다.
 
-## Avoid over-compression
+## 지나치게 줄이지 않는다
 
-Shorter is not automatically more faithful or more natural.
+짧다고 해서 저절로 더 충실하거나 더 자연스러워지지는 않는다.
 
-- Do not reduce a paragraph to data points if its purpose also includes interpretation, instruction, reassurance, criticism, or personal voice.
-- Remove a sentence only when it is genuinely redundant and carries no distinct stance, condition, or audience function.
-- When a watched phrase contains a real proposition, rewrite the proposition instead of dropping the sentence.
-- Do not add a new concluding inference merely because the rewrite feels abrupt.
+- 문단의 목적에 해석, 지시, 안심시키는 말, 비판, 개인의 말투 가운데 하나라도 함께 들어 있으면 그 문단을 데이터 몇 개로 줄이지 않는다.
+- 문장은 정말로 중복이고, 그 문장만의 입장, 조건, 독자를 위한 역할이 없을 때만 지운다.
+- 검토 신호인 표현에 실제 명제가 들어 있으면 문장을 버리지 말고 그 명제를 고쳐 쓴다.
+- 수정본이 갑자기 끝나는 느낌이 든다는 이유만으로 결론 삼아 새 추론을 덧붙이지 않는다.
 
-If naturalness conflicts with any protected meaning, keep the meaning and simplify the surrounding prose instead.
+자연스러움과 보호 대상인 뜻이 부딪히면 뜻을 지키고, 대신 주변 문장을 단순하게 다듬는다.

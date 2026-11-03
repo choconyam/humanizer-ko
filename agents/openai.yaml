@@ -1,4 +1,4 @@
 interface:
   display_name: "humanizer-ko"
-  short_description: "Naturalize Korean and English prose"
-  default_prompt: "Use $humanizer-ko to rewrite this Korean or English text naturally without changing its facts."
+  short_description: "한국어·영어 문장을 자연스럽게 다듬습니다."
+  default_prompt: "$humanizer-ko로 이 한국어나 영어 글을 사실은 바꾸지 말고 자연스럽게 다듬어줘."

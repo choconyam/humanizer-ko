@@ -1,18 +1,18 @@
-# Legal and policy terminology
+# 법률·정책 용어
 
-Use this guide for statutes, contracts, patents, regulation, compliance, and public policy. The controlling instrument and the wording used by the relevant authority take priority.
+법령, 계약, 특허, 규제, 규정 준수, 공공 정책에 이 안내를 쓴다. 기준이 되는 법률 문서와 관련 기관이 쓰는 표현을 우선한다.
 
-## Context-sensitive terms
+## 문맥에 따라 달라지는 용어
 
-| Term | Context | Likely Korean usage |
+| 용어 | 문맥 | 유력한 한국어 용례 |
 |---|---|---|
-| `claim` | patent | 청구항 |
-| `claim` | insurance dispute | 청구 or 보험금 청구; use the finance guide if insurance operations dominate |
-| `claim` | argument or allegation | 주장 |
-| `interest` | conflict or legal relationship | 이해관계 |
-| `shall`, `must`, `may` | rule or contract | preserve obligation, prohibition, and discretion rather than translating mechanically |
-| `guideline` | nonbinding policy | 지침; do not strengthen it into a binding rule |
+| `claim` | 특허 | 청구항 |
+| `claim` | 보험 분쟁 | 청구 또는 보험금 청구. 보험 업무가 중심이면 금융·회계 안내를 따른다 |
+| `claim` | 논증이나 혐의 제기 | 주장 |
+| `interest` | 이해 충돌이나 법률관계 | 이해관계 |
+| `shall`, `must`, `may` | 규칙이나 계약 | 기계적으로 옮기지 말고 의무, 금지, 재량을 보존한다 |
+| `guideline` | 구속력 없는 정책 | 지침. 구속력 있는 규칙으로 강화하지 않는다 |
 
-Keep article numbers, clause numbers, defined terms, case names, agency names, dates, and citations exact. Do not replace a defined term with a smoother synonym.
+조문 번호, 조항 번호, 정의된 용어, 사건명, 기관명, 날짜, 인용 표기는 정확히 그대로 둔다. 정의된 용어를 더 매끄러운 동의어로 바꾸지 않는다.
 
-Preserve whether language creates a duty, permission, recommendation, exception, pending decision, or nonbinding interpretation.
+문언이 의무인지, 허용인지, 권고인지, 예외인지, 아직 내려지지 않은 결정인지, 구속력 없는 해석인지를 바꾸지 않는다.

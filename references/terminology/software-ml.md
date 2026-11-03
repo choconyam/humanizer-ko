@@ -1,23 +1,23 @@
-# Software and ML terminology
+# 소프트웨어·머신러닝 용어
 
-Use this guide for software, APIs, data work, AI, and machine learning. Follow the project glossary, codebase, product documentation, and intended technical audience.
+소프트웨어, API, 데이터 작업, AI, 머신러닝에 이 안내를 쓴다. 프로젝트 용어집, 코드베이스, 제품 문서를 따르고, 염두에 둔 기술 독자에게 맞춘다.
 
-## Context-sensitive terms
+## 문맥에 따라 달라지는 용어
 
-| Term | Context | Likely Korean usage |
+| 용어 | 문맥 | 유력한 한국어 용례 |
 |---|---|---|
-| `feature` | product or UI | 기능 |
-| `feature` | machine learning | 특성 or 피처, following the project glossary |
-| `validation` | model or data work | 검증; keep `validation` when the project does |
+| `feature` | 제품이나 UI | 기능 |
+| `feature` | 머신러닝 | 프로젝트 용어집에 따라 특성 또는 피처 |
+| `validation` | 모델이나 데이터 작업 | 검증. 프로젝트에서 `validation`을 쓰면 그대로 둔다 |
 | `endpoint` | API | 엔드포인트 |
-| `label` | machine learning | 레이블, 라벨, or `label` according to the project |
-| `baseline` | experiment or benchmark | 베이스라인 or `baseline` according to the project |
-| `calibration` | model probabilities | 보정 or 캘리브레이션 according to field usage |
-| `time window` | time-series input, aggregation, or observation | keep `time window` or established 윈도우 wording; use 입력 구간·집계 구간·관측 구간 only when that role is explicit, not as interchangeable translations |
-| `context window` | LLM token context capacity | 컨텍스트 윈도우; do not confuse it with a time-series input interval |
-| `production`, `staging` | deployment environment | keep the established environment names |
+| `label` | 머신러닝 | 프로젝트에 따라 레이블, 라벨, 또는 `label` |
+| `baseline` | 실험이나 벤치마크 | 프로젝트에 따라 베이스라인 또는 `baseline` |
+| `calibration` | 모델 확률 | 분야 용례에 따라 보정 또는 캘리브레이션 |
+| `time window` | 시계열 입력, 집계, 관측 | `time window`나 자리 잡은 윈도우 표현을 그대로 둔다. 입력 구간·집계 구간·관측 구간은 그 역할이 분명히 드러날 때만 쓰고, 서로 바꿔 써도 되는 번역어로 쓰지 않는다 |
+| `context window` | LLM이 다룰 수 있는 토큰 문맥의 크기 | 컨텍스트 윈도우. 시계열 입력 구간과 혼동하지 않는다 |
+| `production`, `staging` | 배포 환경 | 자리 잡은 환경 이름을 그대로 둔다 |
 
-## Literal translations need context
+## 직역어는 문맥을 보고 판단한다
 
 `window`가 들어간 용어를 모두 `창`이나 `입력 구간`으로 바꾸지 않는다. 문서의 용어집과 개념을 먼저 확인한다. `time window`, `sliding window`, `context window`, `process window`는 같은 개념이 아니다. 입력 길이를 이동하는 방식이 원문에 없으면 `슬라이딩 윈도우`라고 구체화하지 않는다.
 
@@ -25,8 +25,8 @@ Use this guide for software, APIs, data work, AI, and machine learning. Follow t
 - **용례가 안 정해진 경우:** 원어 `time window`는 확인됐고 최근 24개 관측값을 입력한다는 설명만 있다면 `time window(입력 구간·용어 확인 필요)`처럼 개념 설명과 미확정 용어임을 함께 드러낼 수 있다. 이것을 표준 번역어라고 단정하지 않는다.
 - **유지할 경우:** 프로젝트가 `시간 창`을 정의해 사용하도록 지정했거나, 원문 인용이 `시간 창`이라고 썼다면 보존한다. 생소하다는 이유만으로 금칙어로 삼지 않는다.
 
-Usage checks: [Google Cloud's Korean glossary](https://docs.cloud.google.com/docs/generative-ai/glossary?hl=ko#context-window) uses `컨텍스트 윈도우`. The [Korean Institute of ITS 2023 proceedings](https://kits.or.kr/file/2023/ITS_2023b_1.pdf#page=319), “대조학습 기반 운전자 행동 변화 탐지,” uses both `윈도우` and `시간 창`; that is evidence of occurrence, not a universal preferred term. Check the audience's usage rather than treating any one translation as mandatory.
+실제 용례를 보면, [Google Cloud 한국어 용어집](https://docs.cloud.google.com/docs/generative-ai/glossary?hl=ko#context-window)에는 `컨텍스트 윈도우`로 나온다. [한국ITS학회 2023년 학술대회 논문집](https://kits.or.kr/file/2023/ITS_2023b_1.pdf#page=319)에 실린 “대조학습 기반 운전자 행동 변화 탐지”에는 `윈도우`와 `시간 창`이 모두 나온다. 두 표현이 실제로 쓰인다는 증거일 뿐, 어디서나 우선하는 용어라는 뜻은 아니다. 어느 한 번역어를 반드시 써야 한다고 보지 말고, 독자가 쓰는 용례를 확인한다.
 
-Keep exact code-facing material unchanged: API paths such as `/v2/predict`, field names, commands, package names, model IDs, filenames, and schema keys. Preserve internal spacing and punctuation in technical tokens such as `F1 score`.
+코드에 그대로 쓰이는 표기는 한 글자도 바꾸지 않는다. `/v2/predict` 같은 API 경로, 필드 이름, 명령어, 패키지 이름, 모델 ID, 파일 이름, 스키마 키가 여기에 해당한다. `F1 score` 같은 기술 토큰 안의 띄어쓰기와 문장 부호도 보존한다.
 
-Do not turn prototype, validation, staging, release candidate, or experimental status into production deployment.
+프로토타입, 검증, 스테이징, 릴리스 후보, 실험 상태를 프로덕션 배포로 바꾸지 않는다.
